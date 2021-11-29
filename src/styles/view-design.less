@@ -1,0 +1,17 @@
+/**
+ * view-design.less
+ * 覆盖view-design一些组件的默认样式
+ */
+// i-link如果有多个，默认右距离
+.i-link {
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+// 修复ivu alert的icon图标不垂直居中问题
+.ivu-alert-icon {
+  top: auto;
+  bottom: auto;
+  margin: auto;
+}
