@@ -2,7 +2,7 @@
 
 ```bash
 # 克隆项目
-git clone https://gitee.com/qq1020431880/ivu-admin-pro.git
+git clone https://gitee.com/qq575792372/ivu-admin-pro.git
 
 # 进入项目目录
 cd ivu-admin-pro
@@ -79,31 +79,31 @@ npm run lint -- --fix
 
 <table>
     <tr>
-        <td colspan="2"><img alt="登录" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/login.png"/></td>
+        <td colspan="2"><img alt="登录" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/login.png"/></td>
     </tr>
     <tr>
-        <td><img alt="功能1" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/1.png"/></td>
-        <td><img alt="功能2" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/2.png"/></td>
+        <td><img alt="功能1" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/1.png"/></td>
+        <td><img alt="功能2" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/2.png"/></td>
     </tr>
     <tr>
-        <td><img alt="功能3" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/3.png"/></td>
-        <td><img alt="功能4" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/4.png"/></td>
+        <td><img alt="功能3" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/3.png"/></td>
+        <td><img alt="功能4" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/4.png"/></td>
     </tr>
      <tr>
-        <td><img alt="功能5" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/5.png"/></td>
-        <td><img alt="功能6" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/6.png"/></td>
+        <td><img alt="功能5" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/5.png"/></td>
+        <td><img alt="功能6" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/6.png"/></td>
     </tr>
      <tr>
-        <td><img alt="功能7" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/7.png"/></td>
-        <td><img alt="功能8" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/8.png"/></td>
+        <td><img alt="功能7" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/7.png"/></td>
+        <td><img alt="功能8" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/8.png"/></td>
     </tr>
      <tr>
-        <td><img alt="功能9" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/9.png"/></td>
-        <td><img alt="功能10" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/10.png"/></td>
+        <td><img alt="功能9" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/9.png"/></td>
+        <td><img alt="功能10" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/10.png"/></td>
     </tr>
      <tr>
-        <td><img alt="手机端1" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/mobile-1.png"/></td>
-        <td><img alt="手机端2" src="https://gitee.com/qq1020431880/images/raw/master/ivu-admin-pro/mobile-2.png"/></td>
+        <td><img alt="手机端1" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/mobile-1.png"/></td>
+        <td><img alt="手机端2" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/mobile-2.png"/></td>
     </tr>
 </table>
 
