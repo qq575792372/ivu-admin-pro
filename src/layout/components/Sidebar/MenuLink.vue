@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import { isExternal } from "@/utils/validate";
+// 引入LimeUtil
+import { isExternal } from "@lime-util/all";
 
 export default {
   name: "SideMenuLink",

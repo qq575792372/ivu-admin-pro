@@ -11,7 +11,7 @@
       <template slot="content">
         <div class="dashboard-header-content">
           <Icon type="md-cloudy" />
-          今天多云转晴，20℃ - 28℃，温度适宜出去郊游哦~
+          今天{{ nowWeekDayStr }}，多云转晴，20℃ - 28℃，温度适宜出去郊游哦~
         </div>
       </template>
     </PageHeader>
@@ -30,14 +30,14 @@ import { mapGetters } from "vuex";
 import { DashboardMenu, DashboardCard, DashboardStatis } from "./components/index";
 // 引入api
 import { getWeather } from "@/api/common";
-// 引入js
-import util from "@/utils/util";
+// 引入LimeUtil
+import LimeUtil from "@lime-util/all";
 
 export default {
   name: "Dashboard",
   components: { DashboardMenu, DashboardCard, DashboardStatis },
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["name"])
   },
   data() {
     return {
@@ -49,10 +49,11 @@ export default {
         "莫道不消魂，帘卷西风，人比黄花瘦。",
         "学而不思则罔，思而不学则殆。",
         "人生得意须尽欢，莫使金樽空对月。",
-        "忙碌了一周，请好好让生活待自己。",
+        "忙碌了一周，请好好让生活待自己。"
       ],
       // 当前的周几
-      nowWeekDay: util.getWeekDay(new Date(), "en"),
+      nowWeekDay: LimeUtil.getDayOfWeek(),
+      nowWeekDayStr: LimeUtil.getDayOfWeek(new Date(), "zh")
     };
   },
   created() {
@@ -61,8 +62,8 @@ export default {
   methods: {
     getWeatherData() {
       getWeather().then();
-    },
-  },
+    }
+  }
 };
 </script>
 

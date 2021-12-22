@@ -214,8 +214,8 @@
 </template>
 
 <script>
-// 引入工具类
-import util from "@/utils/util";
+// 引入LimeUtil
+import LimeUtil from "@lime-util/all";
 // 引入api
 import { getList, getDetail, addProduct, updateProduct, deleteProduct } from "@/api/product";
 export default {
@@ -387,7 +387,7 @@ export default {
                 }
               });
             } else {
-              return h("span", "￥" + util.toFixed(row.originPrice));
+              return h("span", "￥" + LimeUtil.toFixed(row.originPrice));
             }
           }
         },
@@ -413,7 +413,7 @@ export default {
                 }
               });
             } else {
-              return h("span", "￥" + util.toFixed(row.sellPrice));
+              return h("span", "￥" + LimeUtil.toFixed(row.sellPrice));
             }
           }
         },
