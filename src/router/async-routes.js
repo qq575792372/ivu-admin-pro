@@ -347,12 +347,12 @@ export const asyncRoutes = [
         }
       },
       {
-        path: "area-picker",
-        name: "AreaPickerDemo",
-        component: () => import("@/views/components-demo/area-picker"),
+        path: "region-picker",
+        name: "RegionPickerDemo",
+        component: () => import("@/views/components-demo/region-picker"),
         meta: {
           title: "省市区级联选择",
-          subtitle: "AreaPicker"
+          subtitle: "RegionPicker"
         }
       },
       {
