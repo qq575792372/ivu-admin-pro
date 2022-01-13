@@ -11,10 +11,10 @@
         <div class="search-box">
           <Row>
             <Col>
-              <Input v-model="listQuery.productName" placeholder="商品名称" clearable style="width:180px;" />
+              <Input v-model="listQuery.productName" placeholder="商品名称" clearable style="width: 180px" />
             </Col>
             <Col>
-              <Select v-model="listQuery.productType" placeholder="商品类型" clearable style="width:120px;">
+              <Select v-model="listQuery.productType" placeholder="商品类型" clearable style="width: 120px">
                 <Option value="0">新鲜果蔬</Option>
                 <Option value="1">饮料乳品</Option>
                 <Option value="2">肉禽水产</Option>
@@ -24,27 +24,23 @@
               </Select>
             </Col>
             <Col>
-              <Select v-model="listQuery.status" placeholder="商品状态" clearable style="width:120px;">
+              <Select v-model="listQuery.status" placeholder="商品状态" clearable style="width: 120px">
                 <Option value="0">已下架</Option>
                 <Option value="1">已上架</Option>
               </Select>
             </Col>
             <Col>
-              <DatePicker type="date" placeholder="创建时间" style="width:180px;" />
+              <DatePicker type="date" placeholder="创建时间" style="width: 180px" />
             </Col>
             <!-- eslint-disable -->
             <template v-if="!searchCollapse">
               <Col v-for="(item, index) in 14" :key="index">
-                <Input v-model="listQuery.name" placeholder="输入内容" clearable style="width:180px;" />
+                <Input v-model="listQuery.name" placeholder="输入内容" clearable style="width: 180px" />
               </Col>
             </template>
             <Col>
-              <Button type="primary" @click="queryData">
-                查询
-              </Button>
-              <Button type="default" @click="handleReset">
-                重置
-              </Button>
+              <Button type="primary" @click="queryData">查询</Button>
+              <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
               <i-link type="primary" :underline="false" @click="searchCollapse = !searchCollapse">
                 <template v-if="searchCollapse">
@@ -61,12 +57,8 @@
         </div>
         <!-- 操作按钮 -->
         <div class="operate-box">
-          <Button icon="md-add" type="primary" @click="showAddModal">
-            新增
-          </Button>
-          <Button icon="md-done-all" type="primary">
-            批量操作
-          </Button>
+          <Button icon="md-add" type="primary" @click="showAddModal">新增</Button>
+          <Button icon="md-done-all" type="primary">批量操作</Button>
         </div>
       </div>
       <!-- table -->
@@ -76,9 +68,7 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link class="margin-left-10" type="danger" :underline="false" @click="handleClearRows">
-              清空
-            </i-link>
+            <i-link class="margin-left-10" type="danger" :underline="false" @click="handleClearRows">清空</i-link>
           </div>
         </Alert>
         <Table
@@ -97,29 +87,21 @@
               </Select>
             </template>
             <template v-else>
-              <span class="text-success" v-if="row.status == 1">
-                已上架
-              </span>
-              <span class="text-danger" v-if="row.status == 0">
-                已下架
-              </span>
+              <span class="text-success" v-if="row.status == 1">已上架</span>
+              <span class="text-danger" v-if="row.status == 0">已下架</span>
             </template>
           </template>
           <!-- 操作 -->
           <template slot-scope="{ row, index }" slot="action">
             <span v-if="row.editable">
-              <Button type="success" @click="handleSubmitEditLine(row, index)" size="small" style="margin-right:3px;">
+              <Button type="success" @click="handleSubmitEditLine(row, index)" size="small" style="margin-right: 3px">
                 保存
               </Button>
               <Button type="error" @click="handleCancelEditLine(row, index)" size="small">取消</Button>
             </span>
             <span v-else>
-              <i-link type="primary" :underline="false" @click="handleEditLine(row, index)">
-                编辑
-              </i-link>
-              <i-link type="danger" :underline="false" @click="handleDelete(row)">
-                删除
-              </i-link>
+              <i-link type="primary" :underline="false" @click="handleEditLine(row, index)">编辑</i-link>
+              <i-link type="danger" :underline="false" @click="handleDelete(row)">删除</i-link>
             </span>
           </template>
         </Table>
@@ -153,12 +135,12 @@
               v-model="editForm.productName"
               placeholder="输入商品名称"
               maxlength="100"
-              style="width:360px"
+              style="width: 360px"
               clearable
             ></Input>
           </FormItem>
           <FormItem label="商品分类" prop="productType">
-            <Select v-model="editForm.productType" placeholder="选择商品分类" style="width:360px" clearable>
+            <Select v-model="editForm.productType" placeholder="选择商品分类" style="width: 360px" clearable>
               <Option value="0">新鲜果蔬</Option>
               <Option value="1">饮料乳品</Option>
               <Option value="2">肉禽水产</Option>
@@ -173,7 +155,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width:360px"
+              style="width: 360px"
             />
           </FormItem>
           <FormItem label="商品售价" prop="sellPrice">
@@ -182,7 +164,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width:360px"
+              style="width: 360px"
             />
           </FormItem>
           <FormItem label="单位" prop="unit">
@@ -190,15 +172,15 @@
               v-model="editForm.unit"
               placeholder="输入单位（如：双，个，件，箱..）"
               maxlength="2"
-              style="width:360px"
+              style="width: 360px"
               clearable
             />
           </FormItem>
           <FormItem label="库存" prop="stock">
-            <InputNumber v-model="editForm.stock" :min="0" placeholder="输入库存" style="width:360px" />
+            <InputNumber v-model="editForm.stock" :min="0" placeholder="输入库存" style="width: 360px" />
           </FormItem>
           <FormItem v-if="editForm.id" label="状态">
-            <Select v-model="editForm.status" placeholder="商品状态" clearable style="width:360px">
+            <Select v-model="editForm.status" placeholder="商品状态" clearable style="width: 360px">
               <Option value="0">已下架</Option>
               <Option value="1">已上架</Option>
             </Select>
@@ -215,7 +197,7 @@
 
 <script>
 // 引入LimeUtil
-import LimeUtil from "@lime-util/all";
+import LimeUtil from "@lime-util/util";
 // 引入api
 import { getList, getDetail, addProduct, updateProduct, deleteProduct } from "@/api/product";
 export default {
@@ -232,7 +214,7 @@ export default {
         name: "",
         productType: "",
         pageNo: 1,
-        pageSize: 10
+        pageSize: 10,
       },
 
       // 表格多选和单选
@@ -243,7 +225,7 @@ export default {
       tableColumns: [
         {
           type: "selection",
-          width: 40
+          width: 40,
         },
         {
           key: "index",
@@ -252,12 +234,12 @@ export default {
           align: "center",
           render: (h, { row, index }) => {
             return h("span", this.listQuery.pageSize * (this.listQuery.pageNo - 1) + index + 1);
-          }
+          },
         },
         {
           title: "商品编号",
           key: "productNo",
-          minWidth: 200
+          minWidth: 200,
         },
         {
           title: "商品名称",
@@ -269,18 +251,18 @@ export default {
                 props: {
                   type: "text",
                   value: row.productName,
-                  placeholder: "输入商品名称"
+                  placeholder: "输入商品名称",
                 },
                 on: {
-                  "on-blur": event => {
+                  "on-blur": (event) => {
                     row.productName = event.target.value;
-                  }
-                }
+                  },
+                },
               });
             } else {
               return h("span", row.productName);
             }
-          }
+          },
         },
         {
           title: "商品分类",
@@ -293,51 +275,51 @@ export default {
                 {
                   props: {
                     value: String(row.productType),
-                    placeholder: "选择商品分类"
+                    placeholder: "选择商品分类",
                   },
                   on: {
-                    "on-change": value => {
+                    "on-change": (value) => {
                       row.productType = value;
-                    }
-                  }
+                    },
+                  },
                 },
                 [
                   h("Option", {
                     props: {
                       value: "0",
-                      label: "新鲜果蔬"
-                    }
+                      label: "新鲜果蔬",
+                    },
                   }),
                   h("Option", {
                     props: {
                       value: "1",
-                      label: "饮料乳品"
-                    }
+                      label: "饮料乳品",
+                    },
                   }),
                   h("Option", {
                     props: {
                       value: "2",
-                      label: "肉禽水产"
-                    }
+                      label: "肉禽水产",
+                    },
                   }),
                   h("Option", {
                     props: {
                       value: "3",
-                      label: "米面粮油"
-                    }
+                      label: "米面粮油",
+                    },
                   }),
                   h("Option", {
                     props: {
                       value: "4",
-                      label: "日用百货"
-                    }
+                      label: "日用百货",
+                    },
                   }),
                   h("Option", {
                     props: {
                       value: "5",
-                      label: "其他"
-                    }
-                  })
+                      label: "其他",
+                    },
+                  }),
                 ]
               );
             } else {
@@ -358,12 +340,12 @@ export default {
                   : ""
               );
             }
-          }
+          },
         },
         {
           title: "状态",
           slot: "status",
-          width: 120
+          width: 120,
         },
         {
           title: "商品原价",
@@ -378,18 +360,18 @@ export default {
                   value: row.originPrice,
                   min: 0,
                   precision: 2,
-                  placeholder: "输入商品原价"
+                  placeholder: "输入商品原价",
                 },
                 on: {
-                  "on-change": value => {
+                  "on-change": (value) => {
                     row.originPrice = value;
-                  }
-                }
+                  },
+                },
               });
             } else {
               return h("span", "￥" + LimeUtil.toFixed(row.originPrice));
             }
-          }
+          },
         },
         {
           title: "商品售价",
@@ -404,18 +386,18 @@ export default {
                   value: row.sellPrice,
                   min: 0,
                   precision: 2,
-                  placeholder: "输入商品售价"
+                  placeholder: "输入商品售价",
                 },
                 on: {
-                  "on-change": value => {
+                  "on-change": (value) => {
                     row.sellPrice = value;
-                  }
-                }
+                  },
+                },
               });
             } else {
               return h("span", "￥" + LimeUtil.toFixed(row.sellPrice));
             }
-          }
+          },
         },
         {
           title: "单位",
@@ -428,18 +410,18 @@ export default {
                   type: "text",
                   value: row.unit,
                   maxlength: 2,
-                  placeholder: "输入单位"
+                  placeholder: "输入单位",
                 },
                 on: {
-                  "on-blur": event => {
+                  "on-blur": (event) => {
                     row.unit = event.target.value;
-                  }
-                }
+                  },
+                },
               });
             } else {
               return h("span", row.unit);
             }
-          }
+          },
         },
         {
           title: "库存",
@@ -454,36 +436,36 @@ export default {
                   value: row.stock,
                   min: 0,
                   precision: 2,
-                  placeholder: "输入库存"
+                  placeholder: "输入库存",
                 },
                 on: {
-                  "on-change": value => {
+                  "on-change": (value) => {
                     row.stock = value;
-                  }
-                }
+                  },
+                },
               });
             } else {
               return h("span", row.stock + row.unit);
             }
-          }
+          },
         },
         {
           title: "创建时间",
           key: "createTime",
-          width: 180
+          width: 180,
         },
         {
           title: "更新时间",
           key: "updateTime",
-          width: 180
+          width: 180,
         },
         {
           title: "操作",
           slot: "action",
           fixed: "right",
           align: "center",
-          width: 140
-        }
+          width: 140,
+        },
       ],
 
       // 新增和编辑
@@ -498,7 +480,7 @@ export default {
         originPrice: null,
         sellPrice: null,
         unit: "",
-        stock: null
+        stock: null,
       },
       // 表单校验
       editFormRules: {
@@ -506,48 +488,48 @@ export default {
           {
             required: true,
             trigger: "blur",
-            message: "请输入商品名称"
-          }
+            message: "请输入商品名称",
+          },
         ],
         productType: [
           {
             required: true,
             trigger: "change",
-            message: "请选择商品类型"
-          }
+            message: "请选择商品类型",
+          },
         ],
         originPrice: [
           {
             type: "number",
             required: true,
             trigger: "blur",
-            message: "请输入商品原价"
-          }
+            message: "请输入商品原价",
+          },
         ],
         sellPrice: [
           {
             type: "number",
             required: true,
             trigger: "blur",
-            message: "请输入商品售价"
-          }
+            message: "请输入商品售价",
+          },
         ],
         unit: [
           {
             required: true,
             trigger: "blur",
-            message: "请输入单位"
-          }
+            message: "请输入单位",
+          },
         ],
         stock: [
           {
             type: "number",
             required: true,
             trigger: "blur",
-            message: "请输入库存"
-          }
-        ]
-      }
+            message: "请输入库存",
+          },
+        ],
+      },
     };
   },
   created() {
@@ -561,9 +543,9 @@ export default {
       this.listLoading = true;
       getList({
         pageNo: this.listQuery.pageNo,
-        pageSize: this.listQuery.pageSize
+        pageSize: this.listQuery.pageSize,
       })
-        .then(res => {
+        .then((res) => {
           setTimeout(() => {
             this.listLoading = false;
           }, 300);
@@ -574,7 +556,7 @@ export default {
             this.$Message.error(res.data.message);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.listLoading = false;
         });
       // 关闭loading
@@ -586,7 +568,7 @@ export default {
     handleReset() {
       this.listQuery = {
         pageNo: 1,
-        pageSize: 10
+        pageSize: 10,
       };
       this.queryData();
     },
@@ -628,7 +610,7 @@ export default {
         originPrice: null,
         sellPrice: null,
         unit: "",
-        stock: null
+        stock: null,
       };
       if (this.$refs.editFormRef) {
         this.$refs.editFormRef.resetFields();
@@ -651,7 +633,7 @@ export default {
     // 提交行内编辑内容
     handleSubmitEditLine(row, index) {
       console.log(111, row);
-      updateProduct(row).then(res => {
+      updateProduct(row).then((res) => {
         if (res.code === 0) {
           this.$Message.success("修改成功");
           // 修改成功后关闭当前行内编辑
@@ -666,7 +648,7 @@ export default {
      * 提交编辑
      */
     handleSubmit() {
-      this.$refs.editFormRef.validate(valid => {
+      this.$refs.editFormRef.validate((valid) => {
         if (valid) {
           if (this.editForm.id) {
             this.handleUpdate();
@@ -678,9 +660,9 @@ export default {
     },
     // 保存
     handleAdd() {
-      this.$refs.editFormRef.validate(valid => {
+      this.$refs.editFormRef.validate((valid) => {
         if (valid) {
-          addProduct(this.editForm).then(res => {
+          addProduct(this.editForm).then((res) => {
             if (res.code === 0) {
               this.$Message.success("添加成功");
               this.queryData();
@@ -694,9 +676,9 @@ export default {
     },
     // 修改
     handleUpdate() {
-      this.$refs.editFormRef.validate(valid => {
+      this.$refs.editFormRef.validate((valid) => {
         if (valid) {
-          updateProduct(this.editForm).then(res => {
+          updateProduct(this.editForm).then((res) => {
             if (res.code === 0) {
               this.$Message.success("修改成功");
               this.queryData();
@@ -718,7 +700,7 @@ export default {
         content: "确定删除该条数据吗？",
         closable: true,
         onOk: () => {
-          deleteProduct({ id: row.id }).then(res => {
+          deleteProduct({ id: row.id }).then((res) => {
             if (res.code === 0) {
               this.$Message.success("删除成功");
               this.queryData();
@@ -726,10 +708,10 @@ export default {
               this.$Message.error(res.message);
             }
           });
-        }
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

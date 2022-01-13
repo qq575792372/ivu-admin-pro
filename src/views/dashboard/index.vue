@@ -31,13 +31,13 @@ import { DashboardMenu, DashboardCard, DashboardStatis } from "./components/inde
 // 引入api
 import { getWeather } from "@/api/common";
 // 引入LimeUtil
-import LimeUtil from "@lime-util/all";
+import LimeUtil from "@lime-util/util";
 
 export default {
   name: "Dashboard",
   components: { DashboardMenu, DashboardCard, DashboardStatis },
   computed: {
-    ...mapGetters(["name"])
+    ...mapGetters(["name"]),
   },
   data() {
     return {
@@ -49,11 +49,11 @@ export default {
         "莫道不消魂，帘卷西风，人比黄花瘦。",
         "学而不思则罔，思而不学则殆。",
         "人生得意须尽欢，莫使金樽空对月。",
-        "忙碌了一周，请好好让生活待自己。"
+        "忙碌了一周，请好好让生活待自己。",
       ],
       // 当前的周几
       nowWeekDay: LimeUtil.getDayOfWeek(),
-      nowWeekDayStr: LimeUtil.getDayOfWeek(new Date(), "zh")
+      nowWeekDayStr: LimeUtil.getDayOfWeek(new Date(), "zh"),
     };
   },
   created() {
@@ -62,8 +62,8 @@ export default {
   methods: {
     getWeatherData() {
       getWeather().then();
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -17,7 +17,7 @@ export default {
   props: {
     // 头像列表
     list: {
-      type: Array
+      type: Array,
     },
     // Avatar组件样式
     excessStyle: {
@@ -25,32 +25,32 @@ export default {
       default: () => {
         return {
           color: "#f56a00",
-          backgroundColor: "#fde3cf"
+          backgroundColor: "#fde3cf",
         };
-      }
+      },
     },
     // Avatar组件形状，可选值为 circle、square
     shape: {
       type: String,
-      default: "circle"
+      default: "circle",
     },
     // 头像列表最大展示数目
     max: { type: Number },
     // Avatar组件大小，small，default，large
     size: {
       type: String,
-      default: "default"
+      default: "default",
     },
     // 是否开启tooltip组件提示
     tooltip: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    // tooltip组件提示框出现位置，可选值为toptop-starttop-endbottombottom-startbottom-endleftleft-startleft-endrightright-startright-end
+    // tooltip组件提示框出现位置，参考官网api的placement
     placement: {
       type: String,
-      default: "bottom"
-    }
+      default: "bottom",
+    },
   },
   computed: {
     // 计算当前展示的头像列表
@@ -64,8 +64,8 @@ export default {
     // 当前头像size
     avatarListClasses() {
       return "ivu-avatar-list-" + (this.size ? this.size : "");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 import { mapState } from "vuex";
 import path from "path";
-import { isExternal } from "@lime-util/all";
+import { isExternal } from "@lime-util/util";
 
 export default {
   props: {

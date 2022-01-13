@@ -6,7 +6,7 @@
 
 <script>
 // 引入LimeUtil
-import { isExternal } from "@lime-util/all";
+import { isExternal } from "@lime-util/util";
 
 export default {
   name: "SideMenuLink",
