@@ -10,11 +10,14 @@
     <!-- 右侧菜单 -->
     <div class="i-layout-navbar-right-menu">
       <!-- 页面全屏 -->
-      <Fullscreen v-if="!isMobile" class="i-layout-navbar-trigger" />
+      <Fullscreen
+        v-if="!isMobile"
+        class="i-layout-navbar-trigger"
+      />
       <!-- 系统通知 -->
       <Notify class="i-layout-navbar-trigger" />
       <!-- 用户登录信息 -->
-      <UserAvatar class="i-layout-navbar-trigger" />
+      <UserInfo class="i-layout-navbar-trigger" />
       <!-- 系统设置 -->
       <Settings class="i-layout-navbar-trigger" />
     </div>
@@ -22,12 +25,12 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-// 引入组件
+// 引入navbar中的组件
 import Hamburger from "@/layout/components/Hamburger";
 import Breadcrumb from "@/layout/components/Breadcrumb";
 import RefreshPage from "@/layout/components/RefreshPage";
 import Fullscreen from "@/layout/components/Fullscreen";
-import UserAvatar from "@/layout/components/UserAvatar";
+import UserInfo from "@/layout/components/UserInfo";
 import Settings from "@/layout/components/Settings";
 import Notify from "@/layout/components/Notify";
 
@@ -38,7 +41,7 @@ export default {
     Breadcrumb,
     RefreshPage,
     Fullscreen,
-    UserAvatar,
+    UserInfo,
     Settings,
     Notify
   },

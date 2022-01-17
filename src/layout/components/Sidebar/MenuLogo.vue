@@ -1,13 +1,38 @@
 <template>
-  <div id="i-layout-sider-logo" class="i-layout-sider-logo" :class="logoClasses">
-    <router-link v-if="isCollapsed" key="collapse" class="i-layout-sider-logo-link" to="/">
-      <img v-if="logo" :src="logo" class="sider-logo-img" />
-      <h1 v-else class="sider-logo-title">
+  <div
+    id="i-layout-sider-logo"
+    class="i-layout-sider-logo"
+    :class="logoClasses"
+  >
+    <router-link
+      v-if="isCollapsed"
+      key="collapse"
+      class="i-layout-sider-logo-link"
+      to="/"
+    >
+      <img
+        v-if="logo"
+        :src="logo"
+        class="sider-logo-img"
+      >
+      <h1
+        v-else
+        class="sider-logo-title"
+      >
         {{ title }}
       </h1>
     </router-link>
-    <router-link v-else key="expand" class="i-layout-sider-logo-link" to="/">
-      <img v-if="logo" :src="logo" class="sider-logo-img" />
+    <router-link
+      v-else
+      key="expand"
+      class="i-layout-sider-logo-link"
+      to="/"
+    >
+      <img
+        v-if="logo"
+        :src="logo"
+        class="sider-logo-img"
+      >
       <h1 class="sider-logo-title">
         {{ title }}
       </h1>

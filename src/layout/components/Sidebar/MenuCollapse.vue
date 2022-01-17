@@ -2,9 +2,9 @@
   <div
     v-if="!item.hidden && item.meta"
     :class="{
-      'i-layout-menu-side-collapse-top-level': this.topLevel,
-      'i-layout-menu-side-collapse-dark': this.sideTheme === 'dark' && this.topLevel,
-      'i-layout-menu-side-collapse-light': this.sideTheme === 'light' && this.topLevel
+      'i-layout-menu-side-collapse-top-level': topLevel,
+      'i-layout-menu-side-collapse-dark': sideTheme === 'dark' && topLevel,
+      'i-layout-menu-side-collapse-light': sideTheme === 'light' && topLevel
     }"
   >
     <!-- children最多只包含一个元素，并且默认显示根路由 -->
@@ -15,12 +15,12 @@
       placement="right"
     >
       <side-menu-link
+        v-if="onlyOneChild.meta"
         class="ivu-menu-item"
         :class="{
           'i-layout-menu-side-collapse-top-level-item': true,
           'i-layout-menu-side-collapse-top-level-item-selected': activeMenu.includes(resolvePath(onlyOneChild.path))
         }"
-        v-if="onlyOneChild.meta"
         :to="resolvePath(onlyOneChild.path, item.path)"
       >
         <side-menu-title :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" />
@@ -28,42 +28,58 @@
     </Tooltip>
 
     <!-- children包含多个元素，继续遍历子元素 -->
-    <Dropdown v-else placement="right-start">
+    <Dropdown
+      v-else
+      placement="right-start"
+    >
       <!-- 左侧收缩后一级菜单展示的图标 -->
       <li
+        v-if="topLevel"
         class="ivu-menu-item"
         :class="{
-          'i-layout-menu-side-collapse-top-level-item': this.topLevel,
+          'i-layout-menu-side-collapse-top-level-item': topLevel,
           'i-layout-menu-side-collapse-top-level-item-selected': openNames.includes(resolvePath(item.path))
         }"
-        v-if="topLevel"
       >
         <side-menu-title :icon="item.meta && item.meta.icon" />
       </li>
 
       <!--左侧栏一级菜单弹出的子菜单 -->
       <li
+        v-else
         class="ivu-dropdown-item "
         :class="{
           'ivu-menu-item-selected ivu-menu-item-active': openNames.includes(resolvePath(item.path))
         }"
-        v-else
       >
         <side-menu-title
           :icon="item.meta && item.meta.icon"
           :title="item.meta && item.meta.title"
           :subtitle="item.meta && item.meta.subtitle"
         />
-        <Icon type="ios-arrow-forward" class="ivu-dropdown-item-arrow" />
+        <Icon
+          type="ios-arrow-forward"
+          class="ivu-dropdown-item-arrow"
+        />
       </li>
       <DropdownMenu slot="list">
         <!-- 是否展示父级菜单的名称 -->
-        <div v-if="menuCollapseParentTitle" class="ivu-dropdown-item ivu-dropdown-show-parent">
-          <side-menu-title :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title" />
+        <div
+          v-if="menuCollapseParentTitle"
+          class="ivu-dropdown-item ivu-dropdown-show-parent"
+        >
+          <side-menu-title
+            :icon="item.meta && item.meta.icon"
+            :title="item.meta && item.meta.title"
+          />
         </div>
         <!-- 下拉菜单 -->
         <template v-for="(child, index) in item.children">
-          <side-menu-link v-if="!child.children" :key="child.path + index" :to="resolvePath(child.path)">
+          <side-menu-link
+            v-if="!child.children"
+            :key="child.path + index"
+            :to="resolvePath(child.path)"
+          >
             <DropdownItem
               :divided="child.meta.divided"
               :class="{
@@ -77,7 +93,12 @@
               />
             </DropdownItem>
           </side-menu-link>
-          <side-menu-collapse v-else :item="child" :key="child.path + index" :base-path="resolvePath(child.path)" />
+          <side-menu-collapse
+            v-else
+            :key="child.path + index"
+            :item="child"
+            :base-path="resolvePath(child.path)"
+          />
         </template>
       </DropdownMenu>
     </Dropdown>

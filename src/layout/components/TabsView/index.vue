@@ -16,7 +16,7 @@
         <TabPane
           v-for="tab in visitedViews"
           :key="tabKey()"
-          :label="h => renderLabel(h, tab)"
+          :label="(h) => renderLabel(h, tab)"
           :name="tab.fullPath"
           :closable="!isAffix(tab)"
           context-menu
@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       selectedTab: {}, // 当前右键菜单选择的tab
-      affixTabs: [] // 路由中affix=true的
+      affixTabs: [], // 路由中affix=true的
     };
   },
   computed: {
@@ -82,13 +82,13 @@ export default {
     // 当前页面的路由
     activeRoute() {
       return this.$route;
-    }
+    },
   },
   watch: {
     // 监听当前路由变化，添加到tabs集合中
     $route() {
       this.addTabs();
-    }
+    },
   },
   mounted() {
     this.initTabs();
@@ -124,14 +124,14 @@ export default {
      */
     filterAffixTabs(routes, basePath = "/") {
       let tags = [];
-      routes.forEach(route => {
+      routes.forEach((route) => {
         if (route.meta && route.meta.affix) {
           const tabPath = path.resolve(basePath, route.path);
           tags.push({
             fullPath: tabPath,
             path: tabPath,
             name: route.name,
-            meta: { ...route.meta }
+            meta: { ...route.meta },
           });
         }
         if (route.children) {
@@ -167,7 +167,7 @@ export default {
       return h(
         "div",
         {
-          class: "i-layout-tabs-title"
+          class: "i-layout-tabs-title",
         },
         vnodes
       );
@@ -201,19 +201,19 @@ export default {
      * 点击tab
      */
     handleClick(name) {
-      const view = this.visitedViews.find(item => item.fullPath === name);
+      const view = this.visitedViews.find((item) => item.fullPath === name);
       this.$router.push({
         path: view.path,
         query: view.query,
-        fullPath: view.fullPath
+        fullPath: view.fullPath,
       });
     },
     /**
      * 删除tab
      */
     handleTabRemove(name) {
-      const view = this.visitedViews.find(item => item.fullPath === name);
-      const viewIndex = this.visitedViews.findIndex(item => item.fullPath === name);
+      const view = this.visitedViews.find((item) => item.fullPath === name);
+      const viewIndex = this.visitedViews.findIndex((item) => item.fullPath === name);
       this.$store.dispatch("layout/tabsView/delView", view).then(({ visitedViews }) => {
         // 关闭当前路由对应的标签则会调用
         if (this.isActive(view)) {
@@ -233,7 +233,7 @@ export default {
      * 当前tab点击的右键菜单
      */
     handleContextMenu({ name }) {
-      const view = this.visitedViews.find(item => item.fullPath === name);
+      const view = this.visitedViews.find((item) => item.fullPath === name);
       this.selectedTab = view;
     },
 
@@ -245,7 +245,7 @@ export default {
         const { fullPath } = this.selectedTab;
         this.$nextTick(() => {
           this.$router.replace({
-            path: "/redirect" + fullPath
+            path: "/redirect" + fullPath,
           });
         });
       });
@@ -254,7 +254,7 @@ export default {
      * 关闭当前tab
      */
     closeSelected() {
-      const viewIndex = this.visitedViews.findIndex(item => item.fullPath === this.selectedTab.path);
+      const viewIndex = this.visitedViews.findIndex((item) => item.fullPath === this.selectedTab.path);
       this.$store.dispatch("layout/tabsView/delView", this.selectedTab).then(({ visitedViews }) => {
         // 关闭当前路由对应的标签则会调用
         if (this.isActive(this.selectedTab)) {
@@ -286,7 +286,7 @@ export default {
      */
     closeAll() {
       this.$store.dispatch("layout/tabsView/delAllViews").then(({ visitedViews }) => {
-        if (this.affixTabs.some(tag => tag.path === this.$route.path)) {
+        if (this.affixTabs.some((tag) => tag.path === this.$route.path)) {
           return;
         }
         this.toNextView(visitedViews);
@@ -307,12 +307,12 @@ export default {
         // 全部关闭后，如果没有任何标签，则默认跳转到首页
         this.$nextTick(() => {
           this.$router.replace({
-            path: "/redirect/"
+            path: "/redirect/",
           });
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less">
