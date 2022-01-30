@@ -7,9 +7,7 @@
     <div class="main-container">
       <!-- 基础用法 -->
       <div class="demo-block">
-        <div class="demo-title">
-          基础用法
-        </div>
+        <div class="demo-title">基础用法</div>
         <div class="demo-desc"></div>
         <div class="demo-use">
           <AvatarList :list="avatarList" />
@@ -18,9 +16,7 @@
       <!-- 头像组最大数目 -->
       <div class="demo-block">
         <div class="demo-title">头像组最大数目</div>
-        <div class="demo-desc">
-          设置max属性，值为Number类型
-        </div>
+        <div class="demo-desc">设置max属性，值为Number类型</div>
         <div class="demo-use">
           <AvatarList :list="avatarList" :max="5" :excess-style="excessStyle" />
         </div>
@@ -28,14 +24,12 @@
       <!-- 头像组大小 -->
       <div class="demo-block">
         <div class="demo-title">头像组大小</div>
-        <div class="demo-desc">
-          设置size属性，值为：small、default、large
-        </div>
+        <div class="demo-desc">设置size属性，值为：small、default、large</div>
         <div class="demo-use">
           <span class="display-inline-block margin-right-30">
             <AvatarList :list="avatarList" :max="5" size="small" />
           </span>
-          <span class="display-inline-block  margin-right-30">
+          <span class="display-inline-block margin-right-30">
             <AvatarList :list="avatarList" :max="5" size="default" />
           </span>
           <span class="display-inline-block">
@@ -45,24 +39,16 @@
       </div>
       <!-- 头像组形状 -->
       <div class="demo-block">
-        <div class="demo-title">
-          头像组形状
-        </div>
-        <div class="demo-desc">
-          设置shape属性，值为：circle、square
-        </div>
+        <div class="demo-title">头像组形状</div>
+        <div class="demo-desc">设置shape属性，值为：circle、square</div>
         <div class="demo-use">
           <AvatarList :list="avatarList" :max="5" shape="square" :tooltip="true" />
         </div>
       </div>
       <!-- 开启和关闭tooltip -->
       <div class="demo-block">
-        <div class="demo-title">
-          开启和关闭tooltip
-        </div>
-        <div class="demo-desc">
-          默认是开启的，开启需要手动设置tooltip属性，值为：ture和false
-        </div>
+        <div class="demo-title">开启和关闭tooltip</div>
+        <div class="demo-desc">默认是开启的，开启需要手动设置tooltip属性，值为：ture和false</div>
         <div class="demo-use">
           <span class="display-inline-block margin-right-30">
             <AvatarList :list="avatarList" :max="5" :tooltip="true" />
@@ -81,53 +67,45 @@ export default {
     return {
       excessStyle: {
         color: "#f56a00",
-        backgroundColor: "#fde3cf"
+        backgroundColor: "#fde3cf",
       },
       avatarList: [
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
+          tips: "妲己",
         },
         {
           src: require("../../../assets/head.png"),
-          tips: "妲己"
-        }
-      ]
+          tips: "妲己",
+        },
+      ],
     };
   },
-  methods: {
-    onCopySuccess(e) {
-      this.$Message.success("复制成功");
-      console.log("复制的内容是：", e.text);
-    },
-    onCopyError(e) {
-      this.$Message.error("复制失败");
-    }
-  }
+  methods: {},
 };
 </script>
 
