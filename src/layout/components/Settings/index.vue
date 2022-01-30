@@ -1,62 +1,106 @@
 <template>
-  <div id="i-layout-navbar-settings" class="i-layout-navbar-settings" @click.stop="showSettings = true">
+  <div
+    id="i-layout-navbar-settings"
+    class="i-layout-navbar-settings"
+    @click.stop="showSettings = true"
+  >
     <!-- 更多设置 -->
-    <Icon class="i-icon" type="md-more" />
+    <Icon
+      class="i-icon"
+      type="md-more"
+    />
 
     <!-- 布局设置 -->
-    <Drawer v-model="showSettings" title="布局设置预览" :width="280">
+    <Drawer
+      v-model="showSettings"
+      title="布局设置预览"
+      :width="280"
+    >
       <!-- 侧边栏主题 -->
-      <Divider size="small">侧边栏主题</Divider>
+      <Divider size="small">
+        侧边栏主题
+      </Divider>
       <div class="i-layout-navbar-settings-item">
         <div
           class="i-layout-navbar-settings-item-radio"
           :class="{ on: sideTheme === 'dark' }"
           @click="handleChangeSetting('sideTheme', 'dark')"
         >
-          <SvgIcon type="dark" size="52" color="red" />
+          <SvgIcon
+            type="dark"
+            size="52"
+            color="red"
+          />
         </div>
         <div
           class="i-layout-navbar-settings-item-radio"
           :class="{ on: sideTheme === 'light' }"
           @click="handleChangeSetting('sideTheme', 'light')"
         >
-          <SvgIcon type="light" size="52" />
+          <SvgIcon
+            type="light"
+            size="52"
+          />
         </div>
       </div>
 
       <!-- 主题颜色 -->
-      <Divider size="small">主题颜色</Divider>
-      <div class="i-layout-navbar-settings-item"></div>
+      <Divider size="small">
+        主题颜色
+      </Divider>
+      <div class="i-layout-navbar-settings-item" />
 
       <!-- 布局设置 -->
-      <Divider size="small">布局设置</Divider>
+      <Divider size="small">
+        布局设置
+      </Divider>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">固定顶栏</span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="fixedHeader" @on-change="val => handleChangeSetting('fixedHeader', val)" />
+          <i-switch
+            size="small"
+            :value="fixedHeader"
+            @on-change="val => handleChangeSetting('fixedHeader', val)"
+          />
         </span>
       </div>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">固定侧边栏</span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="fixedSidebar" @on-change="val => handleChangeSetting('fixedSidebar', val)" />
+          <i-switch
+            size="small"
+            :value="fixedSidebar"
+            @on-change="val => handleChangeSetting('fixedSidebar', val)"
+          />
         </span>
       </div>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">显示侧边栏Logo</span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="sidebarLogo" @on-change="val => handleChangeSetting('sidebarLogo', val)" />
+          <i-switch
+            size="small"
+            :value="sidebarLogo"
+            @on-change="val => handleChangeSetting('sidebarLogo', val)"
+          />
         </span>
       </div>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">
           侧边栏开启手风琴模式
-          <Tooltip placement="top" content="开启后每次只能展开关闭一个菜单项" transfer>
+          <Tooltip
+            placement="top"
+            content="开启后每次只能展开关闭一个菜单项"
+            transfer
+          >
             <Icon type="ios-help-circle-outline" />
           </Tooltip>
         </span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="menuAccordion" @on-change="val => handleChangeSetting('menuAccordion', val)" />
+          <i-switch
+            size="small"
+            :value="menuAccordion"
+            @on-change="val => handleChangeSetting('menuAccordion', val)"
+          />
         </span>
       </div>
       <div class="i-layout-navbar-settings-item">
@@ -74,13 +118,21 @@
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">开启Tabs View标签页</span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="tabsView" @on-change="val => handleChangeSetting('tabsView', val)" />
+          <i-switch
+            size="small"
+            :value="tabsView"
+            @on-change="val => handleChangeSetting('tabsView', val)"
+          />
         </span>
       </div>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">
           开启Tabs View标签图标
-          <Tooltip placement="top" content="需要开启Tabs View标签页" transfer>
+          <Tooltip
+            placement="top"
+            content="需要开启Tabs View标签页"
+            transfer
+          >
             <Icon type="ios-help-circle-outline" />
           </Tooltip>
         </span>
@@ -96,7 +148,11 @@
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">
           开启Tabs View标签拖拽排序
-          <Tooltip placement="top" content="需要开启Tabs View标签页" transfer>
+          <Tooltip
+            placement="top"
+            content="需要开启Tabs View标签页"
+            transfer
+          >
             <Icon type="ios-help-circle-outline" />
           </Tooltip>
         </span>
@@ -111,7 +167,9 @@
       </div>
 
       <!-- 其他设置 -->
-      <Divider size="small">其他设置</Divider>
+      <Divider size="small">
+        其他设置
+      </Divider>
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">开启动态标题</span>
         <span class="i-layout-navbar-settings-item-action">
@@ -125,7 +183,11 @@
       <div class="i-layout-navbar-settings-item">
         <span class="i-layout-navbar-settings-item-desc">面包屑根目录显示首页</span>
         <span class="i-layout-navbar-settings-item-action">
-          <i-switch size="small" :value="rootDashboard" @on-change="val => handleChangeSetting('rootDashboard', val)" />
+          <i-switch
+            size="small"
+            :value="rootDashboard"
+            @on-change="val => handleChangeSetting('rootDashboard', val)"
+          />
         </span>
       </div>
 

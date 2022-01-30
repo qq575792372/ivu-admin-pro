@@ -1,7 +1,19 @@
 <template>
-  <div id="i-layout-navbar-fullscreen" class="i-layout-navbar-fullscreen" @click="toggleClick">
-    <Icon class="i-icon" type="md-contract" v-show="isFullscreen" />
-    <Icon class="i-icon" type="md-expand" v-show="!isFullscreen" />
+  <div
+    id="i-layout-navbar-fullscreen"
+    class="i-layout-navbar-fullscreen"
+    @click="toggleClick"
+  >
+    <Icon
+      v-show="isFullscreen"
+      class="i-icon"
+      type="md-contract"
+    />
+    <Icon
+      v-show="!isFullscreen"
+      class="i-icon"
+      type="md-expand"
+    />
   </div>
 </template>
 <script>

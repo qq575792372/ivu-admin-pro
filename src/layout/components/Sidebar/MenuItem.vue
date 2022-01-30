@@ -1,5 +1,8 @@
 <template>
-  <div class="i-layout-menu-side-submenu" v-if="!item.hidden && item.meta">
+  <div
+    v-if="!item.hidden && item.meta"
+    class="i-layout-menu-side-submenu"
+  >
     <!-- children最多只包含一个元素，并且默认显示根路由 -->
     <template v-if="hasOneShowingChild(item.children, item) && !item.alwaysShow">
       <MenuItem
@@ -14,12 +17,20 @@
           :subtitle="onlyOneChild.meta.subtitle"
         />
         <!-- 子菜单的徽标 -->
-        <Badge class="i-layout-menu-side-badge" v-if="badgeData" v-bind="badgeData" />
+        <Badge
+          v-if="badgeData"
+          class="i-layout-menu-side-badge"
+          v-bind="badgeData"
+        />
       </MenuItem>
     </template>
 
     <!-- children包含多个元素，继续遍历子元素 -->
-    <Submenu v-else ref="subMenu" :name="resolvePath(item.path)">
+    <Submenu
+      v-else
+      ref="subMenu"
+      :name="resolvePath(item.path)"
+    >
       <template slot="title">
         <side-menu-title
           v-if="item.meta"
@@ -28,7 +39,11 @@
           :subtitle="item.meta.subtitle"
         />
         <!-- 一级或多级父菜单的徽标 -->
-        <Badge class="i-layout-menu-side-badge" v-if="badgeData" v-bind="badgeData" />
+        <Badge
+          v-if="badgeData"
+          class="i-layout-menu-side-badge"
+          v-bind="badgeData"
+        />
       </template>
       <side-menu-item
         v-for="child in item.children"
