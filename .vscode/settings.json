@@ -12,7 +12,16 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript", "javascriptreact", "html", "vue", "vue-html"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue",
+    "vue-html"
+  ],
+
+  // 其他插件配置
+  "svg.preview.background": "transparent",
 
   // 格式化配置
   "editor.formatOnSave": true,
@@ -41,6 +50,5 @@
   },
   "[nginx]": {
     "editor.defaultFormatter": "hangxingliu.vscode-nginx-conf-hint"
-  },
-  "svg.preview.background": "transparent"
+  }
 }
