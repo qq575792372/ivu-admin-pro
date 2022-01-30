@@ -1,0 +1,46 @@
+{
+  // 工作台配置
+  "terminal.integrated.tabs.enabled": false,
+
+  // 编辑器配置
+  "breadcrumbs.enabled": false,
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
+
+  // eslint配置，关闭掉了，根据实际情况决定开启
+  "eslint.enable": false, // 整体控制eslint生效开关
+  "eslint.alwaysShowStatus": true, // 底部eslint开启状态
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "html", "vue", "vue-html"],
+
+  // 格式化配置
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nginx]": {
+    "editor.defaultFormatter": "hangxingliu.vscode-nginx-conf-hint"
+  },
+  "svg.preview.background": "transparent"
+}
