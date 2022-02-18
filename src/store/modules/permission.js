@@ -6,7 +6,7 @@ import { constantRoutes } from "@/router";
  * @returns
  */
 function loadComponent(component) {
-  return resolve => require([`@/views/${component}`], resolve);
+  return (resolve) => require([`@/views/${component}`], resolve);
 }
 /**
  * 过滤异步获取的路由菜单数据，组装成vue路由组件
@@ -16,7 +16,7 @@ function loadComponent(component) {
 export function filterAsyncRoutes(asyncRoutes) {
   const res = [];
 
-  asyncRoutes.forEach(route => {
+  asyncRoutes.forEach((route) => {
     const tmp = { ...route };
     if (tmp.children) {
       tmp.children = filterAsyncRoutes(tmp.children);
@@ -31,7 +31,7 @@ export function filterAsyncRoutes(asyncRoutes) {
 const state = {
   routes: [], // 当前所有的路由数据
   addRoutes: [], // 获取到的异步路由数据
-  sidebarRoutes: [] // 左侧菜单展示的路由数据，当开启topNav时候左侧路由需要过滤
+  sidebarRoutes: [], // 左侧菜单展示的路由数据，当开启topNav时候左侧路由需要过滤
 };
 
 // mutations
@@ -48,7 +48,7 @@ const mutations = {
   },
   SET_SIDEBAR_ROUTES: (state, sidebarRoutes) => {
     state.sidebarRoutes = sidebarRoutes;
-  }
+  },
 };
 
 // action
@@ -60,7 +60,7 @@ const actions = {
    * @returns
    */
   generateRoutes({ commit }, asyncRoutes) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const accessRoutes = filterAsyncRoutes(asyncRoutes);
       commit("SET_ROUTES", accessRoutes);
       resolve(accessRoutes);
@@ -73,7 +73,7 @@ const actions = {
    */
   changeSidebarRoutes({ commit }, sidebarRoutes) {
     commit("SET_SIDEBAR_ROUTES", sidebarRoutes);
-  }
+  },
 };
 
 // 导出
@@ -81,5 +81,5 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 };

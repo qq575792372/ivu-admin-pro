@@ -1,9 +1,7 @@
 <template>
   <div class="step-container">
     <Result type="success" title="操作成功">
-      <div slot="desc">
-        预计两个小时内到账
-      </div>
+      <div slot="desc">预计两个小时内到账</div>
       <div slot="extra">
         <Form :label-width="140" label-colon="：">
           <!-- 收款信息 -->
@@ -19,7 +17,9 @@
             {{ formData.collectName }}
           </FormItem>
           <FormItem label="转账金额">
-            <span class="text-bold text-danger">￥{{ Number(formData.transferAmount).toFixed(2) }}</span>
+            <span class="text-bold text-danger">
+              ￥{{ Number(formData.transferAmount).toFixed(2) }}
+            </span>
           </FormItem>
           <FormItem label="备注">
             {{ formData.remark }}
@@ -37,8 +37,8 @@
 <script>
 export default {
   props: {
-    formData: Object,
-    onResetStep: Function
+    formData: { type: Object, default: () => {} },
+    onResetStep: { type: Function, default: () => {} },
   },
   data() {
     return {};
@@ -50,8 +50,8 @@ export default {
      */
     handleAgain() {
       this.onResetStep(0);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

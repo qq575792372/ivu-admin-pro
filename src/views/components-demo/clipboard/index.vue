@@ -1,7 +1,10 @@
 <template>
   <div class="app-container">
     <!-- 页面标题 -->
-    <PageHeader title="复制文本" content="使用vue-clipboard2插件来实现，不再重复造轮子" />
+    <PageHeader
+      title="复制文本"
+      content="使用vue-clipboard2插件来实现，不再重复造轮子"
+    />
 
     <!-- main -->
     <div class="main-container">
@@ -10,19 +13,28 @@
           点击按钮复制文本框内容，然后粘贴到textarea中查看效果
         </div>
         <div class="demo-use">
-          <Input placeholder="输入内容复制" v-model="content" style="width:300px;">
+          <Input
+            v-model="content"
+            placeholder="输入内容复制"
+            style="width: 300px"
+          >
             <template slot="append">
               <Button
-                type="primary"
                 v-clipboard:copy="content"
                 v-clipboard:success="onCopySuccess"
                 v-clipboard:error="onCopyError"
+                type="primary"
               >
                 复制
               </Button>
             </template>
           </Input>
-          <Input type="textarea" placeholder="粘贴复制的内容" style="width:300px;margin-top:20px;" :rows="4" />
+          <Input
+            type="textarea"
+            placeholder="粘贴复制的内容"
+            style="width: 300px; margin-top: 20px"
+            :rows="4"
+          />
         </div>
       </div>
     </div>
@@ -32,7 +44,7 @@
 export default {
   data() {
     return {
-      content: "ivu-admin-pro"
+      content: "ivu-admin-pro",
     };
   },
   methods: {
@@ -42,8 +54,8 @@ export default {
     },
     onCopyError(e) {
       this.$Message.error("复制失败");
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="app-container">
     <!-- 页面标题 -->
-    <PageHeader title="数字Count动画" content="使用vue-count-to插件实现数字变化的动态效果" />
+    <PageHeader
+      title="数字Count动画"
+      content="使用vue-count-to插件实现数字变化的动态效果"
+    />
 
     <!-- main -->
     <div class="main-container">
@@ -24,46 +27,46 @@
         <Row type="flex" justify="center" class="margin-bottom-10">
           <Col :span="8">
             startVal:
-            <InputNumber v-model="options.startVal" style="width:70px" />
+            <InputNumber v-model="options.startVal" style="width: 70px" />
             <span class="text-desc">开始值</span>
           </Col>
           <Col :span="8">
             endVal:
-            <InputNumber v-model="options.endVal" style="width:70px" />
+            <InputNumber v-model="options.endVal" style="width: 70px" />
             <span class="text-desc">结束值</span>
           </Col>
           <Col :span="8">
             duration:
-            <InputNumber v-model="options.duration" style="width:70px" />
+            <InputNumber v-model="options.duration" style="width: 70px" />
             <span class="text-desc">动画持续毫秒时间</span>
           </Col>
         </Row>
         <Row type="flex" justify="center" class="margin-bottom-10">
           <Col :span="8">
             decimals:
-            <InputNumber v-model="options.decimals" style="width:70px" />
+            <InputNumber v-model="options.decimals" style="width: 70px" />
             <span class="text-desc">小数位数</span>
           </Col>
           <Col :span="8">
             decimal:
-            <Input v-model="options.decimal" style="width:70px" />
+            <Input v-model="options.decimal" style="width: 70px" />
             <span class="text-desc">小数点符号</span>
           </Col>
           <Col :span="8">
             separator:
-            <Input v-model="options.separator" style="width:70px" />
+            <Input v-model="options.separator" style="width: 70px" />
             <span class="text-desc">千分位分隔符</span>
           </Col>
         </Row>
         <Row type="flex" justify="center" class="margin-bottom-10">
           <Col :span="8">
             prefix:
-            <Input v-model="options.prefix" style="width:70px" />
+            <Input v-model="options.prefix" style="width: 70px" />
             <span class="text-desc">前缀</span>
           </Col>
           <Col :span="8">
             suffix:
-            <Input v-model="options.suffix" style="width:70px" />
+            <Input v-model="options.suffix" style="width: 70px" />
             <span class="text-desc">后缀</span>
           </Col>
           <Col :span="8"></Col>
@@ -91,8 +94,8 @@ export default {
         decimal: ".",
         separator: ",",
         prefix: "￥",
-        suffix: "元"
-      }
+        suffix: "元",
+      },
     };
   },
   methods: {
@@ -104,8 +107,8 @@ export default {
     },
     handleReset() {
       this.$refs.countDemo1.reset();
-    }
-  }
+    },
+  },
 };
 </script>
 

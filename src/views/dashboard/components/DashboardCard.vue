@@ -36,9 +36,7 @@
         <div>
           <Row>
             <Col span="12">今日销售额</Col>
-            <Col span="12" class="text-align-right">
-              ￥30,223
-            </Col>
+            <Col span="12" class="text-align-right">￥30,223</Col>
           </Row>
         </div>
       </Card>
@@ -80,9 +78,7 @@
         <div>
           <Row>
             <Col span="12">今日利润</Col>
-            <Col span="12" class="text-align-right">
-              ￥30,223
-            </Col>
+            <Col span="12" class="text-align-right">￥30,223</Col>
           </Row>
         </div>
       </Card>
@@ -99,7 +95,14 @@
             <Icon type="md-information-circle" class="text-desc" size="16" />
           </Tooltip>
         </p>
-        <CountTo ref="count1" :start-val="0" :end-val="388000" :duration="1500" suffix="单" class="font-30" />
+        <CountTo
+          ref="count1"
+          :start-val="0"
+          :end-val="388000"
+          :duration="1500"
+          suffix="单"
+          class="font-30"
+        />
         <div class="margin-top-10">
           <!-- 同比增长 红色 -->
           <span>
@@ -116,9 +119,7 @@
         <div>
           <Row>
             <Col span="12">今日订单量</Col>
-            <Col span="12" class="text-align-right">
-              4000单
-            </Col>
+            <Col span="12" class="text-align-right">4000单</Col>
           </Row>
         </div>
       </Card>
@@ -160,9 +161,7 @@
         <div>
           <Row>
             <Col span="12">今日退款额</Col>
-            <Col span="12" class="text-align-right">
-              ￥30,223
-            </Col>
+            <Col span="12" class="text-align-right">￥30,223</Col>
           </Row>
         </div>
       </Card>
@@ -181,10 +180,10 @@ export default {
         lg: 12,
         md: 12,
         sm: 12,
-        xs: 24
-      }
+        xs: 24,
+      },
     };
-  }
+  },
 };
 </script>
 <style lang="less" scoped>

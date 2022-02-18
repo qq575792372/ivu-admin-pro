@@ -4,16 +4,8 @@
     class="i-layout-navbar-fullscreen"
     @click="toggleClick"
   >
-    <Icon
-      v-show="isFullscreen"
-      class="i-icon"
-      type="md-contract"
-    />
-    <Icon
-      v-show="!isFullscreen"
-      class="i-icon"
-      type="md-expand"
-    />
+    <Icon v-show="isFullscreen" class="i-icon" type="md-contract" />
+    <Icon v-show="!isFullscreen" class="i-icon" type="md-expand" />
   </div>
 </template>
 <script>
@@ -22,7 +14,7 @@ export default {
   name: "Fullscreen",
   data() {
     return {
-      isFullscreen: false
+      isFullscreen: false,
     };
   },
   mounted() {
@@ -51,8 +43,8 @@ export default {
       if (screenfull.isEnabled) {
         screenfull.off("change", this.change);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

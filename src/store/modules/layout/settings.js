@@ -6,7 +6,7 @@ const state = {
   ...defaultSettings.layout,
   // 动态标题，只会在开启showDynamicTitle=true后起作用
   showDynamicTitle: defaultSettings.showDynamicTitle,
-  dynamicTitle: ""
+  dynamicTitle: "",
 };
 
 // mutations
@@ -18,7 +18,7 @@ const mutations = {
   },
   SET_DYNAMIC_TITLE: (state, dynamicTitle) => {
     state.dynamicTitle = dynamicTitle;
-  }
+  },
 };
 
 // actions
@@ -30,7 +30,7 @@ const actions = {
   // 保存动态标题
   changeDynamicTitle({ commit }, dynamicTitle) {
     commit("SET_DYNAMIC_TITLE", dynamicTitle);
-  }
+  },
 };
 
 // 导出
@@ -38,5 +38,5 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 };

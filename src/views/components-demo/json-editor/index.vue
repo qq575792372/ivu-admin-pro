@@ -3,7 +3,7 @@
     <!-- 页面标题 -->
     <PageHeader title="JSON编辑器" content="使用JSONEditor" />
     <div class="main-container">
-      <JsonEditor v-model="content" ref="jsonEditorRef" />
+      <JsonEditor ref="jsonEditorRef" v-model="content" />
     </div>
   </div>
 </template>
@@ -18,10 +18,10 @@ export default {
       content: [
         { id: 1, name: "张三" },
         { id: 2, name: "小明" },
-        { id: 3, name: "小花" }
-      ]
+        { id: 3, name: "小花" },
+      ],
     };
-  }
+  },
 };
 </script>
 

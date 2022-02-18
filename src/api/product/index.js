@@ -8,7 +8,7 @@ export function getList(params) {
   return request({
     url: "/api/product/getList",
     method: "get",
-    params
+    params,
   });
 }
 /**
@@ -19,7 +19,7 @@ export function getDetail(params) {
   return request({
     url: "/api/product/getDetail",
     method: "get",
-    params
+    params,
   });
 }
 
@@ -31,7 +31,7 @@ export function updateProduct(data) {
   return request({
     url: "/api/product/update",
     method: "post",
-    data
+    data,
   });
 }
 /**
@@ -42,7 +42,7 @@ export function addProduct(data) {
   return request({
     url: "/api/product/add",
     method: "post",
-    data
+    data,
   });
 }
 /**
@@ -53,6 +53,6 @@ export function deleteProduct(params) {
   return request({
     url: "/api/product/delete",
     method: "get",
-    params
+    params,
   });
 }

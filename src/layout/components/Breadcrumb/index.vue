@@ -4,20 +4,14 @@
     class="i-layout-navbar-breadcrumb"
     separator="/"
   >
-    <BreadcrumbItem
-      v-for="(item, index) in levelList"
-      :key="item.path"
-    >
+    <BreadcrumbItem v-for="(item, index) in levelList" :key="item.path">
       <span
         v-if="item.redirect === 'noredirect' || index == levelList.length - 1"
         class="no-redirect"
       >
         {{ item.meta.title }}
       </span>
-      <a
-        v-else
-        @click.prevent="handleLink(item)"
-      >{{ item.meta.title }}</a>
+      <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
     </BreadcrumbItem>
   </Breadcrumb>
 </template>
@@ -28,11 +22,11 @@ export default {
   name: "NavbarBreadcrumb",
   data() {
     return {
-      levelList: null
+      levelList: null,
     };
   },
   computed: {
-    ...mapState("layout/settings", ["rootDashboard"])
+    ...mapState("layout/settings", ["rootDashboard"]),
   },
   watch: {
     $route(route) {
@@ -45,7 +39,7 @@ export default {
     // 监听根首页的改变
     rootDashboard() {
       this.getBreadcrumb();
-    }
+    },
   },
   created() {
     this.getBreadcrumb();
@@ -54,7 +48,7 @@ export default {
     getBreadcrumb() {
       // only show routes with meta.title
       let matched = this.$route.matched.filter(
-        item => item.meta && item.meta.title
+        (item) => item.meta && item.meta.title
       );
       const first = matched[0];
 
@@ -63,7 +57,7 @@ export default {
         // 设置里显示根首页，会拼加到第一个
         if (this.rootDashboard) {
           matched = [
-            { path: "/dashboard/index", meta: { title: "首页" } }
+            { path: "/dashboard/index", meta: { title: "首页" } },
           ].concat(matched);
         }
       } else {
@@ -72,7 +66,7 @@ export default {
       }
       // 匹配出来的路由链接列表
       this.levelList = matched.filter(
-        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
+        (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
       );
     },
     isDashboard(route) {
@@ -94,8 +88,8 @@ export default {
         return;
       }
       this.$router.push(this.pathCompile(path));
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

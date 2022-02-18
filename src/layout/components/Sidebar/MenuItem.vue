@@ -1,10 +1,9 @@
 <template>
-  <div
-    v-if="!item.hidden && item.meta"
-    class="i-layout-menu-side-submenu"
-  >
+  <div v-if="!item.hidden && item.meta" class="i-layout-menu-side-submenu">
     <!-- children最多只包含一个元素，并且默认显示根路由 -->
-    <template v-if="hasOneShowingChild(item.children, item) && !item.alwaysShow">
+    <template
+      v-if="hasOneShowingChild(item.children, item) && !item.alwaysShow"
+    >
       <MenuItem
         v-if="onlyOneChild.meta && onlyOneChild.meta.title"
         :name="resolvePath(onlyOneChild.path)"
@@ -12,7 +11,10 @@
         :target="onlyOneChild.meta.target"
       >
         <side-menu-title
-          :icon="(onlyOneChild.meta && onlyOneChild.meta.icon) || (item.meta && item.meta.icon)"
+          :icon="
+            (onlyOneChild.meta && onlyOneChild.meta.icon) ||
+            (item.meta && item.meta.icon)
+          "
           :title="onlyOneChild.meta.title"
           :subtitle="onlyOneChild.meta.subtitle"
         />
@@ -26,11 +28,7 @@
     </template>
 
     <!-- children包含多个元素，继续遍历子元素 -->
-    <Submenu
-      v-else
-      ref="subMenu"
-      :name="resolvePath(item.path)"
-    >
+    <Submenu v-else ref="subMenu" :name="resolvePath(item.path)">
       <template slot="title">
         <side-menu-title
           v-if="item.meta"
@@ -64,6 +62,6 @@ import SideMenu from "@/layout/mixins/SideMenu";
 export default {
   name: "SideMenuItem",
   components: { SideMenuTitle },
-  mixins: [SideMenu]
+  mixins: [SideMenu],
 };
 </script>

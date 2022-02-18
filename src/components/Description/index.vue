@@ -31,36 +31,36 @@ export default {
   // 供应子组件调用
   provide() {
     return {
-      DescriptionInstance: this
+      DescriptionInstance: this,
     };
   },
   props: {
     // 标题
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     // label的宽度，默认80px；注入到子组件中
     labelWidth: {
       type: Number,
-      default: 0
+      default: 0,
     },
     // label的对齐方式，默认右对齐；注入到子组件中
     labelPosition: {
       type: String,
-      default: "right"
-    }
+      default: "right",
+    },
   },
   computed: {
     // header中有title，则添加距离底部距离
     headerStyles() {
       if (this.$slots.title || this.title) {
         return {
-          "margin-bottom": "10px"
+          "margin-bottom": "10px",
         };
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

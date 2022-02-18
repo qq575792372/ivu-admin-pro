@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "Notify"
+  name: "Notify",
 };
 </script>
 

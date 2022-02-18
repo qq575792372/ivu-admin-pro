@@ -14,10 +14,20 @@
         <div class="search-box">
           <Row>
             <Col>
-              <Input v-model="listQuery.productName" placeholder="商品名称" clearable style="width: 180px" />
+              <Input
+                v-model="listQuery.productName"
+                placeholder="商品名称"
+                clearable
+                style="width: 180px"
+              />
             </Col>
             <Col>
-              <Select v-model="listQuery.productType" placeholder="商品类型" clearable style="width: 120px">
+              <Select
+                v-model="listQuery.productType"
+                placeholder="商品类型"
+                clearable
+                style="width: 120px"
+              >
                 <Option value="0">新鲜果蔬</Option>
                 <Option value="1">饮料乳品</Option>
                 <Option value="2">肉禽水产</Option>
@@ -27,13 +37,22 @@
               </Select>
             </Col>
             <Col>
-              <Select v-model="listQuery.status" placeholder="商品状态" clearable style="width: 120px">
+              <Select
+                v-model="listQuery.status"
+                placeholder="商品状态"
+                clearable
+                style="width: 120px"
+              >
                 <Option value="0">已下架</Option>
                 <Option value="1">已上架</Option>
               </Select>
             </Col>
             <Col>
-              <DatePicker type="date" placeholder="创建时间" style="width: 180px" />
+              <DatePicker
+                type="date"
+                placeholder="创建时间"
+                style="width: 180px"
+              />
             </Col>
             <!-- eslint-disable -->
             <template v-if="!searchCollapse">
@@ -111,7 +130,13 @@
 // 引入LimeUtil
 import LimeUtil from "@lime-util/util";
 // 引入api
-import { getList, getDetail, addProduct, updateProduct, deleteProduct } from "@/api/product";
+import {
+  getList,
+  getDetail,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} from "@/api/product";
 export default {
   data() {
     return {
@@ -145,7 +170,10 @@ export default {
           width: 70,
           align: "center",
           render: (h, { row, index }) => {
-            return h("span", this.listQuery.pageSize * (this.listQuery.pageNo - 1) + index + 1);
+            return h(
+              "span",
+              this.listQuery.pageSize * (this.listQuery.pageNo - 1) + index + 1
+            );
           },
         },
         {
@@ -297,8 +325,20 @@ export default {
       this.exportLoading = true;
       import("@/vendor/Export2Excel")
         .then((excel) => {
-          const EXCEL_HEADER = ["ID", "商品编号", "商品名称", "商品类型", "状态"];
-          const EXCEL_FIELDS = ["id", "productNo", "productName", "productType", "status"];
+          const EXCEL_HEADER = [
+            "ID",
+            "商品编号",
+            "商品名称",
+            "商品类型",
+            "状态",
+          ];
+          const EXCEL_FIELDS = [
+            "id",
+            "productNo",
+            "productName",
+            "productType",
+            "status",
+          ];
           const EXCEL_DATA = this.formatJson(EXCEL_FIELDS, this.selectRows);
           // 导出
           excel.export_json_to_excel({

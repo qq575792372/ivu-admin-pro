@@ -49,9 +49,7 @@
       </Card>
       <Card title="基本信息" dis-hover class="margin-top-14">
         <Description label-position="left">
-          <DescriptionItem label="姓名：" v-bind="grid">
-            枫叶子
-          </DescriptionItem>
+          <DescriptionItem label="姓名：" v-bind="grid">枫叶子</DescriptionItem>
           <DescriptionItem label="性别：" v-bind="grid">
             <span class="text-warning">男</span>
           </DescriptionItem>
@@ -61,22 +59,28 @@
           <DescriptionItem label="联系电话：" v-bind="grid">
             13000000000
           </DescriptionItem>
-          <DescriptionItem label="部门：" span="24">
-            技术部
-          </DescriptionItem>
+          <DescriptionItem label="部门：" span="24">技术部</DescriptionItem>
         </Description>
       </Card>
       <!-- 同行人员 -->
       <Card title="同行人员" dis-hover class="margin-top-14">
         <Table :columns="tableColumns" :data="tableData">
-          <template slot-scope="{ row }" slot="sex">
-            {{ row.sex == 0 ? "未知" : row.sex == 1 ? "男" : row.sex == 2 ? "女" : "无" }}
+          <template slot="sex" slot-scope="{ row }">
+            {{
+              row.sex == 0
+                ? "未知"
+                : row.sex == 1
+                ? "男"
+                : row.sex == 2
+                ? "女"
+                : "无"
+            }}
           </template>
         </Table>
       </Card>
       <!-- 操作按钮 -->
       <div class="text-align-center margin-top-10">
-        <Button type="default" style="margin-right:10px;">返回</Button>
+        <Button type="default" style="margin-right: 10px">返回</Button>
       </div>
     </div>
   </div>
@@ -93,7 +97,7 @@ export default {
         lg: 8,
         md: 12,
         sm: 12,
-        xs: 24
+        xs: 24,
       },
 
       // 表格信息
@@ -105,28 +109,28 @@ export default {
           align: "center",
           render: (h, { row, index }) => {
             return h("span", index + 1);
-          }
+          },
         },
         {
           title: "姓名",
           key: "name",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "性别",
           slot: "sex",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "联系电话",
           key: "telphone",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "部门",
           key: "departName",
-          minWidth: 120
-        }
+          minWidth: 120,
+        },
       ],
       tableData: [
         {
@@ -134,23 +138,23 @@ export default {
           name: "何慧云",
           sex: 2,
           telphone: "13000000000",
-          departName: "人事部"
+          departName: "人事部",
         },
         {
           id: 2,
           name: "张和风",
           sex: 1,
           telphone: "13000000000",
-          departName: "研发部"
+          departName: "研发部",
         },
         {
           id: 3,
           name: "宋晓云",
           sex: 0,
           telphone: "13000000000",
-          departName: "销售部"
-        }
-      ]
+          departName: "销售部",
+        },
+      ],
     };
   },
   computed: {
@@ -162,8 +166,8 @@ export default {
     // 标签自适应的宽度
     labelWidth() {
       return this.isMobile ? undefined : 120;
-    }
-  }
+    },
+  },
 };
 </script>
 

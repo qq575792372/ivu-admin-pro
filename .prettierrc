@@ -3,5 +3,6 @@
   "useTabs": false,
   "printWidth": 80,
   "eslintIntegration": true,
+  "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "ignore"
 }

@@ -18,8 +18,8 @@ export default {
     },
     key() {
       return this.$route.path;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

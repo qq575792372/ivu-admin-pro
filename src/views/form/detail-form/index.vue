@@ -1,7 +1,10 @@
 <template>
   <div class="app-container">
     <!-- 页面标题 -->
-    <PageHeader title="表单详情 " content="使用表单组件来显示详情，示例中加入了栅格布局，不同分辨率下显示效果不同。" />
+    <PageHeader
+      title="表单详情 "
+      content="使用表单组件来显示详情，示例中加入了栅格布局，不同分辨率下显示效果不同。"
+    />
 
     <!-- 主要内容 -->
     <div class="main-container">
@@ -56,7 +59,7 @@
         </Form>
       </Card>
       <div class="text-align-center margin-top-10">
-        <Button type="default" style="margin-right:10px;">返回</Button>
+        <Button type="default" style="margin-right: 10px">返回</Button>
       </div>
     </div>
   </div>
@@ -73,7 +76,7 @@ export default {
         lg: 8,
         md: 12,
         sm: 12,
-        xs: 24
+        xs: 24,
       },
 
       // 表格信息
@@ -81,38 +84,38 @@ export default {
         {
           title: "商品编号",
           key: "productNo",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "商品名称",
           key: "productName",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "所属分类",
           key: "productType",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "原价",
           slot: "originPrice",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "现价",
           slot: "sellPrice",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "单位",
           key: "unit",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "库存",
           slot: "stock",
-          minWidth: 120
-        }
+          minWidth: 120,
+        },
       ],
       tableData: [
         {
@@ -122,7 +125,7 @@ export default {
           originalPrice: 12.99,
           sellPrice: 9.99,
           unit: "件",
-          stock: 100
+          stock: 100,
         },
         {
           productNo: "SP002",
@@ -131,7 +134,7 @@ export default {
           originalPrice: 400,
           sellPrice: 189,
           unit: "双",
-          stock: 99
+          stock: 99,
         },
         {
           productNo: "SP003",
@@ -140,9 +143,9 @@ export default {
           originalPrice: 110,
           currentPrice: 110,
           unit: "包",
-          stock: 253
-        }
-      ]
+          stock: 253,
+        },
+      ],
     };
   },
   computed: {
@@ -153,8 +156,8 @@ export default {
     },
     labelWidth() {
       return this.isMobile ? undefined : 120;
-    }
-  }
+    },
+  },
 };
 </script>
 

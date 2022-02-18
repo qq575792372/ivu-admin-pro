@@ -15,10 +15,18 @@
           class="basic-form"
         >
           <FormItem label="书名" prop="name">
-            <Input v-model="editForm.name" placeholder="输入书名" style="width:360px"></Input>
+            <Input
+              v-model="editForm.name"
+              placeholder="输入书名"
+              style="width: 360px"
+            ></Input>
           </FormItem>
           <FormItem label="作者" prop="author">
-            <Input v-model="editForm.author" placeholder="输入作者" style="width:360px"></Input>
+            <Input
+              v-model="editForm.author"
+              placeholder="输入作者"
+              style="width: 360px"
+            ></Input>
           </FormItem>
           <FormItem label="封面图" prop="coverImg">
             <Upload
@@ -29,19 +37,30 @@
               multiple
               type="drag"
               action="//jsonplaceholder.typicode.com/posts/"
-              style="display: inline-block;width:58px;"
+              style="display: inline-block; width: 58px"
             >
-              <div style="width: 58px;height:58px;line-height: 58px;">
+              <div style="width: 58px; height: 58px; line-height: 58px">
                 <Icon type="ios-camera" size="20"></Icon>
               </div>
             </Upload>
           </FormItem>
           <FormItem label="备注" prop="remark">
-            <Input type="textarea" placeholder="输入备注" :rows="4" style="width:360px;" />
+            <Input
+              type="textarea"
+              placeholder="输入备注"
+              :rows="4"
+              style="width: 360px"
+            />
           </FormItem>
         </Form>
         <div class="text-align-center">
-          <Button type="default" @click="editModal = false" style="margin-right:10px;">取消</Button>
+          <Button
+            type="default"
+            style="margin-right: 10px"
+            @click="editModal = false"
+          >
+            取消
+          </Button>
           <Button type="primary" @click="handleSubmit">保存</Button>
         </div>
       </div>
@@ -61,24 +80,24 @@ export default {
         author: "",
         status: "",
         coverImg: "",
-        desc: ""
+        desc: "",
       },
       editFormRules: {
         name: [
           {
             required: true,
             trigger: "blur",
-            message: "请输入书名"
-          }
+            message: "请输入书名",
+          },
         ],
         author: [
           {
             required: true,
             trigger: "blur",
-            message: "请输入作者"
-          }
-        ]
-      }
+            message: "请输入作者",
+          },
+        ],
+      },
     };
   },
   created() {},
@@ -87,7 +106,7 @@ export default {
      * 提交
      */
     handleSubmit() {
-      this.$refs.editFormRef.validate(valid => {
+      this.$refs.editFormRef.validate((valid) => {
         if (valid) {
           if (this.editForm.id) {
             this.handleUpdate();
@@ -106,8 +125,8 @@ export default {
       console.log("请求后台接口，参数：", this.editForm);
       this.$Message.success("修改成功");
       this.editModal = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

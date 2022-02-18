@@ -5,10 +5,14 @@
     <!-- 登录窗口 -->
     <div class="login-main">
       <!-- 标题 -->
-      <div class="login-title">
-        后台管理登录
-      </div>
-      <Form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" labelAlign="left">
+      <div class="login-title">后台管理登录</div>
+      <Form
+        ref="loginForm"
+        :model="loginForm"
+        :rules="loginRules"
+        class="login-form"
+        label-align="left"
+      >
         <!-- 用户名 -->
         <FormItem prop="username">
           <Input
@@ -38,7 +42,7 @@
           </Input>
         </FormItem>
         <!-- 验证码 -->
-        <FormItem prop="validcode" ref="validcode" :auto-link="false">
+        <FormItem ref="validcode" prop="validcode" :auto-link="false">
           <div class="valid-box">
             <Input
               v-model="loginForm.validcode"
@@ -48,9 +52,13 @@
               class="valid-input"
               tabindex="3"
             >
-              <SvgIcon slot="prefix" type="valid-code"  />
+              <SvgIcon slot="prefix" type="valid-code" />
             </Input>
-            <img class="valid-img" :src="validImageUrl" @click="handleChangeValidImageUrl" />
+            <img
+              class="valid-img"
+              :src="validImageUrl"
+              @click="handleChangeValidImageUrl"
+            />
           </div>
         </FormItem>
         <!-- 记住登录和忘记密码 -->
@@ -64,7 +72,13 @@
           type="primary"
           tabindex="4"
           size="large"
-          style="width:100%; margin-bottom:15px; font-size:14px; margin-top:10px; border-radius:6px;"
+          style="
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 14px;
+            margin-top: 10px;
+            border-radius: 6px;
+          "
           @click.native.prevent="handleLogin"
         >
           {{ loginLoading ? "登录中.." : "登录" }}
@@ -83,7 +97,7 @@
       </div>
       <!-- 底部提示 -->
       <div class="login-tips clearfix">
-        <span style="float: right;">账号，密码，验证码随意输入</span>
+        <span style="float: right">账号，密码，验证码随意输入</span>
       </div>
     </div>
     <!-- 登录底部 -->
@@ -103,7 +117,7 @@ export default {
       loginForm: {
         username: "",
         password: "",
-        validcode: ""
+        validcode: "",
       },
       // 登录表单验证规则
       loginRules: {
@@ -117,8 +131,8 @@ export default {
               } else {
                 callback();
               }
-            }
-          }
+            },
+          },
         ],
         password: [
           {
@@ -130,8 +144,8 @@ export default {
               } else {
                 callback();
               }
-            }
-          }
+            },
+          },
         ],
         validcode: [
           {
@@ -143,16 +157,17 @@ export default {
               } else {
                 callback();
               }
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
 
       // 记住登录
       isRemberLogin: false,
 
       // 验证码图片地址
-      validImageUrl: "http://captcha.qq.com/getimage?aid=2000201&uin=0&0.9914836314873827",
+      validImageUrl:
+        "http://captcha.qq.com/getimage?aid=2000201&uin=0&0.9914836314873827",
 
       // 登录loading
       loginLoading: false,
@@ -161,27 +176,31 @@ export default {
       passwordType: "password",
 
       // 跳转登录来源
-      redirect: null
+      redirect: null,
     };
   },
   computed: {
     // 背景图片高斯模糊像素，通过settings配置中获取，值0-100，默认20
     loginBgBlur() {
       return loginBgBlur;
-    }
+    },
   },
   watch: {
     // 监听首页路由地址来源，登录后跳转到该地址
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         this.redirect = route.query && route.query.redirect;
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   created() {},
   mounted() {
     window.addEventListener("keydown", this.onKeyDown);
+  },
+  destroyed() {
+    // 离开页面，清空回车事件
+    window.removeEventListener("keydown", this.onKeyDown, false);
   },
   methods: {
     /**
@@ -210,12 +229,12 @@ export default {
      * 点击登录
      */
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.loginLoading = true;
           this.$store
             .dispatch("user/login", this.loginForm)
-            .then(res => {
+            .then((res) => {
               setTimeout(() => {
                 this.loginLoading = false;
               }, 300);
@@ -224,7 +243,7 @@ export default {
               } else {
                 this.$message({
                   message: res.message,
-                  type: "error"
+                  type: "error",
                 });
               }
             })
@@ -242,13 +261,10 @@ export default {
      */
     handleChangeValidImageUrl() {
       this.validImageUrl =
-        "http://captcha.qq.com/getimage?aid=2000201&uin=0&0.9914836314873827&t=" + new Date().getTime();
-    }
+        "http://captcha.qq.com/getimage?aid=2000201&uin=0&0.9914836314873827&t=" +
+        new Date().getTime();
+    },
   },
-  destroyed() {
-    // 离开页面，清空回车事件
-    window.removeEventListener("keydown", this.onKeyDown, false);
-  }
 };
 </script>
 

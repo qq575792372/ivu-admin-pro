@@ -29,7 +29,11 @@
           :on-prev-step="handlePrevStep"
           :on-next-step="handleNextStep"
         />
-        <Step4 v-show="currentStep == 3" :form-data="formData" :on-reset-step="handleResetStep" />
+        <Step4
+          v-show="currentStep == 3"
+          :form-data="formData"
+          :on-reset-step="handleResetStep"
+        />
       </div>
     </div>
   </div>
@@ -48,7 +52,7 @@ export default {
     return {
       currentStep: 0,
 
-      formData: {}
+      formData: {},
     };
   },
   methods: {
@@ -73,8 +77,8 @@ export default {
     handleResetStep(currentStep) {
       this.currentStep = currentStep;
       this.formData = {};
-    }
-  }
+    },
+  },
 };
 </script>
 

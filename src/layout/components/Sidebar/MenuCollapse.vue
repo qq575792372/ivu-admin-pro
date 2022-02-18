@@ -4,12 +4,14 @@
     :class="{
       'i-layout-menu-side-collapse-top-level': topLevel,
       'i-layout-menu-side-collapse-dark': sideTheme === 'dark' && topLevel,
-      'i-layout-menu-side-collapse-light': sideTheme === 'light' && topLevel
+      'i-layout-menu-side-collapse-light': sideTheme === 'light' && topLevel,
     }"
   >
     <!-- children最多只包含一个元素，并且默认显示根路由 -->
     <Tooltip
-      v-if="hasOneShowingChild(item.children, item) && !item.alwaysShow && topLevel"
+      v-if="
+        hasOneShowingChild(item.children, item) && !item.alwaysShow && topLevel
+      "
       transfer
       :content="onlyOneChild.meta && onlyOneChild.meta.title"
       placement="right"
@@ -19,26 +21,27 @@
         class="ivu-menu-item"
         :class="{
           'i-layout-menu-side-collapse-top-level-item': true,
-          'i-layout-menu-side-collapse-top-level-item-selected': activeMenu.includes(resolvePath(onlyOneChild.path))
+          'i-layout-menu-side-collapse-top-level-item-selected':
+            activeMenu.includes(resolvePath(onlyOneChild.path)),
         }"
         :to="resolvePath(onlyOneChild.path, item.path)"
       >
-        <side-menu-title :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" />
+        <side-menu-title
+          :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
+        />
       </side-menu-link>
     </Tooltip>
 
     <!-- children包含多个元素，继续遍历子元素 -->
-    <Dropdown
-      v-else
-      placement="right-start"
-    >
+    <Dropdown v-else placement="right-start">
       <!-- 左侧收缩后一级菜单展示的图标 -->
       <li
         v-if="topLevel"
         class="ivu-menu-item"
         :class="{
           'i-layout-menu-side-collapse-top-level-item': topLevel,
-          'i-layout-menu-side-collapse-top-level-item-selected': openNames.includes(resolvePath(item.path))
+          'i-layout-menu-side-collapse-top-level-item-selected':
+            openNames.includes(resolvePath(item.path)),
         }"
       >
         <side-menu-title :icon="item.meta && item.meta.icon" />
@@ -47,9 +50,11 @@
       <!--左侧栏一级菜单弹出的子菜单 -->
       <li
         v-else
-        class="ivu-dropdown-item "
+        class="ivu-dropdown-item"
         :class="{
-          'ivu-menu-item-selected ivu-menu-item-active': openNames.includes(resolvePath(item.path))
+          'ivu-menu-item-selected ivu-menu-item-active': openNames.includes(
+            resolvePath(item.path)
+          ),
         }"
       >
         <side-menu-title
@@ -57,10 +62,7 @@
           :title="item.meta && item.meta.title"
           :subtitle="item.meta && item.meta.subtitle"
         />
-        <Icon
-          type="ios-arrow-forward"
-          class="ivu-dropdown-item-arrow"
-        />
+        <Icon type="ios-arrow-forward" class="ivu-dropdown-item-arrow" />
       </li>
       <DropdownMenu slot="list">
         <!-- 是否展示父级菜单的名称 -->
@@ -83,7 +85,8 @@
             <DropdownItem
               :divided="child.meta.divided"
               :class="{
-                'ivu-menu-item-selected ivu-menu-item-active': openNames.includes(resolvePath(child.path))
+                'ivu-menu-item-selected ivu-menu-item-active':
+                  openNames.includes(resolvePath(child.path)),
               }"
             >
               <side-menu-title
@@ -120,8 +123,8 @@ export default {
     // 是否是第一级，区分在于左侧固定和弹出菜单
     topLevel: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     ...mapState("layout/settings", ["sideTheme", "menuCollapseParentTitle"]),
@@ -134,13 +137,15 @@ export default {
       return path;
     },
     openNames() {
-      const matched = this.$route.matched.filter(item => item.meta && item.meta.title);
+      const matched = this.$route.matched.filter(
+        (item) => item.meta && item.meta.title
+      );
       let openNames = [];
       matched.forEach((v, i) => {
         openNames.push(v.path);
       });
       return openNames;
-    }
-  }
+    },
+  },
 };
 </script>

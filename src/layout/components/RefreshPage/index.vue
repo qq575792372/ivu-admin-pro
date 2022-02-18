@@ -33,11 +33,11 @@ export default {
       const { path } = this.$route;
       this.$nextTick(() => {
         this.$router.replace({
-          path: "/redirect" + path
+          path: "/redirect" + path,
         });
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

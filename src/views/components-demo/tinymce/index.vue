@@ -6,7 +6,7 @@
       content="编辑器目前有较多个比较流行的，本框架中选用Tinymce来内置到组件中。"
     />
     <div class="main-container">
-      <tinymce v-model="content" id="tinymce1" :height="360" ref="descRef" />
+      <tinymce id="tinymce1" ref="descRef" v-model="content" :height="360" />
     </div>
   </div>
 </template>
@@ -18,9 +18,9 @@ export default {
   components: { Tinymce },
   data() {
     return {
-      content: ""
+      content: "",
     };
-  }
+  },
 };
 </script>
 

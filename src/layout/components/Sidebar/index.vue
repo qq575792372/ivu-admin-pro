@@ -8,10 +8,10 @@
     <Menu
       ref="menu"
       :theme="sideTheme"
-      class="i-layout-menu-side  i-scrollbar-hide"
+      class="i-layout-menu-side i-scrollbar-hide"
       :class="{
         'i-layout-menu-side-collapse': isCollapsed,
-        'i-layout-menu-side-has-logo': sidebarLogo
+        'i-layout-menu-side-has-logo': sidebarLogo,
       }"
       width="auto"
       :accordion="menuAccordion"
@@ -47,16 +47,20 @@ export default {
     VueScrollbar,
     SideMenuLogo,
     SideMenuItem,
-    SideMenuCollapse
+    SideMenuCollapse,
   },
   mixins: [SideMenu],
   data() {
     return {
-      openNames: []
+      openNames: [],
     };
   },
   computed: {
-    ...mapState("layout/settings", ["sidebarLogo", "sideTheme", "menuAccordion"]),
+    ...mapState("layout/settings", [
+      "sidebarLogo",
+      "sideTheme",
+      "menuAccordion",
+    ]),
     ...mapGetters(["sidebar", "sidebarRoutes"]),
     // 激活的菜单
     activeMenu() {
@@ -73,7 +77,7 @@ export default {
     // 是否折叠菜单
     isCollapsed() {
       return !this.sidebar.opened;
-    }
+    },
   },
   watch: {
     // 监听路由的变化
@@ -82,12 +86,12 @@ export default {
         this.initOpenNames();
         this.handleUpdateMenuState();
       },
-      immediate: true
+      immediate: true,
     },
     // 监听收缩和打开，并更新菜单的状态值
     isCollapsed() {
       this.handleUpdateMenuState();
-    }
+    },
   },
   created() {
     this.initOpenNames();
@@ -97,7 +101,9 @@ export default {
      * 初始化打开的菜单names
      */
     initOpenNames() {
-      const matched = this.$route.matched.filter(item => item.meta && item.meta.title);
+      const matched = this.$route.matched.filter(
+        (item) => item.meta && item.meta.title
+      );
       let openNames = [];
       matched.forEach((v, i) => {
         openNames.push(v.path);
@@ -114,7 +120,7 @@ export default {
           this.$refs.menu.updateOpened();
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

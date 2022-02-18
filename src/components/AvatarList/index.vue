@@ -1,13 +1,22 @@
 <!-- 头像列表 -->
 <template>
   <div class="ivu-avatar-list" :class="avatarListClasses">
-    <div class="ivu-avatar-list-item" v-for="(item, index) in currentList" :key="index">
+    <div
+      v-for="(item, index) in currentList"
+      :key="index"
+      class="ivu-avatar-list-item"
+    >
       <Tooltip :disabled="!tooltip" :content="item.tips" :placement="placement">
         <Avatar :src="item.src" :size="size" :shape="shape" />
       </Tooltip>
     </div>
-    <div v-if="max > 0 && max < list.length" class="ivu-avatar-list-item ivu-avatr-list-item-excess">
-      <Avatar :style="excessStyle" :size="size" :shape="shape">+{{ list.length - max }}</Avatar>
+    <div
+      v-if="max > 0 && max < list.length"
+      class="ivu-avatar-list-item ivu-avatr-list-item-excess"
+    >
+      <Avatar :style="excessStyle" :size="size" :shape="shape">
+        +{{ list.length - max }}
+      </Avatar>
     </div>
   </div>
 </template>

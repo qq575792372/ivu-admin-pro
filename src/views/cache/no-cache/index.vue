@@ -22,9 +22,18 @@
     <!-- 主要内容 -->
     <div class="main-container">
       <div class="form-box">
-        <Form ref="editFormRef" :label-width="120" label-colon="：" class="basic-form">
+        <Form
+          ref="editFormRef"
+          :label-width="120"
+          label-colon="："
+          class="basic-form"
+        >
           <FormItem label="名称" prop="name">
-            <Input v-model="name" placeholder="输入名称" style="width:360px"></Input>
+            <Input
+              v-model="name"
+              placeholder="输入名称"
+              style="width: 360px"
+            ></Input>
             <div class="font-12 text-desc">
               输入一些内容，然后切换到别的页面，再切换回来查看效果
             </div>
@@ -40,9 +49,9 @@ export default {
   name: "NoCache11",
   data() {
     return {
-      name: ""
+      name: "",
     };
-  }
+  },
 };
 </script>
 

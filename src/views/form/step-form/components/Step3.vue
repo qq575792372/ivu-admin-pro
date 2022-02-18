@@ -30,15 +30,19 @@
         {{ formData.collectName }}
       </FormItem>
       <FormItem label="转账金额">
-        <span class="text-bold text-danger">￥{{ Number(formData.transferAmount).toFixed(2) }}</span>
+        <span class="text-bold text-danger">
+          ￥{{ Number(formData.transferAmount).toFixed(2) }}
+        </span>
       </FormItem>
       <FormItem label="备注">
         {{ formData.remark }}
       </FormItem>
     </Form>
     <div class="text-align-center">
-      <Button type="default" @click="handlePrevStep" style="margin-right:10px;">返回上一步</Button>
-      <Button type="primary" @click="handleSubmit" :loading="btnLoading">
+      <Button type="default" style="margin-right: 10px" @click="handlePrevStep">
+        返回上一步
+      </Button>
+      <Button type="primary" :loading="btnLoading" @click="handleSubmit">
         提交
       </Button>
     </div>
@@ -48,13 +52,13 @@
 <script>
 export default {
   props: {
-    formData: Object,
-    onPrevStep: Function,
-    onNextStep: Function
+    formData: { type: Object, default: () => {} },
+    onPrevStep: { type: Function, default: () => {} },
+    onNextStep: { type: Function, default: () => {} },
   },
   data() {
     return {
-      btnLoading: false
+      btnLoading: false,
     };
   },
   created() {},
@@ -75,8 +79,8 @@ export default {
         this.btnLoading = false;
         this.onNextStep(3, this.formData);
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

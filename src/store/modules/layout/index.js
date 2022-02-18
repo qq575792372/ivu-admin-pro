@@ -11,6 +11,6 @@ export default {
     app,
     badges,
     tabsView,
-    settings
-  }
+    settings,
+  },
 };

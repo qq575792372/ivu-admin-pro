@@ -1,8 +1,11 @@
-# 忽略build目录下类型为js的文件的语法检查
 build/*.js
-# 忽略src/assets目录下文件的语法检查
+mock/*.js
+
+# 忽略src下指定目录所有文件
 src/assets
-# 忽略public目录下文件的语法检查
+src/icons/*
+src/vendor/*
+
+.vscode
 public
-# 忽略dist打包目录下文件的语法检查
 dist

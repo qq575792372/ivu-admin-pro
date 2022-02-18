@@ -18,9 +18,9 @@ const store = new Vuex.Store({
   modules: {
     layout,
     permission,
-    user
+    user,
   },
-  getters
+  getters,
 });
 
 // export store

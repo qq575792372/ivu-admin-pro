@@ -11,9 +11,13 @@
         </div>
         <div class="demo-use">
           <!-- 滚动条组件用法，需要最外层设置固定高度 -->
-          <div style="height:300px">
+          <div style="height: 300px">
             <vue-scrollbar>
-              <div v-for="(item, index) in 50" :key="index" style="padding:10px;border:solid 1px #ddd;">
+              <div
+                v-for="(item, index) in 50"
+                :key="index"
+                style="padding: 10px; border: solid 1px #ddd"
+              >
                 {{ item }}
               </div>
             </vue-scrollbar>
@@ -25,7 +29,7 @@
 </template>
 <script>
 export default {
-  computed: {}
+  computed: {},
 };
 </script>
 

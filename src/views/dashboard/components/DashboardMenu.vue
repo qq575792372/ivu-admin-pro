@@ -84,10 +84,10 @@ export default {
         lg: 4,
         md: 8,
         sm: 8,
-        xs: 8
-      }
+        xs: 8,
+      },
     };
-  }
+  },
 };
 </script>
 <style lang="less" scoped>

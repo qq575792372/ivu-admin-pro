@@ -2,9 +2,9 @@
   <Layout class="app-layout" :class="layoutClasses">
     <Sider
       v-if="!isMobile"
+      v-model="isCollapsed"
       class="i-layout-sider"
       :class="siderClasses"
-      v-model="isCollapsed"
       hide-trigger
       :width="sideBarWidth"
       :collapsed-width="64"

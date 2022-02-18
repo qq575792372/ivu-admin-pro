@@ -26,7 +26,10 @@
             <Icon type="md-refresh" />
             刷新页面
           </DropdownItem>
-          <DropdownItem v-if="!isAffix(selectedTab)" @click.native="closeSelected">
+          <DropdownItem
+            v-if="!isAffix(selectedTab)"
+            @click.native="closeSelected"
+          >
             <Icon type="md-close" />
             关闭当前
           </DropdownItem>
@@ -99,7 +102,8 @@ export default {
      * tab标签的key，必须写，不然删除和拖拽等不起作用
      */
     tabKey(len = 32) {
-      const $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+      const $chars =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
       const maxPos = $chars.length;
       let str = "";
       for (let i = 0; i < len; i++) {
@@ -111,7 +115,9 @@ export default {
      * 初始化标签页
      */
     initTabs() {
-      const affixTabs = (this.affixTabs = this.filterAffixTabs(this.sidebarRoutes));
+      const affixTabs = (this.affixTabs = this.filterAffixTabs(
+        this.sidebarRoutes
+      ));
       for (const tab of affixTabs) {
         // 必须要有name
         if (tab.name) {
@@ -213,13 +219,17 @@ export default {
      */
     handleTabRemove(name) {
       const view = this.visitedViews.find((item) => item.fullPath === name);
-      const viewIndex = this.visitedViews.findIndex((item) => item.fullPath === name);
-      this.$store.dispatch("layout/tabsView/delView", view).then(({ visitedViews }) => {
-        // 关闭当前路由对应的标签则会调用
-        if (this.isActive(view)) {
-          this.toNextView(visitedViews, viewIndex);
-        }
-      });
+      const viewIndex = this.visitedViews.findIndex(
+        (item) => item.fullPath === name
+      );
+      this.$store
+        .dispatch("layout/tabsView/delView", view)
+        .then(({ visitedViews }) => {
+          // 关闭当前路由对应的标签则会调用
+          if (this.isActive(view)) {
+            this.toNextView(visitedViews, viewIndex);
+          }
+        });
     },
     /**
      * 拖拽tab
@@ -227,7 +237,10 @@ export default {
     handleDragDrop(name, newName, a, b) {
       let visitedViews = this.visitedViews;
       visitedViews.splice(b, 1, ...visitedViews.splice(a, 1, visitedViews[b]));
-      this.$store.dispatch("layout/tabsView/updateSortVisitedViews", visitedViews);
+      this.$store.dispatch(
+        "layout/tabsView/updateSortVisitedViews",
+        visitedViews
+      );
     },
     /**
      * 当前tab点击的右键菜单
@@ -241,26 +254,32 @@ export default {
      * 刷新当前tab
      */
     refreshSelected() {
-      this.$store.dispatch("layout/tabsView/delCachedView", this.selectedTab).then(() => {
-        const { fullPath } = this.selectedTab;
-        this.$nextTick(() => {
-          this.$router.replace({
-            path: "/redirect" + fullPath,
+      this.$store
+        .dispatch("layout/tabsView/delCachedView", this.selectedTab)
+        .then(() => {
+          const { fullPath } = this.selectedTab;
+          this.$nextTick(() => {
+            this.$router.replace({
+              path: "/redirect" + fullPath,
+            });
           });
         });
-      });
     },
     /**
      * 关闭当前tab
      */
     closeSelected() {
-      const viewIndex = this.visitedViews.findIndex((item) => item.fullPath === this.selectedTab.path);
-      this.$store.dispatch("layout/tabsView/delView", this.selectedTab).then(({ visitedViews }) => {
-        // 关闭当前路由对应的标签则会调用
-        if (this.isActive(this.selectedTab)) {
-          this.toNextView(visitedViews, viewIndex);
-        }
-      });
+      const viewIndex = this.visitedViews.findIndex(
+        (item) => item.fullPath === this.selectedTab.path
+      );
+      this.$store
+        .dispatch("layout/tabsView/delView", this.selectedTab)
+        .then(({ visitedViews }) => {
+          // 关闭当前路由对应的标签则会调用
+          if (this.isActive(this.selectedTab)) {
+            this.toNextView(visitedViews, viewIndex);
+          }
+        });
     },
 
     /**
@@ -285,12 +304,14 @@ export default {
      * 关闭所有tab
      */
     closeAll() {
-      this.$store.dispatch("layout/tabsView/delAllViews").then(({ visitedViews }) => {
-        if (this.affixTabs.some((tag) => tag.path === this.$route.path)) {
-          return;
-        }
-        this.toNextView(visitedViews);
-      });
+      this.$store
+        .dispatch("layout/tabsView/delAllViews")
+        .then(({ visitedViews }) => {
+          if (this.affixTabs.some((tag) => tag.path === this.$route.path)) {
+            return;
+          }
+          this.toNextView(visitedViews);
+        });
     },
 
     /**

@@ -23,8 +23,8 @@ export default {
     // 描述信息label
     label: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   computed: {
     labelStyles() {
@@ -38,8 +38,8 @@ export default {
     // 描述信息项的栅格占位格数，0-24整数
     spanAttrs() {
       return { span: 8, ...this.$attrs };
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

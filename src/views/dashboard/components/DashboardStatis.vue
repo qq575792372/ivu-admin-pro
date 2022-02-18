@@ -3,11 +3,20 @@
     <div slot="title">
       <Row type="flex" justify="center" align="middle">
         <Col span="6">
-          <Avatar icon="ios-podium" size="small" style="color: #1890ff; background: #e6f7ff" />
+          <Avatar
+            icon="ios-podium"
+            size="small"
+            style="color: #1890ff; background: #e6f7ff"
+          />
           <span class="margin-left-4">销售额</span>
         </Col>
         <Col span="18" class="text-align-right">
-          <RadioGroup v-model="visitType" type="button" :border="false" class="margin-right-10">
+          <RadioGroup
+            v-model="visitType"
+            type="button"
+            :border="false"
+            class="margin-right-10"
+          >
             <Radio label="0">今日</Radio>
             <Radio label="1">近7天</Radio>
             <Radio label="2">近1个月</Radio>
@@ -28,28 +37,65 @@
       <Col :xl="18" :lg="16" :md="24" :sm="24" :xs="24">
         <h4>近一年销售额</h4>
         <!-- 销售额和商品销量排名 -->
-        <div ref="sellChartRef" id="sellChart" style="height: 360px; width: 100%"></div>
+        <div
+          id="sellChart"
+          ref="sellChartRef"
+          style="height: 360px; width: 100%"
+        ></div>
       </Col>
       <Col :xl="6" :lg="8" :md="24" :sm="24" :xs="24">
         <h4>销售排行</h4>
         <div>
-          <Row v-for="(item, index) in 10" :key="index" class="margin-bottom-10 margin-top-10">
+          <Row
+            v-for="(item, index) in 10"
+            :key="index"
+            class="margin-bottom-10 margin-top-10"
+          >
             <Col span="14">
               <Avatar
                 size="small"
-                :style="{ background: index == 0 ? '#ed4014' : index == 1 ? '#ff9900' : index == 2 ? '#2db7f5' : '' }"
+                :style="{
+                  background:
+                    index == 0
+                      ? '#ed4014'
+                      : index == 1
+                      ? '#ff9900'
+                      : index == 2
+                      ? '#2db7f5'
+                      : '',
+                }"
               >
                 {{ index + 1 }}
               </Avatar>
               <span
                 class="padding-left-4"
-                :style="{ color: index == 0 ? '#ed4014' : index == 1 ? '#ff9900' : index == 2 ? '#2db7f5' : '' }"
+                :style="{
+                  color:
+                    index == 0
+                      ? '#ed4014'
+                      : index == 1
+                      ? '#ff9900'
+                      : index == 2
+                      ? '#2db7f5'
+                      : '',
+                }"
               >
                 商品{{ index + 1 }}
               </span>
             </Col>
             <Col span="10" class="text-align-right">
-              <span :style="{ color: index == 0 ? '#ed4014' : index == 1 ? '#ff9900' : index == 2 ? '#2db7f5' : '' }">
+              <span
+                :style="{
+                  color:
+                    index == 0
+                      ? '#ed4014'
+                      : index == 1
+                      ? '#ff9900'
+                      : index == 2
+                      ? '#2db7f5'
+                      : '',
+                }"
+              >
                 3,021
               </span>
             </Col>
@@ -99,7 +145,20 @@ export default {
         xAxis: [
           {
             type: "category",
-            data: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            data: [
+              "一月",
+              "二月",
+              "三月",
+              "四月",
+              "五月",
+              "六月",
+              "七月",
+              "八月",
+              "九月",
+              "十月",
+              "十一月",
+              "十二月",
+            ],
             axisTick: {
               alignWithLabel: true,
             },

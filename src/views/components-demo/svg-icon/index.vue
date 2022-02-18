@@ -7,9 +7,7 @@
     <div class="main-container">
       <!-- 基础用法 -->
       <div class="demo-block">
-        <div class="demo-title">
-          基础用法
-        </div>
+        <div class="demo-title">基础用法</div>
         <div class="demo-desc">
           设置type="user"，图标名就是src/icons/svg下面的文件名称
         </div>
@@ -20,12 +18,8 @@
 
       <!-- 图标大小 -->
       <div class="demo-block">
-        <div class="demo-title">
-          图标大小
-        </div>
-        <div class="demo-desc">
-          设置size="20"
-        </div>
+        <div class="demo-title">图标大小</div>
+        <div class="demo-desc">设置size="20"</div>
         <div class="demo-use">
           <SvgIcon type="user" class="margin-right-4" />
           <SvgIcon type="user" size="20" />
@@ -34,14 +28,14 @@
 
       <!-- 图标颜色 -->
       <div class="demo-block">
-        <div class="demo-title">
-          图标颜色
-        </div>
-        <div class="demo-desc">
-          设置color颜色，支持rgba，rgb，十六进制
-        </div>
+        <div class="demo-title">图标颜色</div>
+        <div class="demo-desc">设置color颜色，支持rgba，rgb，十六进制</div>
         <div class="demo-use">
-          <SvgIcon type="user" color="rgba(237,64,20,1)" class="margin-right-4" />
+          <SvgIcon
+            type="user"
+            color="rgba(237,64,20,1)"
+            class="margin-right-4"
+          />
           <SvgIcon type="user" size="20" color="#2d8cf0" />
         </div>
       </div>
@@ -54,8 +48,8 @@ export default {
   methods: {
     handleClick() {
       alert();
-    }
-  }
+    },
+  },
 };
 </script>
 

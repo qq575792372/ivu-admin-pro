@@ -1,29 +1,15 @@
 <!-- 登录用户信息 -->
 <template>
-  <div
-    id="i-layout-navbar-user"
-    class="i-layout-navbar-user"
-  >
-    <Dropdown
-      class="avatar-dropdown"
-      transfer-class-name="overlay-menu"
-    >
-      <Avatar
-        class="avatar-image"
-        :src="require('../../../assets/head.png')"
-      />
+  <div id="i-layout-navbar-user" class="i-layout-navbar-user">
+    <Dropdown class="avatar-dropdown" transfer-class-name="overlay-menu">
+      <Avatar class="avatar-image" :src="require('../../../assets/head.png')" />
       <span class="avatar-title">{{ name }}</span>
 
       <DropdownMenu slot="list">
         <router-link to="/">
           <DropdownItem>首页</DropdownItem>
         </router-link>
-        <DropdownItem
-          divided
-          @click.native="logout"
-        >
-          退出登录
-        </DropdownItem>
+        <DropdownItem divided @click.native="logout">退出登录</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>
@@ -33,7 +19,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "UserInfo",
   computed: {
-    ...mapGetters(["sidebar", "name"])
+    ...mapGetters(["sidebar", "name"]),
   },
   methods: {
     async logout() {
@@ -47,10 +33,10 @@ export default {
         },
         onCancel: () => {
           // click no
-        }
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

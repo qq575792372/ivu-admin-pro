@@ -1,6 +1,11 @@
 <!-- Svg图标组件 -->
 <template>
-  <svg class="svg-icon" :style="iconStyles" aria-hidden="true" v-on="$listeners">
+  <svg
+    class="svg-icon"
+    :style="iconStyles"
+    aria-hidden="true"
+    v-on="$listeners"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -11,18 +16,18 @@ export default {
     // 图标名称
     type: {
       type: String,
-      default: ""
+      default: "",
     },
     // 图标大小
     size: {
       type: Number | String,
-      default: 14
+      default: 14,
     },
     // 图标颜色
     color: {
       type: String,
-      default: "currentColor"
-    }
+      default: "currentColor",
+    },
   },
   computed: {
     // 图标名称，必须格式是 #svg-icon-[name] ，要和vue.config.js中的配置保持一致
@@ -33,10 +38,10 @@ export default {
     iconStyles() {
       return {
         "font-size": this.size,
-        fill: this.color
+        fill: this.color,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -4,7 +4,7 @@ import Router from "vue-router";
 // 防止点击同一个路由时候报错
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err);
+  return originalPush.call(this, location).catch((err) => err);
 };
 
 Vue.use(Router);
@@ -46,41 +46,41 @@ export const constantRoutes = [
     children: [
       {
         path: "/redirect/:path(.*)",
-        component: resolve => require(["@/views/redirect"], resolve)
-      }
-    ]
+        component: (resolve) => require(["@/views/redirect"], resolve),
+      },
+    ],
   },
 
   // 登录
   {
     path: "/login",
     component: () => import("@/views/login/index"),
-    hidden: true
+    hidden: true,
   },
 
   // 错误页面
   {
     path: "/403",
     component: () => import("@/views/error/403"),
-    hidden: true
+    hidden: true,
   },
 
   {
     path: "/404",
     component: () => import("@/views/error/404"),
-    hidden: true
+    hidden: true,
   },
   {
     path: "/500",
     component: () => import("@/views/error/500"),
-    hidden: true
+    hidden: true,
   },
 
   // 默认路由跳转到首页
   {
     path: "/",
     redirect: "/dashboard/index",
-    component: Layout
+    component: Layout,
   },
 
   // 首页
@@ -91,17 +91,22 @@ export const constantRoutes = [
     redirect: "/dashboard/index",
     meta: {
       title: "首页",
-      icon: "dashboard"
+      icon: "dashboard",
     },
     children: [
       {
         path: "index",
         name: "index",
         component: () => import("@/views/dashboard/index"),
-        meta: { title: "首页", subtitle: "Dashboard", affix: true, icon: "dashboard" }
-      }
-    ]
-  }
+        meta: {
+          title: "首页",
+          subtitle: "Dashboard",
+          affix: true,
+          icon: "dashboard",
+        },
+      },
+    ],
+  },
 
   // 404 page must be placed at the end !!!
   // 如果有权限菜单，需要写在权限路由加载后的最后面，不然刷新页面会404
@@ -113,7 +118,7 @@ const createRouter = () =>
     mode: "history", // 使用history模式，需要设置base路径
     base: process.env.BASE_URL,
     scrollBehavior: () => ({ y: 0 }),
-    routes: constantRoutes
+    routes: constantRoutes,
   });
 
 const router = createRouter();

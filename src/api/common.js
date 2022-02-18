@@ -8,7 +8,7 @@ export function uploadFile(data) {
   return request({
     url: "/api/file/saveFile",
     method: "post",
-    data
+    data,
   });
 }
 /**
@@ -19,6 +19,6 @@ export function getWeather(params) {
   return request({
     url: "https://miao.baidu.com/abdr?_o=https%3A%2F%2Fweather.mipang.com",
     method: "get",
-    params
+    params,
   });
 }

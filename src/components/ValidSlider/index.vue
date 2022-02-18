@@ -26,45 +26,45 @@ export default {
     // 尺寸大小：large，default，small
     size: {
       type: String,
-      default: "default"
+      default: "default",
     },
 
     // 开始的图标
     startIcon: {
       type: String,
-      default: "ios-arrow-forward"
+      default: "ios-arrow-forward",
     },
     // 开始的文字
     startText: {
       type: String,
-      default: "请按住滑块，拖动到最右边"
+      default: "请按住滑块，拖动到最右边",
     },
 
     // 成功图标
     successIcon: {
       type: String,
-      default: "md-checkmark-circle"
+      default: "md-checkmark-circle",
     },
     // 成功文字
     successText: {
       type: String,
-      default: "验证成功"
+      default: "验证成功",
     },
 
     // 成功之后的回调
     onSuccess: {
-      type: Function
+      type: Function,
     },
 
     // 失败之后的回调
     onError: {
-      type: Function
+      type: Function,
     },
 
     // 重置之后的回调
     onReset: {
-      type: Function
-    }
+      type: Function,
+    },
   },
 
   data() {
@@ -72,7 +72,7 @@ export default {
       // 当前滑动的元素
       elem: null,
       // 是否已经验证成功
-      rangeStatus: false
+      rangeStatus: false,
     };
   },
   methods: {
@@ -92,14 +92,14 @@ export default {
         return false;
       }
       // 鼠标拖动
-      document.onmousemove = e => {
+      document.onmousemove = (e) => {
         let endX = e.clientX;
         this.disX = endX - startX;
         if (this.disX <= 0) {
           this.disX = 0;
         }
         if (this.disX >= MaxX - eleWidth) {
-          //减去滑块的宽度,体验效果更好
+          // 减去滑块的宽度,体验效果更好
           this.disX = MaxX;
         }
         // 滑块样式
@@ -150,8 +150,8 @@ export default {
 
       // 重置回调
       this.onReset && this.onReset();
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

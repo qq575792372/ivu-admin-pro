@@ -21,16 +21,10 @@
         action="https://httpbin.org/post"
         list-type="picture-card"
       >
-        <Button size="small" type="primary">
-          Click upload
-        </Button>
+        <Button size="small" type="primary">Click upload</Button>
       </el-upload>
-      <Button @click="dialogVisible = false">
-        Cancel
-      </Button>
-      <Button type="primary" @click="handleSubmit">
-        Confirm
-      </Button>
+      <Button @click="dialogVisible = false">Cancel</Button>
+      <Button type="primary" @click="handleSubmit">Confirm</Button>
     </el-dialog>
   </div>
 </template>
@@ -43,22 +37,24 @@ export default {
   props: {
     color: {
       type: String,
-      default: "#1890ff"
-    }
+      default: "#1890ff",
+    },
   },
   data() {
     return {
       dialogVisible: false,
       listObj: {},
-      fileList: []
+      fileList: [],
     };
   },
   methods: {
     checkAllSuccess() {
-      return Object.keys(this.listObj).every(item => this.listObj[item].hasSuccess);
+      return Object.keys(this.listObj).every(
+        (item) => this.listObj[item].hasSuccess
+      );
     },
     handleSubmit() {
-      const arr = Object.keys(this.listObj).map(v => this.listObj[v]);
+      const arr = Object.keys(this.listObj).map((v) => this.listObj[v]);
       if (!this.checkAllSuccess()) {
         this.$message(
           "Please wait for all images to be uploaded successfully. If there is a network problem, please refresh the page and upload again!"
@@ -99,18 +95,18 @@ export default {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.src = _URL.createObjectURL(file);
-        img.onload = function() {
+        img.onload = function () {
           _self.listObj[fileName] = {
             hasSuccess: false,
             uid: file.uid,
             width: this.width,
-            height: this.height
+            height: this.height,
           };
         };
         resolve(true);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

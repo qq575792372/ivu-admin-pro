@@ -4,11 +4,9 @@
     <PageHeader title="权限操作" content="控制菜单和页面级别操作权限" />
 
     <!-- main -->
-    <div class="main-container" id="main-container">
+    <div id="main-container" class="main-container">
       <div class="demo-block">
-        <div class="demo-title">
-          暂未实现，搬砖中..
-        </div>
+        <div class="demo-title">暂未实现，搬砖中..</div>
         <div class="demo-desc"></div>
         <div class="demo-use"></div>
       </div>
@@ -22,6 +20,6 @@ export default {
     return {};
   },
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>

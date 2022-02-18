@@ -2,28 +2,30 @@
 <template>
   <div class="i-page-header">
     <!-- logo slot -->
-    <div class="i-page-header-logo" v-if="$slots.logo">
+    <div v-if="$slots.logo" class="i-page-header-logo">
       <slot name="logo" />
     </div>
 
     <!-- back slot -->
-    <div class="i-page-header-back" v-if="back" @click="onBack">
+    <div v-if="back" class="i-page-header-back" @click="onBack">
       <Icon class="i-page-header-back-icon" type="md-arrow-back" />
-      <span class="i-page-header-back-text" v-if="back !== '' && back !== true">{{ back }}</span>
-      <span class="i-page-header-back-text" v-else>返回</span>
-      <Divider type="vertical" v-if="$slots.title || title" />
+      <span v-if="back !== '' && back !== true" class="i-page-header-back-text">
+        {{ back }}
+      </span>
+      <span v-else class="i-page-header-back-text">返回</span>
+      <Divider v-if="$slots.title || title" type="vertical" />
     </div>
 
     <!-- main -->
     <div class="i-page-header-main">
       <div class="i-page-header-main-row">
         <!-- title and slot -->
-        <div class="i-page-header-title" v-if="$slots.title || title">
+        <div v-if="$slots.title || title" class="i-page-header-title">
           <slot v-if="$slots.title" name="title" />
           <span v-else>{{ title }}</span>
         </div>
         <!-- actions slot-->
-        <div class="i-page-header-actions" v-if="$slots.actions">
+        <div v-if="$slots.actions" class="i-page-header-actions">
           <slot name="actions" />
         </div>
       </div>
@@ -34,7 +36,7 @@
           <span v-else>{{ content }}</span>
         </div>
         <!-- extra slot -->
-        <div class="i-page-header-extra" v-if="$slots.extra || extra">
+        <div v-if="$slots.extra || extra" class="i-page-header-extra">
           <slot v-if="$slots.extra" name="extra" />
           <span v-else>{{ extra }}</span>
         </div>
@@ -48,26 +50,26 @@ export default {
   props: {
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     back: {
       type: [Boolean, String],
-      default: false || ""
+      default: false || "",
     },
     content: {
       type: String,
-      default: ""
+      default: "",
     },
     extra: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   methods: {
     onBack() {
       this.$emit("on-back");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

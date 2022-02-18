@@ -19,7 +19,7 @@ export default {
   props: ["value"],
   data() {
     return {
-      jsonEditor: false
+      jsonEditor: false,
     };
   },
   watch: {
@@ -28,7 +28,7 @@ export default {
       if (value !== editorValue) {
         this.jsonEditor.setValue(JSON.stringify(this.value, null, 2));
       }
-    }
+    },
   },
   mounted() {
     this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea, {
@@ -36,11 +36,11 @@ export default {
       mode: "application/json",
       gutters: ["CodeMirror-lint-markers"],
       theme: "rubyblue",
-      lint: true
+      lint: true,
     });
 
     this.jsonEditor.setValue(JSON.stringify(this.value, null, 2));
-    this.jsonEditor.on("change", cm => {
+    this.jsonEditor.on("change", (cm) => {
       this.$emit("changed", cm.getValue());
       this.$emit("input", cm.getValue());
     });
@@ -48,8 +48,8 @@ export default {
   methods: {
     getValue() {
       return this.jsonEditor.getValue();
-    }
-  }
+    },
+  },
 };
 </script>
 

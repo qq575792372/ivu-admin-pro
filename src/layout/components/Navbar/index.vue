@@ -10,10 +10,7 @@
     <!-- 右侧菜单 -->
     <div class="i-layout-navbar-right-menu">
       <!-- 页面全屏 -->
-      <Fullscreen
-        v-if="!isMobile"
-        class="i-layout-navbar-trigger"
-      />
+      <Fullscreen v-if="!isMobile" class="i-layout-navbar-trigger" />
       <!-- 系统通知 -->
       <Notify class="i-layout-navbar-trigger" />
       <!-- 用户登录信息 -->
@@ -43,15 +40,15 @@ export default {
     Fullscreen,
     UserInfo,
     Settings,
-    Notify
+    Notify,
   },
   computed: {
     ...mapGetters(["sidebar", "device"]),
     // 设备类型
     isMobile() {
       return this.device === "mobile";
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

@@ -5,10 +5,13 @@
 
     <!-- 主要内容 -->
     <div class="main-container">
-      <Result type="success" title="提交成功" desc="预计两个小时内到账" extra="已提交申请，等待部门审核">
-        <template slot="desc">
-          预计两个小时内到账
-        </template>
+      <Result
+        type="success"
+        title="提交成功"
+        desc="预计两个小时内到账"
+        extra="已提交申请，等待部门审核"
+      >
+        <template slot="desc">预计两个小时内到账</template>
         <div slot="extra" class="text-align-center">
           已提交申请，等待部门审核
         </div>

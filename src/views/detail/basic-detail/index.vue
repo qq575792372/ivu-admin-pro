@@ -10,7 +10,11 @@
     <div class="main-container">
       <!-- 基础信息 -->
       <Card dis-hover :bordered="false">
-        <Description title="基础信息" :label-width="labelWidth" label-position="left">
+        <Description
+          title="基础信息"
+          :label-width="labelWidth"
+          label-position="left"
+        >
           <template slot="extra">
             <Button type="default">操作1</Button>
             <Button type="primary">操作2</Button>
@@ -31,18 +35,18 @@
           <DescriptionItem label="商品现价：" v-bind="grid">
             ￥9.99
           </DescriptionItem>
-          <DescriptionItem label="单位：" v-bind="grid">
-            件
-          </DescriptionItem>
-          <DescriptionItem label="库存：" v-bind="grid">
-            100件
-          </DescriptionItem>
+          <DescriptionItem label="单位：" v-bind="grid">件</DescriptionItem>
+          <DescriptionItem label="库存：" v-bind="grid">100件</DescriptionItem>
         </Description>
 
         <Divider />
 
         <!-- 供货商信息 -->
-        <Description title="供货商信息" :label-width="labelWidth" label-position="left">
+        <Description
+          title="供货商信息"
+          :label-width="labelWidth"
+          label-position="left"
+        >
           <template slot="extra">
             <Button type="default">操作1</Button>
             <Button type="primary">操作2</Button>
@@ -53,9 +57,7 @@
           <DescriptionItem label="供货商名称：" v-bind="grid">
             xxx饮品供应商
           </DescriptionItem>
-          <DescriptionItem label="负责人：" v-bind="grid">
-            张三
-          </DescriptionItem>
+          <DescriptionItem label="负责人：" v-bind="grid">张三</DescriptionItem>
           <DescriptionItem label="联系电话：" v-bind="grid">
             1300000000
           </DescriptionItem>
@@ -67,7 +69,11 @@
         <Divider />
 
         <!-- 表格信息 -->
-        <Description title="表格信息" :label-width="labelWidth" label-position="left">
+        <Description
+          title="表格信息"
+          :label-width="labelWidth"
+          label-position="left"
+        >
           <!-- 附加内容slot -->
           <template slot="extra">
             <Button type="default">操作1</Button>
@@ -84,14 +90,18 @@
           <!-- 自定义描述信息内容slot -->
           <template slot="custom">
             <Table :columns="tableColumns" :data="tableData">
-              <template slot-scope="{ row }" slot="originPrice">￥{{ row.originPrice }}</template>
-              <template slot-scope="{ row }" slot="sellPrice">￥{{ row.sellPrice }}</template>
+              <template slot="originPrice" slot-scope="{ row }">
+                ￥{{ row.originPrice }}
+              </template>
+              <template slot="sellPrice" slot-scope="{ row }">
+                ￥{{ row.sellPrice }}
+              </template>
             </Table>
           </template>
         </Description>
       </Card>
       <div class="text-align-center margin-top-10">
-        <Button type="default" style="margin-right:10px;">返回</Button>
+        <Button type="default" style="margin-right: 10px">返回</Button>
       </div>
     </div>
   </div>
@@ -108,7 +118,7 @@ export default {
         lg: 8,
         md: 12,
         sm: 12,
-        xs: 24
+        xs: 24,
       },
 
       // 表格信息
@@ -116,32 +126,32 @@ export default {
         {
           title: "商品编号",
           key: "productNo",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "商品名称",
           key: "productName",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "所属分类",
           key: "productType",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "原价",
           slot: "originPrice",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "现价",
           slot: "sellPrice",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "单位",
           key: "unit",
-          minWidth: 120
+          minWidth: 120,
         },
         {
           title: "库存",
@@ -149,8 +159,8 @@ export default {
           minWidth: 120,
           render: (h, { row, index }) => {
             return h("span", row.stock + "/" + row.unit);
-          }
-        }
+          },
+        },
       ],
       tableData: [
         {
@@ -160,7 +170,7 @@ export default {
           originPrice: 12.99,
           sellPrice: 9.99,
           unit: "件",
-          stock: 100
+          stock: 100,
         },
         {
           productNo: "SP002",
@@ -169,7 +179,7 @@ export default {
           originPrice: 400,
           sellPrice: 189,
           unit: "双",
-          stock: 99
+          stock: 99,
         },
         {
           productNo: "SP003",
@@ -178,9 +188,9 @@ export default {
           originPrice: 110,
           sellPrice: 110,
           unit: "包",
-          stock: 253
-        }
-      ]
+          stock: 253,
+        },
+      ],
     };
   },
   computed: {
@@ -191,7 +201,7 @@ export default {
     },
     labelWidth() {
       return this.isMobile ? undefined : 100;
-    }
+    },
   },
   created() {},
   methods: {
@@ -199,7 +209,7 @@ export default {
      * 提交
      */
     handleSubmit() {
-      this.$refs.editFormRef.validate(valid => {
+      this.$refs.editFormRef.validate((valid) => {
         if (valid) {
           if (this.editForm.id) {
             this.handleUpdate();
@@ -218,8 +228,8 @@ export default {
       console.log("请求后台接口，参数：", this.editForm);
       this.$Message.success("修改成功");
       this.editModal = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

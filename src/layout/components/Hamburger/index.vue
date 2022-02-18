@@ -32,7 +32,7 @@ export default {
     },
     isCollapse() {
       return !this.sidebar.opened;
-    }
+    },
   },
   methods: {
     toggleClick() {
@@ -41,8 +41,8 @@ export default {
       } else {
         this.$store.dispatch("layout/app/toggleSideBar");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

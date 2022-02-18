@@ -11,18 +11,18 @@
         <div class="demo-desc">组件的布局结构</div>
         <div class="demo-use">
           <PageHeader class="demo-page-header">
-            <div class="demo-logo" slot="logo">
+            <div slot="logo" class="demo-logo">
               <img src="../../../assets/logo.png" />
             </div>
-            <div class="demo-title" slot="title">标题（支持slot方式）</div>
-            <div class="demo-subtitle" slot="subtitle">副标题（支持slot方式）</div>
-            <div class="demo-actions" slot="actions">
+            <div slot="title" class="demo-title">标题（支持slot方式）</div>
+            <div slot="subtitle" class="demo-subtitle">
+              副标题（支持slot方式）
+            </div>
+            <div slot="actions" class="demo-actions">
               操作按钮（仅slot方式）
             </div>
-            <div class="demo-content" slot="content">
-              内容（支持slot方式）
-            </div>
-            <div class="demo-extra" slot="extra">附加内容（支持slot方式）</div>
+            <div slot="content" class="demo-content">内容（支持slot方式）</div>
+            <div slot="extra" class="demo-extra">附加内容（支持slot方式）</div>
           </PageHeader>
         </div>
       </div>
@@ -71,8 +71,8 @@ export default {
   methods: {
     goback() {
       this.$Message.info("点击返回按钮的回调");
-    }
-  }
+    },
+  },
 };
 </script>
 

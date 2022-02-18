@@ -4,32 +4,32 @@ const state = {
   sidebarBadges: [
     {
       path: "/dashboard/index",
-      count: 8
+      count: 8,
     },
     {
       path: "/components-demo",
       text: "新特性",
-      type: "warning"
+      type: "warning",
     },
     // 子菜单显示徽标
     {
       path: "/table/basic-table",
       count: 10,
-      type: "success"
+      type: "success",
     },
     // 一级菜单显示徽标
     {
       path: "/form",
-      color: "#2db7f5"
-    }
-  ]
+      color: "#2db7f5",
+    },
+  ],
 };
 
 // mutations
 const mutations = {
   SET_SIDEBAR_BADGES: (state, data) => {
     state.sidebarBadges = data;
-  }
+  },
 };
 
 // actions
@@ -49,7 +49,7 @@ const actions = {
    */
   setOneBadge({ commit, state }, { path, badge }) {
     const sidebarBadges = JSON.parse(JSON.stringify(state.sidebarBadges));
-    const currentIndex = sidebarBadges.findIndex(item => item.path === path);
+    const currentIndex = sidebarBadges.findIndex((item) => item.path === path);
     if (currentIndex >= 0) {
       sidebarBadges[currentIndex] = badge;
     } else {
@@ -71,10 +71,10 @@ const actions = {
    */
   removeOneBadge({ commit }, { path }) {
     const sidebarBadges = JSON.parse(JSON.stringify(state.sidebarBadges));
-    const currentIndex = sidebarBadges.findIndex(item => item.path === path);
+    const currentIndex = sidebarBadges.findIndex((item) => item.path === path);
     if (currentIndex >= 0) sidebarBadges.splice(currentIndex, 1);
     commit("SET_SIDEBAR_BADGES", sidebarBadges);
-  }
+  },
 };
 
 // 导出
@@ -82,5 +82,5 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 };

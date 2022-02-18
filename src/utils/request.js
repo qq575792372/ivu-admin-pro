@@ -10,12 +10,12 @@ axios.defaults.crossDomain = true; // 设置axios跨域的配置
 // create axios
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_SERVE + process.env.VUE_APP_BASE_API,
-  timeout: 3 * 60 * 1000
+  timeout: 3 * 60 * 1000,
 });
 
 // request interceptor
 service.interceptors.request.use(
-  config => {
+  (config) => {
     // do something before request is sent
 
     if (store.getters.token) {
@@ -23,7 +23,7 @@ service.interceptors.request.use(
     }
     return config;
   },
-  error => {
+  (error) => {
     // do something with request error
     console.error("request error", error); // for debug
     return Promise.reject(error);
@@ -32,7 +32,7 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
-  response => {
+  (response) => {
     const res = response.data;
     if (res) {
       return res;
@@ -40,10 +40,10 @@ service.interceptors.response.use(
       return Promise.reject(new Error(res.message || "Error"));
     }
   },
-  error => {
+  (error) => {
     console.error("response error", error); // for debug
     Message.error({
-      content: error.message
+      content: error.message,
     });
     return Promise.reject(error);
   }

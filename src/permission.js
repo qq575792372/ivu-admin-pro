@@ -15,7 +15,7 @@ const whiteList = ["/login"]; // no redirect whitelist
 router.beforeEach(async (to, from, next) => {
   // start progress bar
   NProgress.start();
-  //设置页面标题（如果开启了动态标题则会拼加路由的title）
+  // 设置页面标题（如果开启了动态标题则会拼加路由的title）
   to.meta.title &&
     store.dispatch("layout/settings/changeDynamicTitle", to.meta.title);
 
@@ -27,7 +27,7 @@ router.beforeEach(async (to, from, next) => {
       next({ path: "/" });
       NProgress.done();
     } else {
-      //拉取过权限路由菜单，不再添加
+      // 拉取过权限路由菜单，不再添加
       if (store.getters.addRoutes.length > 0) {
         next();
       } else {

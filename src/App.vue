@@ -12,11 +12,11 @@ export default {
   // 动态网页标题
   metaInfo() {
     return {
-      title: getPageTitle(this.showDynamicTitle && this.dynamicTitle)
+      title: getPageTitle(this.showDynamicTitle && this.dynamicTitle),
     };
   },
   computed: {
-    ...mapGetters(["showDynamicTitle", "dynamicTitle"])
-  }
+    ...mapGetters(["showDynamicTitle", "dynamicTitle"]),
+  },
 };
 </script>

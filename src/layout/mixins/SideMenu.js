@@ -7,12 +7,12 @@ export default {
     // route object
     item: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     basePath: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   data() {
     // 这里要写在外层，为了避免在一些极端情况下循环渲染出现报错
@@ -32,10 +32,10 @@ export default {
         // 包含多个child
         path = this.resolvePath(this.item.path);
       }
-      const badgeData = this.sidebarBadges.find(item => item.path === path);
+      const badgeData = this.sidebarBadges.find((item) => item.path === path);
       if (badgeData) data = badgeData;
       return data;
-    }
+    },
   },
   methods: {
     /**
@@ -46,7 +46,7 @@ export default {
         children = [];
       }
       // 获取children中非hidden的集合
-      const showingChildren = children.filter(item => !item.hidden);
+      const showingChildren = children.filter((item) => !item.hidden);
 
       // 如果集合且只有一个元素则赋值给onlyOneChild
       if (showingChildren.length === 1) {
@@ -75,6 +75,6 @@ export default {
       // 修复多级菜单下，如果包含子级的菜单多重复拼加当前routePath的问题
       basePath = basePath.replace(routePath, "");
       return path.resolve(basePath, routePath);
-    }
-  }
+    },
+  },
 };

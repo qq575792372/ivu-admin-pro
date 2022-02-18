@@ -5,14 +5,14 @@ import { resetRouter } from "@/router";
 const getDefaultState = () => {
   return {
     token: getToken(),
-    name: sessionStorage.getItem("USER_NAME") || ""
+    name: sessionStorage.getItem("USER_NAME") || "",
   };
 };
 
 const state = getDefaultState();
 
 const mutations = {
-  RESET_STATE: state => {
+  RESET_STATE: (state) => {
     Object.assign(state, getDefaultState());
   },
   SET_TOKEN: (state, token) => {
@@ -20,7 +20,7 @@ const mutations = {
   },
   SET_NAME: (state, name) => {
     state.name = name;
-  }
+  },
 };
 
 const actions = {
@@ -61,12 +61,12 @@ const actions = {
    * 删除token
    */
   resetToken({ commit }) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       removeToken(); // must remove  token  first
       commit("RESET_STATE");
       resolve();
     });
-  }
+  },
 };
 
 // 导出
@@ -74,5 +74,5 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 };

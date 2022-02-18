@@ -6,9 +6,7 @@
     <!-- 主要内容 -->
     <div class="main-container">
       <Result type="fail" title="提交失败">
-        <template slot="desc">
-          请核对并修改以下信息后，再重新提交
-        </template>
+        <template slot="desc">请核对并修改以下信息后，再重新提交</template>
         <template slot="extra">
           <div>1.重新检查信息</div>
           <div>2.再次尝试提交</div>

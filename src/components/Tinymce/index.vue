@@ -1,5 +1,9 @@
 <template>
-  <div :class="{ fullscreen: fullscreen }" class="tinymce-container" :style="{ width: containerWidth }">
+  <div
+    :class="{ fullscreen: fullscreen }"
+    class="tinymce-container"
+    :style="{ width: containerWidth }"
+  >
     <textarea :id="tinymceId" class="tinymce-textarea" />
     <!-- 注释掉element admin官方自定义的上传按钮组件 -->
     <!-- <div class="editor-custom-btn-container">
@@ -16,7 +20,8 @@ import load from "./dynamicLoadScript";
 import request from "@/utils/request";
 
 // why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
-const tinymceCDN = "https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js";
+const tinymceCDN =
+  "https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js";
 
 export default {
   name: "Tinymce",
@@ -24,62 +29,66 @@ export default {
   props: {
     id: {
       type: String,
-      default: function() {
-        return "vue-tinymce-" + +new Date() + ((Math.random() * 1000).toFixed(0) + "");
-      }
+      default: function () {
+        return (
+          "vue-tinymce-" +
+          +new Date() +
+          ((Math.random() * 1000).toFixed(0) + "")
+        );
+      },
     },
     value: {
       type: String,
-      default: ""
+      default: "",
     },
     config: {
       type: Object,
       default: () => {
         return {
-          theme: "modern"
+          theme: "modern",
         };
-      }
+      },
     },
     toolbar: {
       type: Array,
       required: false,
       default() {
         return [];
-      }
+      },
     },
     accept: {
       default: "image/jpeg, image/png ,image/jpg ,image/bmp ,image/gif",
-      type: String
+      type: String,
     },
 
     url: {
       default: "",
-      type: String
+      type: String,
     },
 
     maxSize: {
       default: 2097152,
-      type: Number
+      type: Number,
     },
     withCredentials: {
       default: false,
-      type: Boolean
+      type: Boolean,
     },
 
     menubar: {
       type: String,
-      default: "file edit insert view format table tools"
+      default: "file edit insert view format table tools",
     },
     height: {
       type: [Number, String],
       required: false,
-      default: 430
+      default: 430,
     },
     width: {
       type: [Number, String],
       required: false,
-      default: "auto"
-    }
+      default: "auto",
+    },
   },
   data() {
     return {
@@ -97,11 +106,11 @@ export default {
         zh: "zh_CN",
         en: "en",
         es: "es_MX",
-        ja: "ja"
+        ja: "ja",
       },
       api: {
-        uploadImage: "/api/imageUpload"
-      }
+        uploadImage: "/api/imageUpload",
+      },
     };
   },
   computed: {
@@ -112,14 +121,16 @@ export default {
         return `${width}px`;
       }
       return width;
-    }
+    },
   },
   watch: {
     value(val) {
       if (!this.hasChange && this.hasInit) {
-        this.$nextTick(() => window.tinymce.get(this.tinymceId).setContent(val || ""));
+        this.$nextTick(() =>
+          window.tinymce.get(this.tinymceId).setContent(val || "")
+        );
       }
-    }
+    },
   },
   mounted() {
     this.init();
@@ -138,7 +149,7 @@ export default {
   methods: {
     init() {
       // dynamic load tinymce from cdn
-      load(tinymceCDN, err => {
+      load(tinymceCDN, (err) => {
         if (err) {
           this.$message.error(err.message);
           return;
@@ -204,18 +215,26 @@ export default {
           {
             title: "首行缩进",
             block: "p",
-            styles: { "text-indent": "2em" }
+            styles: { "text-indent": "2em" },
           },
           {
             title: "行高",
             items: [
               { title: "1", styles: { "line-height": "1" }, inline: "span" },
-              { title: "1.5", styles: { "line-height": "1.5" }, inline: "span" },
+              {
+                title: "1.5",
+                styles: { "line-height": "1.5" },
+                inline: "span",
+              },
               { title: "2", styles: { "line-height": "2" }, inline: "span" },
-              { title: "2.5", styles: { "line-height": "2.5" }, inline: "span" },
-              { title: "3", styles: { "line-height": "3" }, inline: "span" }
-            ]
-          }
+              {
+                title: "2.5",
+                styles: { "line-height": "2.5" },
+                inline: "span",
+              },
+              { title: "3", styles: { "line-height": "3" }, inline: "span" },
+            ],
+          },
         ],
         // FontSelect
         font_formats: `
@@ -249,10 +268,11 @@ export default {
         tabfocus_elements: ":prev,:next",
         object_resizing: true,
         // Image
-        imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
+        imagetools_toolbar:
+          "rotateleft rotateright | flipv fliph | editimage imageoptions",
 
         nonbreaking_force_tab: true, // inserting nonbreaking space &nbsp; need Nonbreaking Space Plugin
-        init_instance_callback: editor => {
+        init_instance_callback: (editor) => {
           if (_this.value) {
             editor.setContent(_this.value);
           }
@@ -263,8 +283,8 @@ export default {
           });
         },
         setup(editor) {
-          //自定义功能
-          editor.on("FullscreenStateChanged", e => {
+          // 自定义功能
+          editor.on("FullscreenStateChanged", (e) => {
             _this.fullscreen = e.state;
           });
         },
@@ -278,7 +298,7 @@ export default {
             let input = document.createElement("input");
             input.setAttribute("type", "file");
             input.click();
-            input.onchange = function() {
+            input.onchange = function () {
               // 选择了文件后调用上传接口
               let file = this.files[0];
               let formData = new FormData();
@@ -287,8 +307,8 @@ export default {
               request({
                 url: self.uploadFileUrl,
                 method: "post",
-                data: formData
-              }).then(res => {
+                data: formData,
+              }).then((res) => {
                 if (res.code == "0000") {
                   let url = res.data;
                   console.log(url);
@@ -308,8 +328,8 @@ export default {
           request({
             url: this.uploadFileUrl,
             method: "post",
-            data: formData
-          }).then(res => {
+            data: formData,
+          }).then((res) => {
             if (res.code == "0000") {
               let url = res.data;
               success(url);
@@ -323,7 +343,7 @@ export default {
         ...this.config,
         content_style: "img {max-width:100% !important; height:auto; }", // 初始化赋值  这个主要是防止图片拉升变形的 （上传的图片再app显示会变形要加上这个）
 
-        setup: editor => {
+        setup: (editor) => {
           // 抛出 'on-ready' 事件钩子
           editor.on("init", () => {
             _this.loading = false;
@@ -334,7 +354,7 @@ export default {
           editor.on("input change undo redo", () => {
             _this.$emit("input", editor.getContent());
           });
-        }
+        },
       });
     },
     destroyTinymce() {
@@ -358,11 +378,13 @@ export default {
     },
     imageSuccessCBK(arr) {
       const _this = this;
-      arr.forEach(v => {
-        window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`);
+      arr.forEach((v) => {
+        window.tinymce
+          .get(_this.tinymceId)
+          .insertContent(`<img class="wscnph" src="${v.url}" >`);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

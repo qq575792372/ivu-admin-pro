@@ -10,29 +10,13 @@
       class="i-layout-sider-logo-link"
       to="/"
     >
-      <img
-        v-if="logo"
-        :src="logo"
-        class="sider-logo-img"
-      >
-      <h1
-        v-else
-        class="sider-logo-title"
-      >
+      <img v-if="logo" :src="logo" class="sider-logo-img" />
+      <h1 v-else class="sider-logo-title">
         {{ title }}
       </h1>
     </router-link>
-    <router-link
-      v-else
-      key="expand"
-      class="i-layout-sider-logo-link"
-      to="/"
-    >
-      <img
-        v-if="logo"
-        :src="logo"
-        class="sider-logo-img"
-      >
+    <router-link v-else key="expand" class="i-layout-sider-logo-link" to="/">
+      <img v-if="logo" :src="logo" class="sider-logo-img" />
       <h1 class="sider-logo-title">
         {{ title }}
       </h1>
@@ -47,7 +31,7 @@ export default {
   data() {
     return {
       title: sidebarLogoTitle,
-      logo: require("../../../assets/logo.png")
+      logo: require("../../../assets/logo.png"),
     };
   },
   computed: {
@@ -57,14 +41,14 @@ export default {
       return {
         "i-layout-sider-logo-collapse": this.isCollapsed,
         "i-layout-sider-logo-dark": this.sideTheme === "dark",
-        "i-layout-sider-logo-light": this.sideTheme === "light"
+        "i-layout-sider-logo-light": this.sideTheme === "light",
       };
     },
     // 是否折叠菜单
     isCollapsed() {
       return !this.sidebar.opened;
-    }
-  }
+    },
+  },
 };
 </script>
 

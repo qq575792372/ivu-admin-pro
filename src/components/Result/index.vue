@@ -3,11 +3,19 @@
   <div class="i-result">
     <!-- icon -->
     <div class="i-result-icon">
-      <Icon v-if="type == 'success'" class="i-result-icon-success" type="ios-checkmark-circle" />
-      <Icon v-if="type == 'fail'" class="i-result-icon-fail" type="ios-close-circle" />
+      <Icon
+        v-if="type == 'success'"
+        class="i-result-icon-success"
+        type="ios-checkmark-circle"
+      />
+      <Icon
+        v-if="type == 'fail'"
+        class="i-result-icon-fail"
+        type="ios-close-circle"
+      />
     </div>
     <!-- title -->
-    <div class="i-result-title" v-if="title">{{ title }}</div>
+    <div v-if="title" class="i-result-title">{{ title }}</div>
     <!-- desc slot -->
     <div class="i-result-desc">
       <slot v-if="$slots.desc" name="desc" />
@@ -29,21 +37,21 @@ export default {
   props: {
     type: {
       type: String,
-      default: "success"
+      default: "success",
     },
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     desc: {
       type: String,
-      default: ""
+      default: "",
     },
     extra: {
       type: String,
-      default: ""
-    }
-  }
+      default: "",
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

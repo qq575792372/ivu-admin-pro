@@ -6,7 +6,7 @@
       type ? `i-link-${type}` : '',
       disabled && 'is-disabled',
       size ? `i-link-${size}` : '',
-      underline && !disabled && 'is-underline'
+      underline && !disabled && 'is-underline',
     ]"
     :href="disabled ? null : href"
     v-bind="$attrs"
@@ -22,16 +22,16 @@ export default {
   props: {
     type: {
       type: String,
-      default: "default"
+      default: "default",
     },
     underline: {
       type: Boolean,
-      default: true
+      default: true,
     },
     disabled: Boolean,
     size: String,
     href: String,
-    icon: String
+    icon: String,
   },
   methods: {
     handleClick(event) {
@@ -41,8 +41,8 @@ export default {
           return false;
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

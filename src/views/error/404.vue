@@ -4,7 +4,7 @@
     <div class="error-content">
       <div><h1>404</h1></div>
       <div class="desc">抱歉，您访问的页面不存在</div>
-      <Button type="primary" size="large" @click="backHome" icon="md-home">
+      <Button type="primary" size="large" icon="md-home" @click="backHome">
         返回首页
       </Button>
     </div>
@@ -23,7 +23,7 @@ export default {
      */
     backHome() {
       this.$router.push({ path: "/" });
-    }
-  }
+    },
+  },
 };
 </script>

@@ -8,6 +8,6 @@ export function login(params) {
   return request({
     url: "/api/user/login",
     method: "post",
-    params
+    params,
   });
 }

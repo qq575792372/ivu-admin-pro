@@ -1,7 +1,10 @@
 <template>
   <div class="app-container">
     <!-- 页面标题 -->
-    <PageHeader title="头像组列表" content="一组用户头像列表的展示，可以设置尺寸/形状/最多显示数量" />
+    <PageHeader
+      title="头像组列表"
+      content="一组用户头像列表的展示，可以设置尺寸/形状/最多显示数量"
+    />
 
     <!-- main -->
     <div class="main-container">
@@ -42,13 +45,20 @@
         <div class="demo-title">头像组形状</div>
         <div class="demo-desc">设置shape属性，值为：circle、square</div>
         <div class="demo-use">
-          <AvatarList :list="avatarList" :max="5" shape="square" :tooltip="true" />
+          <AvatarList
+            :list="avatarList"
+            :max="5"
+            shape="square"
+            :tooltip="true"
+          />
         </div>
       </div>
       <!-- 开启和关闭tooltip -->
       <div class="demo-block">
         <div class="demo-title">开启和关闭tooltip</div>
-        <div class="demo-desc">默认是开启的，开启需要手动设置tooltip属性，值为：ture和false</div>
+        <div class="demo-desc">
+          默认是开启的，开启需要手动设置tooltip属性，值为：ture和false
+        </div>
         <div class="demo-use">
           <span class="display-inline-block margin-right-30">
             <AvatarList :list="avatarList" :max="5" :tooltip="true" />
