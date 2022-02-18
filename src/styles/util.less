@@ -1,11 +1,9 @@
 /**
- * util.less
+ * util
  * 封装常用的css样式类
  */
 
-/**
- * 页面全屏
- */
+/* 页面全屏 */
 .fullscreen {
   position: fixed;
   top: 0;
@@ -20,9 +18,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/**
- * 圆角样式
- */
+/* 圆角样式 */
 .border-radius {
   border-radius: 4px !important;
 }
@@ -33,11 +29,9 @@
   border-radius: 30px !important;
 }
 
-/**
- * 字体强调
- */
+/* 字体强调 */
 // 删除线
-.text-deleted {
+.text-delete-line {
   text-decoration: line-through;
 }
 // 下划线
@@ -71,9 +65,7 @@
   text-transform: capitalize;
 }
 
-/**
- * cursor鼠标样式
- */
+/* cursor鼠标样式 */
 .cursor-default {
   cursor: default;
 }
@@ -96,26 +88,7 @@
   cursor: not-allowed;
 }
 
-/**
- * user-select鼠标选择
- */
-// 文本可选取
-.user-select-text {
-  user-select: text;
-}
-// 禁用文本选取
-.user-select-none {
-  user-select: none;
-}
-// 可单击选取文本
-.user-select-all {
-  user-select: all;
-}
-
-/**
- * 字体大小 
- * 12-36大小
- */
+/* 字体大小，12-36px */
 .font-9 {
   font-size: 12px;
   transform: scale(0.75);
@@ -198,9 +171,36 @@
   font-size: 36px;
 }
 
-/**
- * float浮动
- */
+/* 文本对齐方式 */
+// 文本左对齐
+.text-align-left {
+  text-align: left;
+}
+// 文本居中对齐
+.text-align-center {
+  text-align: center;
+}
+// 文本右对齐
+.text-align-right {
+  text-align: right;
+}
+// 文本两端对齐
+.text-align-justify {
+  text-align: justify;
+}
+
+/* 元素垂直对齐方式 */
+.vertical-align-top {
+  vertical-align: top;
+}
+.vertical-align-middle {
+  vertical-align: middle;
+}
+.vertical-align-bottom {
+  vertical-align: bottom;
+}
+
+/* float布局 */
 .float-left {
   float: left;
 }
@@ -219,9 +219,7 @@
   visibility: hidden;
 }
 
-/**
- * display块
- */
+/* display布局 */
 .display-none {
   display: none;
 }
@@ -235,39 +233,7 @@
   display: inline-block;
 }
 
-/**
- * 文本对齐方式
- */
-.text-align-left {
-  text-align: left;
-}
-.text-align-center {
-  text-align: center;
-}
-.text-align-right {
-  text-align: right;
-}
-// 文本两端对齐
-.text-align-justify {
-  text-align: justify;
-}
-
-/**
- * 元素垂直对齐方式
- */
-.vertical-align-top {
-  vertical-align: top;
-}
-.vertical-align-middle {
-  vertical-align: middle;
-}
-.vertical-align-bottom {
-  vertical-align: bottom;
-}
-
-/**
- * position定位
- */
+/* position布局 */
 .position-absolute {
   position: absolute;
 }
@@ -284,10 +250,7 @@
   position: inherit;
 }
 
-// margin外边距
-/**
- * margin全边距
- */
+/* margin外边距 */
 .margin-2 {
   margin: 2px;
 }
@@ -339,9 +302,7 @@
 .margin-40 {
   margin: 40px;
 }
-/**
- * margin距离顶部
- */
+/* margin上外边距 */
 .margin-top-2 {
   margin-top: 2px;
 }
@@ -393,9 +354,7 @@
 .margin-top-40 {
   margin-top: 40px;
 }
-/**
- * margin距离底部
- */
+/* margin下外边距 */
 .margin-bottom-2 {
   margin-bottom: 2px;
 }
@@ -447,9 +406,7 @@
 .margin-bottom-40 {
   margin-bottom: 40px;
 }
-/**
- * margin距离左边
- */
+/* margin左外边距 */
 .margin-left-2 {
   margin-left: 2px;
 }
@@ -501,9 +458,7 @@
 .margin-left-40 {
   margin-left: 40px;
 }
-/**
- * margin距离右边
- */
+/* margin右外边距 */
 .margin-right-2 {
   margin-right: 2px;
 }
@@ -556,10 +511,7 @@
   margin-right: 40px;
 }
 
-// padding内边距
-/**
- * padding全边距
- */
+/* padding内边距 */
 .padding-2 {
   padding: 2px;
 }
@@ -611,9 +563,7 @@
 .padding-40 {
   padding: 40px;
 }
-/**
- * padding距离顶部
- */
+/* padding上内边距 */
 .padding-top-2 {
   padding-top: 2px;
 }
@@ -665,9 +615,7 @@
 .padding-top-40 {
   padding-top: 40px;
 }
-/**
- * padding距离底部
- */
+/* padding下内边距 */
 .padding-bottom-2 {
   padding-bottom: 2px;
 }
@@ -719,9 +667,7 @@
 .padding-bottom-40 {
   padding-bottom: 40px;
 }
-/**
- * padding距离左边
- */
+/* padding左内边距 */
 .padding-left-2 {
   padding-left: 2px;
 }
@@ -773,9 +719,7 @@
 .padding-left-40 {
   padding-left: 40px;
 }
-/**
- * padding距离右边
- */
+/* padding右内边距 */
 .padding-right-2 {
   padding-right: 2px;
 }
@@ -828,12 +772,11 @@
   padding-right: 40px;
 }
 
-/**
- * flex简易布局
- */
+/* flex简易布局样式类 */
 .display-flex {
   display: flex;
 }
+// 子元素flex
 .display-flex .flex {
   flex: 1;
 }
@@ -846,9 +789,7 @@
   justify-content: center;
 }
 
-/**
- * affix固定位置
- */
+/* affix固定位置 */
 .affix {
   position: fixed;
   z-index: 998;
