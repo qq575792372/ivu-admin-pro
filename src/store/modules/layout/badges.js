@@ -1,3 +1,4 @@
+// state
 const state = {
   // 左侧菜单显示的徽标，通过vuex来动态更改
   sidebarBadges: [
@@ -31,6 +32,7 @@ const mutations = {
   }
 };
 
+// actions
 const actions = {
   /**
    * 设置全部的左侧菜单徽标
@@ -75,6 +77,7 @@ const actions = {
   }
 };
 
+// 导出
 export default {
   namespaced: true,
   state,

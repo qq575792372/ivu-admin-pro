@@ -7,7 +7,7 @@
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
 
   // eslint配置，关闭掉了，根据实际情况决定开启
-  "eslint.enable": false, // 整体控制eslint生效开关
+  "eslint.enable": true, // 整体控制eslint生效开关
   "eslint.alwaysShowStatus": true, // 底部eslint开启状态
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

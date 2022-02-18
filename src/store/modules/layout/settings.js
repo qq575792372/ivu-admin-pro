@@ -32,6 +32,8 @@ const actions = {
     commit("SET_DYNAMIC_TITLE", dynamicTitle);
   }
 };
+
+// 导出
 export default {
   namespaced: true,
   state,

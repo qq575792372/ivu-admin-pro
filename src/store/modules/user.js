@@ -24,45 +24,27 @@ const mutations = {
 };
 
 const actions = {
-  // user login
-  login({ commit }, userInfo) {
-    const { username, password, validcode } = userInfo;
+  /**
+   * 用户登录
+   */
+  login({ commit }, userForm) {
+    const { username, password, validcode } = userForm;
     return new Promise((resolve, reject) => {
-      // 不调用接口登录
-      // set user name
+      //  设置登录信息
       commit("SET_NAME", username.trim());
       sessionStorage.setItem("USER_NAME", username.trim());
-      // set token
+      // 设置token
       commit("SET_TOKEN", 123);
       setToken(123);
       resolve({ code: 0, message: "OK" });
 
-      // 请求后台登录
-      // login({
-      //   accountNo: username.trim(),
-      //   password: password,
-      //   validCode: validcode
-      // })
-      //   .then(response => {
-      //     const { code, data } = response;
-      //     if (code == 0) {
-      //       // set user name
-      //       commit("SET_NAME", username.trim());
-      //       sessionStorage.setItem("USER_NAME", username.trim());
-      //       // set token
-      //       commit("SET_TOKEN", 123);
-      //       setToken(123);
-      //     }
-      //     // resolve response data
-      //     resolve(response);
-      //   })
-      //   .catch(error => {
-      //     reject(error);
-      //   });
+      // TODO 这里调用后台接口，请求后台用户接口拿到数据
     });
   },
 
-  // user logout
+  /**
+   * 退出登录
+   */
   logout({ dispatch, commit, rootState, rootGetters, state }) {
     return new Promise(async (resolve, reject) => {
       // remove token from cookie
@@ -75,7 +57,9 @@ const actions = {
     });
   },
 
-  // remove token
+  /**
+   * 删除token
+   */
   resetToken({ commit }) {
     return new Promise(resolve => {
       removeToken(); // must remove  token  first
@@ -85,6 +69,7 @@ const actions = {
   }
 };
 
+// 导出
 export default {
   namespaced: true,
   state,

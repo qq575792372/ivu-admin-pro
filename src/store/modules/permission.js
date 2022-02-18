@@ -75,6 +75,8 @@ const actions = {
     commit("SET_SIDEBAR_ROUTES", sidebarRoutes);
   }
 };
+
+// 导出
 export default {
   namespaced: true,
   state,

@@ -26,7 +26,7 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
-    // 配置反向代理，以及用法
+    // 配置反向代理，以及不同用法
     /*
     proxy: {
       "/api": {

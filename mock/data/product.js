@@ -32,7 +32,10 @@ const getList = {
     // 获取查询参数
     const { pageNo, pageSize } = config.query;
     // 获取分页后的列表
-    const records = list.filter((item, index) => index >= pageSize * (pageNo - 1) && index < pageSize * pageNo);
+    const records = list.filter(
+      (item, index) =>
+        index >= pageSize * (pageNo - 1) && index < pageSize * pageNo
+    );
 
     // 组装返回的数据结构
     return {

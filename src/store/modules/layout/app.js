@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 
+// state
 const state = {
   sidebar: {
     // 侧边栏是否展开
@@ -10,6 +11,7 @@ const state = {
   device: "desktop" // 设备类型，桌面：desktop；手机：mobile；平板：tablet
 };
 
+// mutations
 const mutations = {
   TOGGLE_SIDEBAR: state => {
     state.sidebar.opened = !state.sidebar.opened;
@@ -32,6 +34,7 @@ const mutations = {
   }
 };
 
+// actions
 const actions = {
   toggleSideBar({ commit }) {
     commit("TOGGLE_SIDEBAR");
@@ -47,6 +50,7 @@ const actions = {
   }
 };
 
+// 导出
 export default {
   namespaced: true,
   state,

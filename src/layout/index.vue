@@ -45,14 +45,19 @@ export default {
     Navbar,
     TabsView,
     Sidebar,
-    AppMain
+    AppMain,
   },
   mixins: [ResizeHandler],
   data() {
     return {};
   },
   computed: {
-    ...mapState("layout/settings", ["sideTheme", "fixedHeader", "fixedSidebar", "tabsView"]),
+    ...mapState("layout/settings", [
+      "sideTheme",
+      "fixedHeader",
+      "fixedSidebar",
+      "tabsView",
+    ]),
     ...mapGetters(["sidebar", "device"]),
     isCollapsed() {
       return !this.sidebar.opened;
@@ -70,64 +75,65 @@ export default {
     isTablet() {
       return this.device === "tablet";
     },
-
     layoutClasses() {
       return {
         mobile: this.device === "mobile",
-        tablet: this.device === "tablet"
+        tablet: this.device === "tablet",
       };
     },
     siderClasses() {
       return {
         "i-layout-sider-dark": this.sideTheme === "dark",
         "i-layout-sider-light": this.sideTheme === "light",
-        "i-layout-sider-fix": this.fixedSidebar
+        "i-layout-sider-fix": this.fixedSidebar,
       };
     },
     mainClasses() {
       return {
         "i-layout-main-with-sider-fix": this.fixedSidebar,
-        "i-layout-main-with-sider-fix-collapse": this.fixedSidebar && this.isCollapsed,
-        "i-layout-main-with-mobile": this.isMobile
+        "i-layout-main-with-sider-fix-collapse":
+          this.fixedSidebar && this.isCollapsed,
+        "i-layout-main-with-mobile": this.isMobile,
       };
     },
     headerClasses() {
       return {
         "i-layout-header-fix": this.fixedHeader,
         "i-layout-header-with-sider-fix": this.fixedSidebar,
-        "i-layout-header-fix-with-sider-collapse": this.fixedHeader && this.isCollapsed,
+        "i-layout-header-fix-with-sider-collapse":
+          this.fixedHeader && this.isCollapsed,
         "i-layout-header-fix-with-tabs": this.fixedHeader && this.tabsView,
-        "i-layout-header-with-mobile": this.isMobile
+        "i-layout-header-with-mobile": this.isMobile,
       };
     },
     contentClasses() {
       return {
         "i-layout-content-with-header-fix": this.fixedHeader,
-        "i-layout-content-with-header-fix-with-tabs": this.fixedHeader && this.tabsView
+        "i-layout-content-with-header-fix-with-tabs":
+          this.fixedHeader && this.tabsView,
       };
     },
     drawerClasses() {
       let className = "i-layout-drawer-sider-fix";
       if (this.sideTheme === "dark") className += " i-layout-drawer-dark";
       return className;
-    }
+    },
   },
   methods: {
     handleDrawerClose() {
       this.$store.dispatch("layout/app/closeSideBar");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less">
 @import "~@/styles/variables.less";
-
 // layout布局
 .app-layout {
 }
-
 // 左侧sider布局
 .i-layout-sider {
+  position: relative;
   z-index: 11;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.25);
   // 侧边栏主题
@@ -139,32 +145,28 @@ export default {
   }
   // 固定侧边栏
   &-fix {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
 }
-
 // 右侧main布局
 .i-layout-main {
   min-height: 100vh;
   transition: all 0.2s ease-in-out;
-
   &-with-sider-fix {
     margin-left: @base-sider-width;
     &-collapse {
       margin-left: 64px;
     }
   }
-
   // 手机设备
   &-with-mobile {
     transition: none;
     margin-left: 0px;
   }
-
   // header布局
   .i-layout-header {
     padding: 0px;
@@ -198,7 +200,6 @@ export default {
       width: 100%;
     }
   }
-
   // content布局
   .i-layout-content {
     transition: all 0.2s ease-in-out;
@@ -210,7 +211,6 @@ export default {
     }
   }
 }
-
 // drawer样式
 .i-layout-drawer-sider-fix {
   .ivu-drawer-body {

@@ -11,10 +11,20 @@
         <div class="search-box">
           <Row>
             <Col>
-              <Input v-model="listQuery.productName" placeholder="商品名称" clearable style="width: 180px" />
+              <Input
+                v-model="listQuery.productName"
+                placeholder="商品名称"
+                clearable
+                style="width: 180px"
+              />
             </Col>
             <Col>
-              <Select v-model="listQuery.productType" placeholder="商品类型" clearable style="width: 120px">
+              <Select
+                v-model="listQuery.productType"
+                placeholder="商品类型"
+                clearable
+                style="width: 120px"
+              >
                 <Option value="0">新鲜果蔬</Option>
                 <Option value="1">饮料乳品</Option>
                 <Option value="2">肉禽水产</Option>
@@ -24,25 +34,43 @@
               </Select>
             </Col>
             <Col>
-              <Select v-model="listQuery.status" placeholder="商品状态" clearable style="width: 120px">
+              <Select
+                v-model="listQuery.status"
+                placeholder="商品状态"
+                clearable
+                style="width: 120px"
+              >
                 <Option value="0">已下架</Option>
                 <Option value="1">已上架</Option>
               </Select>
             </Col>
             <Col>
-              <DatePicker type="date" placeholder="创建时间" style="width: 180px" />
+              <DatePicker
+                type="date"
+                placeholder="创建时间"
+                style="width: 180px"
+              />
             </Col>
             <!-- eslint-disable -->
             <template v-if="!searchCollapse">
               <Col v-for="(item, index) in 14" :key="index">
-                <Input v-model="listQuery.name" placeholder="输入内容" clearable style="width: 180px" />
+                <Input
+                  v-model="listQuery.name"
+                  placeholder="输入内容"
+                  clearable
+                  style="width: 180px"
+                />
               </Col>
             </template>
             <Col>
               <Button type="primary" @click="queryData">查询</Button>
               <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
-              <i-link type="primary" :underline="false" @click="searchCollapse = !searchCollapse">
+              <i-link
+                type="primary"
+                :underline="false"
+                @click="searchCollapse = !searchCollapse"
+              >
                 <template v-if="searchCollapse">
                   <Icon type="ios-arrow-down" />
                   展开
@@ -57,7 +85,9 @@
         </div>
         <!-- 操作按钮 -->
         <div class="operate-box">
-          <Button icon="md-add" type="primary" @click="showAddModal">新增</Button>
+          <Button icon="md-add" type="primary" @click="showAddModal">
+            新增
+          </Button>
           <Button icon="md-done-all" type="primary">批量操作</Button>
         </div>
       </div>
@@ -68,7 +98,14 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link class="margin-left-10" type="danger" :underline="false" @click="handleClearRows">清空</i-link>
+            <i-link
+              class="margin-left-10"
+              type="danger"
+              :underline="false"
+              @click="handleClearRows"
+            >
+              清空
+            </i-link>
           </div>
         </Alert>
         <Table
@@ -85,8 +122,16 @@
           </template>
           <!-- 操作 -->
           <template slot-scope="{ row, index }" slot="action" :width="100">
-            <i-link type="primary" :underline="false" @click="showEditModal(row)">编辑</i-link>
-            <i-link type="danger" :underline="false" @click="handleDelete(row)">删除</i-link>
+            <i-link
+              type="primary"
+              :underline="false"
+              @click="showEditModal(row)"
+            >
+              编辑
+            </i-link>
+            <i-link type="danger" :underline="false" @click="handleDelete(row)">
+              删除
+            </i-link>
           </template>
         </Table>
       </div>
@@ -108,9 +153,18 @@
 
     <!-- 弹框 -->
     <!-- 编辑和新增 -->
-    <Modal v-model="editModal" :title="editForm.id ? '编辑商品' : '添加商品'" width="640px">
+    <Modal
+      v-model="editModal"
+      :title="editForm.id ? '编辑商品' : '添加商品'"
+      width="640px"
+    >
       <div>
-        <Form ref="editFormRef" :model="editForm" :rules="editFormRules" :label-width="80">
+        <Form
+          ref="editFormRef"
+          :model="editForm"
+          :rules="editFormRules"
+          :label-width="80"
+        >
           <FormItem v-if="editForm.id" label="商品编号">
             {{ editForm.productNo }}
           </FormItem>
@@ -124,7 +178,12 @@
             ></Input>
           </FormItem>
           <FormItem label="商品分类" prop="productType">
-            <Select v-model="editForm.productType" placeholder="选择商品分类" style="width: 360px" clearable>
+            <Select
+              v-model="editForm.productType"
+              placeholder="选择商品分类"
+              style="width: 360px"
+              clearable
+            >
               <Option value="0">新鲜果蔬</Option>
               <Option value="1">饮料乳品</Option>
               <Option value="2">肉禽水产</Option>
@@ -161,10 +220,20 @@
             />
           </FormItem>
           <FormItem label="库存" prop="stock">
-            <InputNumber v-model="editForm.stock" :min="0" placeholder="输入库存" style="width: 360px" />
+            <InputNumber
+              v-model="editForm.stock"
+              :min="0"
+              placeholder="输入库存"
+              style="width: 360px"
+            />
           </FormItem>
           <FormItem v-if="editForm.id" label="状态">
-            <Select v-model="editForm.status" placeholder="商品状态" clearable style="width: 360px">
+            <Select
+              v-model="editForm.status"
+              placeholder="商品状态"
+              clearable
+              style="width: 360px"
+            >
               <Option value="0">已下架</Option>
               <Option value="1">已上架</Option>
             </Select>
@@ -183,7 +252,13 @@
 // 引入LimeUtil
 import LimeUtil from "@lime-util/util";
 // 引入api
-import { getList, getDetail, addProduct, updateProduct, deleteProduct } from "@/api/product";
+import {
+  getList,
+  getDetail,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} from "@/api/product";
 export default {
   data() {
     return {
@@ -217,7 +292,10 @@ export default {
           width: 70,
           align: "center",
           render: (h, { row, index }) => {
-            return h("span", this.listQuery.pageSize * (this.listQuery.pageNo - 1) + index + 1);
+            return h(
+              "span",
+              this.listQuery.pageSize * (this.listQuery.pageNo - 1) + index + 1
+            );
           },
         },
         {

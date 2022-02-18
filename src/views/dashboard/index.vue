@@ -3,7 +3,11 @@
     <!-- 页面标题 -->
     <PageHeader>
       <template slot="logo">
-        <Avatar class="dashboard-header-logo" :src="require('../../assets/head.png')" size="large" />
+        <Avatar
+          class="dashboard-header-logo"
+          :src="require('../../assets/head.png')"
+          size="large"
+        />
       </template>
       <template slot="title">
         <div class="dashboard-header-title">{{ welcomeList[nowWeekDay] }}</div>
@@ -27,7 +31,11 @@
 <script>
 import { mapGetters } from "vuex";
 // 引入组件
-import { DashboardMenu, DashboardCard, DashboardStatis } from "./components/index";
+import {
+  DashboardMenu,
+  DashboardCard,
+  DashboardStatis,
+} from "./components/index";
 // 引入api
 import { getWeather } from "@/api/common";
 // 引入LimeUtil
@@ -57,6 +65,7 @@ export default {
     };
   },
   created() {
+    console.log(process.env);
     // this.getWeatherData();
   },
   methods: {

@@ -1,13 +1,15 @@
-// ESlint 检查配置
+/**
+ * ESlint 检查配置
+ */
 module.exports = {
   root: true,
-  parserOptions: {
-    parser: "babel-eslint"
-  },
   env: {
     browser: true,
     node: true,
     es6: true
+  },
+  parserOptions: {
+    parser: "babel-eslint"
   },
   extends: ["plugin:vue/recommended", "eslint:recommended"],
   rules: {

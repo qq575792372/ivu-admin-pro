@@ -37,7 +37,7 @@ const responseFake = (url, type, respond) => {
     url: new RegExp(`${process.env.VUE_APP_BASE_API}${url}`),
     type: type || "get",
     response(req, res) {
-      console.log(`request invoke: [${req.path}]`);
+      console.log(chalk.yellow(`> request invoke: [${req.path}]`));
       res.json(
         Mock.mock(respond instanceof Function ? respond(req, res) : respond)
       );
