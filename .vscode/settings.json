@@ -1,12 +1,12 @@
 {
-  // 工作台配置
+  /* 工作台配置 */
   "terminal.integrated.tabs.enabled": false,
 
-  // 编辑器配置
+  /* 编辑器配置 */
   "breadcrumbs.enabled": false,
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
 
-  // eslint配置，关闭掉了，根据实际情况决定开启
+  /*  eslint配置 */
   "eslint.enable": true, // 整体控制eslint生效开关
   "eslint.alwaysShowStatus": true, // 底部eslint开启状态
   "editor.codeActionsOnSave": {
@@ -20,10 +20,7 @@
     "vue-html"
   ],
 
-  // 其他插件配置
-  "svg.preview.background": "transparent",
-
-  // 格式化配置
+  /* 格式化配置 */
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,

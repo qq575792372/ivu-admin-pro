@@ -68,7 +68,6 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import path from "path";
-import { cloneDeep, random } from "lodash";
 
 export default {
   name: "TabsView",

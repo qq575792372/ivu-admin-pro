@@ -1,5 +1,4 @@
 const Mock = require("mockjs");
-const util = require("../utils");
 
 // mock生成列表元数据
 const mockListData = Mock.mock({
@@ -15,9 +14,9 @@ const mockListData = Mock.mock({
       "unit|1": ["箱", "件", "个", "枚", "双"],
       stock: "@integer(1,100)",
       createTime: "@now()",
-      updateTime: "@now()"
-    }
-  ]
+      updateTime: "@now()",
+    },
+  ],
 });
 
 /**
@@ -26,7 +25,7 @@ const mockListData = Mock.mock({
 const getList = {
   url: "/api/product/getList",
   type: "get",
-  response: config => {
+  response: (config) => {
     // 获取mock生成的元数据列表
     const list = mockListData.list;
     // 获取查询参数
@@ -44,12 +43,12 @@ const getList = {
         total: Number(list.length),
         records,
         current: Number(pageNo),
-        size: Number(pageSize)
+        size: Number(pageSize),
       },
       message: "ok",
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
-  }
+  },
 };
 
 /**
@@ -58,7 +57,7 @@ const getList = {
 const addProduct = {
   url: "/api/product/add",
   type: "post",
-  response: config => {
+  response: (config) => {
     // 获取mock生成的元数据列表
     const list = mockListData.list;
     // 获取传参数据
@@ -75,16 +74,16 @@ const addProduct = {
       unit: params.unit,
       stock: Number(params.stock),
       createTime: Mock.mock("@now()"),
-      updateTime: ""
+      updateTime: "",
     });
     // 组装返回的数据结构
     return {
       code: 0,
       data: "添加成功",
       message: "ok",
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
-  }
+  },
 };
 
 /**
@@ -93,12 +92,12 @@ const addProduct = {
 const updateProduct = {
   url: "/api/product/update",
   type: "post",
-  response: config => {
+  response: (config) => {
     // 获取mock生成的元数据列表
     const list = mockListData.list;
     // 获取传参
     const params = config.body;
-    list.some(item => {
+    list.some((item) => {
       // 修改对应id的用户信息
       if (item.id == params.id) {
         item.productName = params.productName;
@@ -117,9 +116,9 @@ const updateProduct = {
       code: 0,
       data: "修改成功",
       message: "ok",
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
-  }
+  },
 };
 
 /**
@@ -128,7 +127,7 @@ const updateProduct = {
 const deleteProduct = {
   url: "/api/product/delete",
   type: "get",
-  response: config => {
+  response: (config) => {
     // 获取mock生成的元数据列表
     const list = mockListData.list;
     // 获取查询参数
@@ -145,9 +144,9 @@ const deleteProduct = {
       code: 0,
       data: "删除成功",
       message: "ok",
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
-  }
+  },
 };
 
 /**
@@ -156,21 +155,21 @@ const deleteProduct = {
 const getDetail = {
   url: "/api/product/getDetail",
   type: "get",
-  response: config => {
+  response: (config) => {
     // 获取mock生成的元数据列表
     const list = mockListData.list;
     // 获取查询参数
     const { id } = config.query;
     // 获取满足条件的记录
-    const records = list.filter(item => item.id == id)[0];
+    const records = list.filter((item) => item.id == id)[0];
     // 组装返回的数据结构
     return {
       code: 0,
       data: records,
       message: "ok",
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
-  }
+  },
 };
 
 // export methods
