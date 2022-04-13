@@ -18,7 +18,7 @@
     "lint:fix": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
-    "@lime-util/util": "^3.0.10",
+    "@lime-util/util": "^3.0.13",
     "axios": "^0.26.1",
     "china-area-data": "^5.0.1",
     "codemirror": "^5.63.1",
