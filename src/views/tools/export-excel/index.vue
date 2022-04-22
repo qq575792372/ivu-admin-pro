@@ -57,14 +57,23 @@
             <!-- eslint-disable -->
             <template v-if="!searchCollapse">
               <Col v-for="(item, index) in 14" :key="index">
-                <Input v-model="listQuery.name" placeholder="输入内容" clearable style="width: 180px" />
+                <Input
+                  v-model="listQuery.name"
+                  placeholder="输入内容"
+                  clearable
+                  style="width: 180px"
+                />
               </Col>
             </template>
             <Col>
               <Button type="primary" @click="queryData">查询</Button>
               <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
-              <i-link type="primary" :underline="false" @click="searchCollapse = !searchCollapse">
+              <i-link
+                type="primary"
+                :underline="false"
+                @click="searchCollapse = !searchCollapse"
+              >
                 <template v-if="searchCollapse">
                   <Icon type="ios-arrow-down" />
                   展开
@@ -79,7 +88,12 @@
         </div>
         <!-- 操作按钮 -->
         <div class="operate-box">
-          <Button icon="md-cloud-download" :loading="exportLoading" type="warning" @click="handleExport">
+          <Button
+            icon="md-cloud-download"
+            :loading="exportLoading"
+            type="warning"
+            @click="handleExport"
+          >
             导出Excel
           </Button>
         </div>
@@ -91,7 +105,14 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link class="margin-left-10" type="danger" :underline="false" @click="handleClearRows">清空</i-link>
+            <i-link
+              class="margin-left-10"
+              type="danger"
+              :underline="false"
+              @click="handleClearRows"
+            >
+              清空
+            </i-link>
           </div>
         </Alert>
         <Table

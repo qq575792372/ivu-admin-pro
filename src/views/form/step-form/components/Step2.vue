@@ -61,9 +61,9 @@
 <script>
 export default {
   props: {
-    formData: Object,
-    onPrevStep: Function,
-    onNextStep: Function,
+    formData: { type: Object, default: () => {} },
+    onPrevStep: { type: Function, default: () => {} },
+    onNextStep: { type: Function, default: () => {} },
   },
   data() {
     return {

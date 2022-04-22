@@ -41,7 +41,7 @@
 <script>
 export default {
   props: {
-    onNextStep: Function,
+    onNextStep: { type: Function, default: () => {} },
   },
   data() {
     return {

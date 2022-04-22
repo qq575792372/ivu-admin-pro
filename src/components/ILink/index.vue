@@ -29,9 +29,9 @@ export default {
       default: true,
     },
     disabled: Boolean,
-    size: String,
-    href: String,
-    icon: String,
+    size: { type: String, default: "" },
+    href: { type: String, default: "" },
+    icon: { type: String, default: "" },
   },
   methods: {
     handleClick(event) {

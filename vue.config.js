@@ -19,8 +19,7 @@ module.exports = {
   publicPath: "/", // 服务部署后访问路径前缀，默认“/”
   outputDir: "dist",
   assetsDir: "static",
-  // lintOnSave: process.env.NODE_ENV === 'development',
-  lintOnSave: false,
+  lintOnSave: process.env.NODE_ENV === "development" ? true : false, // 开发环境，开启eslint保存检查，在控制台和页面显示错误，但是不会编译失败
   runtimeCompiler: true, // 支持运行时模板方式编译
   productionSourceMap: process.env.NODE_ENV === "development" ? true : false, // 开发环境会开启sourceMap
   devServer: {
@@ -46,7 +45,7 @@ module.exports = {
     },
     */
     overlay: {
-      warnings: false,
+      warnings: true,
       errors: true,
     },
     // 引入mock服务，如果正式联调后不需要，可以注释掉
@@ -137,11 +136,6 @@ module.exports = {
           echarts: {
             name: "chunk-echarts",
             test: /[\\/]node_modules[\\/](vue-)?echarts[\\/]/,
-            priority: 5,
-          },
-          styles: {
-            name: "styles", // split styles
-            test: /\.(le|sa|sc|c)ss$/,
             priority: 5,
           },
           commons: {

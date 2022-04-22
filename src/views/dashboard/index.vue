@@ -44,9 +44,6 @@ import LimeUtil from "@lime-util/util";
 export default {
   name: "Dashboard",
   components: { DashboardMenu, DashboardCard, DashboardStatis },
-  computed: {
-    ...mapGetters(["name"]),
-  },
   data() {
     return {
       // 欢迎语，根据每周天不同显示
@@ -63,6 +60,9 @@ export default {
       nowWeekDay: LimeUtil.getDayOfWeek(),
       nowWeekDayStr: LimeUtil.getDayOfWeek(new Date(), "zh"),
     };
+  },
+  computed: {
+    ...mapGetters(["name"]),
   },
   created() {
     console.log(process.env);

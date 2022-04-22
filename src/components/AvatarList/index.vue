@@ -27,6 +27,7 @@ export default {
     // 头像列表
     list: {
       type: Array,
+      default: () => [],
     },
     // Avatar组件样式
     excessStyle: {
@@ -44,7 +45,7 @@ export default {
       default: "circle",
     },
     // 头像列表最大展示数目
-    max: { type: Number },
+    max: { type: Number, default: 4 },
     // Avatar组件大小，small，default，large
     size: {
       type: String,

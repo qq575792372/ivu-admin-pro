@@ -21,8 +21,8 @@
             <Col>
               <Select
                 v-model="listQuery.productType"
-                placeholder="商品类型"
                 clearable
+                placeholder="商品类型"
                 style="width: 120px"
               >
                 <Option value="0">新鲜果蔬</Option>
@@ -251,6 +251,7 @@
 <script>
 // 引入LimeUtil
 import LimeUtil from "@lime-util/util";
+import axios from "axios";
 // 引入api
 import {
   getList,
@@ -451,14 +452,14 @@ export default {
       },
     };
   },
-  created() {
+  async created() {
     this.queryData();
   },
   methods: {
     /**
      * 查询列表
      */
-    queryData() {
+    async queryData() {
       this.listLoading = true;
       getList({
         pageNo: this.listQuery.pageNo,
@@ -469,7 +470,7 @@ export default {
             this.listLoading = false;
           }, 300);
           if (res.code === 0) {
-            this.list = res.data.records;
+            this.list = res.data?.records;
             this.listTotal = res.data.total;
           } else {
             this.$Message.error(res.data.message);
@@ -478,10 +479,6 @@ export default {
         .catch((error) => {
           this.listLoading = false;
         });
-      // 关闭loading
-      setTimeout(() => {
-        this.listLoading = false;
-      }, 300);
     },
     // 重置查询列表
     handleReset() {

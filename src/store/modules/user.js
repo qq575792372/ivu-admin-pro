@@ -46,9 +46,9 @@ const actions = {
    * 退出登录
    */
   logout({ dispatch, commit, rootState, rootGetters, state }) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       // remove token from cookie
-      await dispatch("resetToken");
+      dispatch("resetToken");
       // reset router
       resetRouter();
       // 不同模块之间action/mutations调用，需要传参，以及开启root=true

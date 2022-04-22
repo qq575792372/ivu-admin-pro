@@ -20,7 +20,7 @@ export default {
     },
     // 图标大小
     size: {
-      type: Number | String,
+      type: [Number, String],
       default: 14,
     },
     // 图标颜色

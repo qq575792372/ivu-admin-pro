@@ -8,6 +8,12 @@ module.exports = {
     node: true,
     es6: true,
   },
+  parserOptions: {
+    ecmaVersion: 2020, // 限制 ECMA Script的版本
+    ecmaFeatures: {
+      jsx: true, // 开启jsx模板支持
+    },
+  },
   extends: [
     "eslint:recommended",
     "plugin:vue/recommended",
@@ -19,6 +25,7 @@ module.exports = {
     "no-unused-vars": "off", // 忽略未使用的变量
     "no-unreachable": "off", // 忽略return后未执行代码的提示
     "no-empty": "off", // 忽略代码必须返回结果的限制
+    "no-prototype-builtins": "off", // 忽略不能直接使用Object原型的一些方法
 
     /* vue规则 */
     "vue/no-unused-components": "off", // vue忽略未使用组件提示

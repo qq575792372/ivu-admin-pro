@@ -54,16 +54,19 @@ export default {
     // 成功之后的回调
     onSuccess: {
       type: Function,
+      default: () => {},
     },
 
     // 失败之后的回调
     onError: {
       type: Function,
+      default: () => {},
     },
 
     // 重置之后的回调
     onReset: {
       type: Function,
+      default: () => {},
     },
   },
 

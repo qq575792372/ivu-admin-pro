@@ -158,6 +158,7 @@ export default {
       });
     },
     initTinymce() {
+      /* eslint-disable */
       //  const _this = this
       const _this = this;
       window.tinymce.init({

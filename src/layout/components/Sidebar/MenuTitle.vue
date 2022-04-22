@@ -5,16 +5,16 @@ export default {
   props: {
     icon: {
       type: String,
-      default: ""
+      default: "",
     },
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     subtitle: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   render(h, context) {
     const { icon, title, subtitle } = context.props;
@@ -31,11 +31,17 @@ export default {
     if (title) {
       vnodes.push(
         <span
-          class={["i-layout-menu-side-submenu-title", subtitle ? "i-layout-menu-side-submenu-title-with-subtitle" : ""]}
+          class={[
+            "i-layout-menu-side-submenu-title",
+            subtitle ? "i-layout-menu-side-submenu-title-with-subtitle" : "",
+          ]}
         >
           {title}
           <span
-            class={["i-layout-menu-side-submenu-subtitle", icon ? "i-layout-menu-side-submenu-subtitle-with-icon" : ""]}
+            class={[
+              "i-layout-menu-side-submenu-subtitle",
+              icon ? "i-layout-menu-side-submenu-subtitle-with-icon" : "",
+            ]}
           >
             {subtitle}
           </span>
@@ -43,7 +49,7 @@ export default {
       );
     }
     return vnodes;
-  }
+  },
 };
 </script>
 
