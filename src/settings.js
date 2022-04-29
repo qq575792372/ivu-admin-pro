@@ -1,17 +1,10 @@
 module.exports = {
-  /**
-   * 页面标签的title
-   */
+  // 页面标签的title
   title: "ivu admin pro",
-
-  /**
-   * 侧边栏菜单顶部标题，为空则只显示logo
-   */
+  // 侧边栏菜单顶部标题，为空则只显示logo
   sidebarLogoTitle: "ivu后台管理",
 
-  /**
-   * 布局设置
-   */
+  /* 布局设置 */
   // 侧边栏的宽度，单位px，不可动态修改，需要和 styles/variables.less中 @base-sider-width 保持一致
   sideBarWidth: 230,
   layout: {
@@ -40,12 +33,8 @@ module.exports = {
     rootDashboard: true,
   },
 
-  /**
-   * 是否显示动态标题
-   */
+  // 是否显示动态标题
   showDynamicTitle: true,
-  /**
-   * 背景图片高斯模糊程度，（0-100）区间，数字越大越模糊
-   */
+  // 背景图片高斯模糊程度，（0
   loginBgBlur: "20",
 };

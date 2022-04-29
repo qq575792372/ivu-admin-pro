@@ -10,7 +10,7 @@
     ]"
     :href="disabled ? null : href"
     v-bind="$attrs"
-    @click="handleClick"
+    @click.prevent="handleClick"
   >
     <Icon v-if="icon" :type="icon" />
     <slot />

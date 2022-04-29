@@ -1,19 +1,21 @@
 import router from "./router";
 import store from "./store";
-import NProgress from "nprogress"; // progress bar
-import "nprogress/nprogress.css"; // progress bar style
-import { getToken } from "@/utils/auth"; // get token from cookie
+
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+NProgress.configure({ showSpinner: false });
+
+import { getToken } from "@/utils/auth";
 
 // 引入异步路由菜单数据
 import { asyncRoutes } from "./router/async-routes";
 
-NProgress.configure({ showSpinner: false }); // NProgress Configuration
-
-const whiteList = ["/login"]; // no redirect whitelist
+// 白名单
+// 在白名单中的路由不受token控制登录
+const whiteList = ["/login"];
 
 // 路由前置守卫
 router.beforeEach(async (to, from, next) => {
-  // start progress bar
   NProgress.start();
   // 设置页面标题（如果开启了动态标题则会拼加路由的title）
   to.meta.title &&
@@ -56,7 +58,7 @@ router.beforeEach(async (to, from, next) => {
   }
 });
 
+// 路由后置守卫
 router.afterEach((to, from) => {
-  // finish progress bar
   NProgress.done();
 });

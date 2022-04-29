@@ -7,30 +7,30 @@ import { getToken } from "@/utils/auth";
 axios.defaults.withCredentials = true; // 设置cross跨域 并设置访问权限 允许跨域携带cookie信息
 axios.defaults.crossDomain = true; // 设置axios跨域的配置
 
-// create axios
+// 创建服务
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_SERVE + process.env.VUE_APP_BASE_API,
   timeout: 3 * 60 * 1000,
 });
 
-// request interceptor
+// 请求拦截
 service.interceptors.request.use(
   (config) => {
-    // do something before request is sent
+    /* 这里可以设置请求拦截的内容 */
 
+    // 设置token
     if (store.getters.token) {
       config.headers["X-Token"] = getToken();
     }
     return config;
   },
   (error) => {
-    // do something with request error
-    console.error("request error", error); // for debug
+    console.error("request error", error);
     return Promise.reject(error);
   }
 );
 
-// response interceptor
+// 响应拦截
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
@@ -41,7 +41,7 @@ service.interceptors.response.use(
     }
   },
   (error) => {
-    console.error("response error", error); // for debug
+    console.error("response error", error);
     Message.error({
       content: error.message,
     });
