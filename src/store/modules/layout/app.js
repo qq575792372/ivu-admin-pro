@@ -1,12 +1,10 @@
-import {getCookie,setCookie} from '@lime-util/util'
+import { getCookie, setCookie } from "@lime-util/util";
 
 // state
 const state = {
   sidebar: {
     // 侧边栏是否展开
-    opened: getCookie("sidebarStatus")
-      ? !!+getCookie("sidebarStatus")
-      : true, // sidebarStatus代表的状态：1：展开，0：关闭
+    opened: getCookie("sidebarStatus") ? !!+getCookie("sidebarStatus") : true, // sidebarStatus代表的状态：1：展开，0：关闭
   },
   device: "desktop", // 设备类型，桌面：desktop；手机：mobile；平板：tablet
 };
@@ -16,17 +14,17 @@ const mutations = {
   TOGGLE_SIDEBAR: (state) => {
     state.sidebar.opened = !state.sidebar.opened;
     if (state.sidebar.opened) {
-    setCookie("sidebarStatus", 1);
+      setCookie("sidebarStatus", 1);
     } else {
-     setCookie("sidebarStatus", 0);
+      setCookie("sidebarStatus", 0);
     }
   },
   SHOW_SIDEBAR: (state) => {
-   setCookie("sidebarStatus", 1);
+    setCookie("sidebarStatus", 1);
     state.sidebar.opened = true;
   },
   CLOSE_SIDEBAR: (state) => {
-   setCookie("sidebarStatus", 0);
+    setCookie("sidebarStatus", 0);
     state.sidebar.opened = false;
   },
   TOGGLE_DEVICE: (state, device) => {

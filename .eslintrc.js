@@ -9,6 +9,7 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
+    parser: "babel-eslint",
     ecmaVersion: 2020, // 限制 ECMA Script的版本
     ecmaFeatures: {
       jsx: true, // 开启jsx模板支持
