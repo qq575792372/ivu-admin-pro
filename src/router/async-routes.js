@@ -293,12 +293,12 @@ export const asyncRoutes = [
     alwaysShow: true,
     children: [
       {
-        path: "i-link",
-        name: "ILinkDemo",
-        component: () => import("@/views/components-demo/i-link"),
+        path: "link",
+        name: "LinkDemo",
+        component: () => import("@/views/components-demo/link"),
         meta: {
-          title: "Link文字链接",
-          subtitle: "ILink",
+          title: "文字链接",
+          subtitle: "Link",
         },
       },
       {
@@ -308,6 +308,15 @@ export const asyncRoutes = [
         meta: {
           title: "页头",
           subtitle: "PageHeader",
+        },
+      },
+      {
+        path: "title",
+        name: "TitleDemo",
+        component: () => import("@/views/components-demo/title"),
+        meta: {
+          title: "标题",
+          subtitle: "Title",
         },
       },
       {

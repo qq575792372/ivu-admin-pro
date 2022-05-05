@@ -26,7 +26,7 @@
           </FormItem>
         </Form>
       </div>
-      <div slot="actions">
+      <div slot="action">
         <Button type="primary" @click="handleAgain">再转一笔</Button>
         <Button>查看账单</Button>
       </div>

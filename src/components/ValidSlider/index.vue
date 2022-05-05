@@ -1,4 +1,4 @@
-<!-- 滑块验证码组件 -->
+<!-- ValidSlider 滑块验证码组件 -->
 <template>
   <div class="i-valid-slider" :class="[size ? `i-valid-slider-${size}` : '']">
     <div class="i-valid-slider-inner" :class="[rangeStatus ? 'success' : '']">

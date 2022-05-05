@@ -1,4 +1,4 @@
-<!-- ILink文字链接组件 -->
+<!-- ILink 文字链接组件 -->
 <template>
   <a
     :class="[
@@ -26,7 +26,7 @@ export default {
     },
     underline: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     disabled: Boolean,
     size: { type: String, default: "" },

@@ -1,4 +1,4 @@
-<!-- 头像列表 -->
+<!-- AvatarList 头像列表组件 -->
 <template>
   <div class="ivu-avatar-list" :class="avatarListClasses">
     <div

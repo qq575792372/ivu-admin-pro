@@ -28,17 +28,9 @@ Vue.use(MetaInfo);
 import VueClipboard2 from "vue-clipboard2";
 Vue.use(VueClipboard2);
 
-// 全局组件
-Vue.component("PageHeader", () => import("@/components/PageHeader"));
-Vue.component("ILink", () => import("@/components/ILink"));
-Vue.component("Result", () => import("@/components/Result"));
-Vue.component("Description", () => import("@/components/Description"));
-Vue.component("DescriptionItem", () =>
-  import("@/components/Description/DescriptionItem")
-);
-Vue.component("VueScrollbar", () => import("@/components/VueScrollbar"));
-Vue.component("AvatarList", () => import("@/components/AvatarList"));
-Vue.component("ValidSlider", () => import("@/components/ValidSlider"));
+// 引入全局组件
+import components from "@/plugins/components";
+Vue.use(components);
 
 // 组织vue在启动时生成生产提示
 Vue.config.productionTip = false;

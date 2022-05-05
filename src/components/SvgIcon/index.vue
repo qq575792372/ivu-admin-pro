@@ -1,4 +1,4 @@
-<!-- Svg图标组件 -->
+<!-- SvgIcon 图标组件 -->
 <template>
   <svg
     class="svg-icon"

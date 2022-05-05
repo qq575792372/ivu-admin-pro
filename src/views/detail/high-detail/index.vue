@@ -29,7 +29,7 @@
             </DescriptionItem>
           </Description>
         </div>
-        <div slot="actions">
+        <div slot="action">
           <Button type="primary">通过</Button>
           <Button type="error">不通过</Button>
         </div>

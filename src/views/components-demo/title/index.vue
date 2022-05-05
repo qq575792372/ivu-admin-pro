@@ -1,42 +1,68 @@
 <template>
   <div class="app-container">
     <!-- 页面标题 -->
-    <PageHeader title="SvgIcon图标组件" content="以下展示组件用法" />
+    <PageHeader title="Title标题" />
 
     <!-- main -->
     <div class="main-container">
       <!-- 基础用法 -->
       <div class="demo-block">
         <div class="demo-title">基础用法</div>
-        <div class="demo-desc">
-          设置type="user"，图标名就是src/icons/svg下面的文件名称
-        </div>
+        <div class="demo-desc"></div>
         <div class="demo-use">
-          <SvgIcon type="user" />
+          <Title title="用户信息" />
+          <div>内容</div>
+
+          <Title title="等级信息" />
+          <div>内容</div>
         </div>
       </div>
 
-      <!-- 图标大小 -->
+      <!-- 不带左侧边线 -->
       <div class="demo-block">
-        <div class="demo-title">图标大小</div>
-        <div class="demo-desc">设置size="20"</div>
+        <div class="demo-title">不带左侧边线</div>
+        <div class="demo-desc"></div>
         <div class="demo-use">
-          <SvgIcon type="user" class="margin-right-4" />
-          <SvgIcon type="user" size="20" />
+          <Title title="用户信息" :show-line="false" />
+          <div>内容</div>
+
+          <Title title="等级信息" :show-line="false" />
+          <div>内容</div>
         </div>
       </div>
 
-      <!-- 图标颜色 -->
+      <!-- 标题图标 -->
       <div class="demo-block">
-        <div class="demo-title">图标颜色</div>
-        <div class="demo-desc">设置color颜色，支持rgba，rgb，十六进制</div>
+        <div class="demo-title">标题图标</div>
+        <div class="demo-desc"></div>
         <div class="demo-use">
-          <SvgIcon
-            type="user"
-            color="rgba(237,64,20,1)"
-            class="margin-right-4"
-          />
-          <SvgIcon type="user" size="20" color="#2d8cf0" />
+          <Title title="用户信息" icon="md-person" />
+          <div>带左侧边线的标题图标</div>
+
+          <Title title="等级信息" :show-line="false" icon="md-heart" />
+          <div>内容</div>
+        </div>
+      </div>
+
+      <!-- 插槽用法 -->
+      <div class="demo-block">
+        <div class="demo-title">插槽用法</div>
+        <div class="demo-desc"></div>
+        <div class="demo-use">
+          <Title>
+            <template slot="title">用户信息</template>
+            <template slot="action">
+              <Button type="primary" size="small">编辑</Button>
+              <Button type="danger" size="small">禁用</Button>
+            </template>
+          </Title>
+          <Title>
+            <template slot="title">等级信息</template>
+            <template slot="action">
+              <Button type="primary" size="small">编辑</Button>
+              <Button type="danger" size="small">禁用</Button>
+            </template>
+          </Title>
         </div>
       </div>
     </div>
@@ -45,11 +71,7 @@
 <script>
 export default {
   computed: {},
-  methods: {
-    handleClick() {
-      alert();
-    },
-  },
+  methods: {},
 };
 </script>
 

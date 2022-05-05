@@ -1,4 +1,4 @@
-<!-- 封装vue-scroll组件 -->
+<!-- VueScrollbar 封装vue-scroll组件 -->
 <template>
   <vue-scroll ref="vueScrollRef" :ops="scrollOptions">
     <slot />

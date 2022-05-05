@@ -1,4 +1,4 @@
-<!-- 描述信息组件 -->
+<!-- Description 描述信息组件 -->
 <template>
   <div class="i-description">
     <!-- header -->
@@ -71,7 +71,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     &-title {
-      color: #17233d;
+      color: #303133;
       font-weight: 500;
       font-size: 16px;
     }

@@ -1,4 +1,4 @@
-<!-- Iframe组件 -->
+<!-- Iframe 组件 -->
 <template>
   <div v-loading="loading" :style="'height:' + height">
     <iframe

@@ -18,9 +18,7 @@
             <div slot="subtitle" class="demo-subtitle">
               副标题（支持slot方式）
             </div>
-            <div slot="actions" class="demo-actions">
-              操作按钮（仅slot方式）
-            </div>
+            <div slot="action" class="demo-action">操作按钮（仅slot方式）</div>
             <div slot="content" class="demo-content">内容（支持slot方式）</div>
             <div slot="extra" class="demo-extra">附加内容（支持slot方式）</div>
           </PageHeader>
@@ -32,7 +30,12 @@
         <div class="demo-title">基础用法</div>
         <div class="demo-desc"></div>
         <div class="demo-use">
-          <PageHeader title="页头标题" content="内容描述" extra="附加内容" />
+          <PageHeader
+            title="页头标题"
+            content="内容描述"
+            action="操作内容"
+            extra="附加内容"
+          />
         </div>
       </div>
 
@@ -42,7 +45,7 @@
         <div class="demo-desc">props和slot方式结合用法</div>
         <div class="demo-use">
           <PageHeader title="页头标题" content="内容描述" extra="附加内容">
-            <template slot="actions">
+            <template slot="action">
               <ButtonGroup class="margin-right-8">
                 <Button type="default">操作1</Button>
                 <Button type="default">操作2</Button>
@@ -92,7 +95,7 @@ export default {
     background: #40a9ff;
   }
   .demo-logo,
-  .demo-actions,
+  .demo-action,
   .demo-content,
   .demo-extra {
     background: #69c0ff;

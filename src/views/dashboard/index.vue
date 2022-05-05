@@ -86,7 +86,7 @@ export default {
       border-radius: 50%;
     }
     &-title {
-      color: #17233d;
+      color: #303133;
     }
     &-content {
       color: #808695;

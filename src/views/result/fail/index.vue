@@ -11,7 +11,7 @@
           <div>1.重新检查信息</div>
           <div>2.再次尝试提交</div>
         </template>
-        <div slot="actions">
+        <div slot="action">
           <Button type="primary">主要操作</Button>
           <Button type="default">次要操作</Button>
           <Button type="error">警告操作</Button>

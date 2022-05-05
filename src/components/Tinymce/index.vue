@@ -1,3 +1,4 @@
+<!-- Tinymce 富文本编辑器组件 -->
 <template>
   <div
     :class="{ fullscreen: fullscreen }"

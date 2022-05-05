@@ -15,7 +15,7 @@
         <div slot="extra" class="text-align-center">
           已提交申请，等待部门审核
         </div>
-        <div slot="actions">
+        <div slot="action">
           <Button type="primary">主要操作</Button>
           <Button type="default">次要操作</Button>
           <Button type="error">警告操作</Button>

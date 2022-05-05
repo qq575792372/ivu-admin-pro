@@ -1,4 +1,4 @@
-<!-- 页头组件 -->
+<!-- PageHeader 页头组件 -->
 <template>
   <div class="i-page-header">
     <!-- logo slot -->
@@ -24,9 +24,10 @@
           <slot v-if="$slots.title" name="title" />
           <span v-else>{{ title }}</span>
         </div>
-        <!-- actions slot-->
-        <div v-if="$slots.actions" class="i-page-header-actions">
-          <slot name="actions" />
+        <!-- action slot-->
+        <div class="i-page-header-action">
+          <slot v-if="$slots.action" name="action" />
+          <span v-else>{{ action }}</span>
         </div>
       </div>
       <div class="i-page-header-main-row">
@@ -57,6 +58,10 @@ export default {
       default: false || "",
     },
     content: {
+      type: String,
+      default: "",
+    },
+    action: {
       type: String,
       default: "",
     },
@@ -117,7 +122,7 @@ export default {
       width: 100%;
       // title
       .i-page-header-title {
-        color: #17233d;
+        color: #303133;
         font-weight: 500;
         font-size: 20px;
         flex: auto;
@@ -127,12 +132,12 @@ export default {
       .i-page-header-content {
         flex: auto;
       }
-      .i-page-header-actions {
+      .i-page-header-action {
         margin-bottom: 14px;
         min-width: 240px;
       }
-      // actions and extra common
-      .i-page-header-actions,
+      // action and extra common
+      .i-page-header-action,
       .i-page-header-extra {
         flex: 0 1 auto;
         text-align: right;
@@ -161,7 +166,7 @@ export default {
     &-main {
       &-row {
         display: block;
-        .i-page-header-actions {
+        .i-page-header-action {
           margin-left: 0px;
           text-align: left;
         }

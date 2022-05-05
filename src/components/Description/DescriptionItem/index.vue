@@ -1,4 +1,4 @@
-<!-- 描述信息项组件 -->
+<!-- DescriptionItem 描述信息项组件 -->
 <template>
   <Col v-bind="spanAttrs">
     <div class="i-description-item">

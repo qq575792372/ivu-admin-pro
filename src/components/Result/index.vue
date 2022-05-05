@@ -1,4 +1,4 @@
-<!-- 操作结果反馈组件 -->
+<!-- Result 操作结果反馈组件 -->
 <template>
   <div class="i-result">
     <!-- icon -->
@@ -26,9 +26,9 @@
       <slot v-if="$slots.extra" name="extra" />
       <div v-else>{{ extra }}</div>
     </div>
-    <!-- actions slot -->
-    <div class="i-result-actions">
-      <slot v-if="$slots.actions" name="actions" />
+    <!-- action slot -->
+    <div class="i-result-action">
+      <slot v-if="$slots.action" name="action" />
     </div>
   </div>
 </template>
@@ -74,7 +74,7 @@ export default {
 
   &-title {
     margin-bottom: 10px;
-    color: #17233d;
+    color: #303133;
     font-weight: 500;
     font-size: 24px;
     line-height: 32px;
@@ -94,7 +94,7 @@ export default {
     border-radius: 4px;
   }
 
-  &-actions {
+  &-action {
     margin-top: 32px;
     .ivu-btn {
       margin: 0 6px;

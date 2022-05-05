@@ -1,10 +1,12 @@
 // state
 const state = {
   // 左侧菜单显示的徽标，通过vuex来动态更改
+  // 这里的单个配置项使用的是官方组件 <Badge> 的 props 配置
   sidebarBadges: [
     {
       path: "/dashboard/index",
-      count: 8,
+      count: 123,
+      "overflow-count": 99,
     },
     {
       path: "/components-demo",
@@ -16,6 +18,12 @@ const state = {
       path: "/table/basic-table",
       count: 10,
       type: "success",
+    },
+    // title新特性
+    {
+      path: "/components-demo/title",
+      text: "New",
+      type: "warning",
     },
     // 一级菜单显示徽标
     {

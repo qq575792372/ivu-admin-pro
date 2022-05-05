@@ -1,4 +1,4 @@
-<!-- Json编辑器组件 -->
+<!-- Json 编辑器组件 -->
 <template>
   <div class="json-editor">
     <textarea ref="textarea" />
