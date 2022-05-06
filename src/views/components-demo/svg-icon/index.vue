@@ -19,9 +19,9 @@
       <!-- 图标大小 -->
       <div class="demo-block">
         <div class="demo-title">图标大小</div>
-        <div class="demo-desc">设置size="20"</div>
+        <div class="demo-desc">size可以是数字，也可以是带像素单位的字符串</div>
         <div class="demo-use">
-          <SvgIcon type="user" class="margin-right-4" />
+          <SvgIcon type="user" :size="20" class="margin-right-4" />
           <SvgIcon type="user" size="20" />
         </div>
       </div>

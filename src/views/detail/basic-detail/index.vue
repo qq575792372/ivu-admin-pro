@@ -15,7 +15,8 @@
           :label-width="labelWidth"
           label-position="left"
         >
-          <template slot="extra">
+          <!-- 操作按钮slot -->
+          <template slot="action">
             <Button type="default">操作1</Button>
             <Button type="primary">操作2</Button>
             <Button type="error">操作3</Button>
@@ -47,7 +48,7 @@
           :label-width="labelWidth"
           label-position="left"
         >
-          <template slot="extra">
+          <template slot="action">
             <Button type="default">操作1</Button>
             <Button type="primary">操作2</Button>
           </template>
@@ -75,7 +76,7 @@
           label-position="left"
         >
           <!-- 附加内容slot -->
-          <template slot="extra">
+          <template slot="action">
             <Button type="default">操作1</Button>
             <Button type="primary">操作2</Button>
           </template>
@@ -86,9 +87,6 @@
               <em>slot="custom"</em>
               方式自定义描述信息内容
             </div>
-          </template>
-          <!-- 自定义描述信息内容slot -->
-          <template slot="custom">
             <Table :columns="tableColumns" :data="tableData">
               <template slot="originPrice" slot-scope="{ row }">
                 ￥{{ row.originPrice }}

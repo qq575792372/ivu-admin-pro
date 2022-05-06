@@ -4,7 +4,7 @@
 const install = function (Vue) {
   Vue.component("PageHeader", () => import("@/components/PageHeader"));
 
-  // 文字链接组件名支持 Link 或者 i-link
+  // 文字链接组件支持 Link 或者 i-link 命名
   Vue.component("ILink", () => import("@/components/Link"));
   Vue.component("Link", () => import("@/components/Link"));
 

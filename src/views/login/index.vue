@@ -64,7 +64,7 @@
         <!-- 记住登录和忘记密码 -->
         <div class="login-operate">
           <Checkbox v-model="isRemberLogin">记住登录</Checkbox>
-          <i-link :underline="false" type="primary">忘记密码?</i-link>
+          <Link :underline="false" type="primary">忘记密码?</Link>
         </div>
         <!-- 登录 -->
         <Button
@@ -93,7 +93,7 @@
           <img src="../../assets/login/weibo.png" />
           <img src="../../assets/login/alipay.png" />
         </div>
-        <i-link :underline="false" type="primary">注册账号</i-link>
+        <Link :underline="false" type="primary">注册账号</Link>
       </div>
       <!-- 底部提示 -->
       <div class="login-tips clearfix">

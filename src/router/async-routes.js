@@ -285,7 +285,7 @@ export const asyncRoutes = [
   {
     path: "/components-demo",
     component: Layout,
-    redirect: "/components-demo/i-link",
+    redirect: "/components-demo/link",
     meta: {
       title: "组件页面",
       icon: "ivu-icon-md-apps",

@@ -66,7 +66,7 @@
               <Button type="primary" @click="queryData">查询</Button>
               <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
-              <i-link
+              <Link
                 type="primary"
                 :underline="false"
                 @click="searchCollapse = !searchCollapse"
@@ -79,7 +79,7 @@
                   <Icon type="ios-arrow-up" />
                   收起
                 </template>
-              </i-link>
+              </Link>
             </Col>
           </Row>
         </div>
@@ -98,14 +98,14 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link
+            <Link
               class="margin-left-10"
               type="danger"
               :underline="false"
               @click="handleClearRows"
             >
               清空
-            </i-link>
+            </Link>
           </div>
         </Alert>
         <Table
@@ -122,16 +122,12 @@
           </template>
           <!-- 操作 -->
           <template slot-scope="{ row, index }" slot="action" :width="100">
-            <i-link
-              type="primary"
-              :underline="false"
-              @click="showEditModal(row)"
-            >
+            <Link type="primary" :underline="false" @click="showEditModal(row)">
               编辑
-            </i-link>
-            <i-link type="danger" :underline="false" @click="handleDelete(row)">
+            </Link>
+            <Link type="danger" :underline="false" @click="handleDelete(row)">
               删除
-            </i-link>
+            </Link>
           </template>
         </Table>
       </div>
@@ -158,7 +154,7 @@
       :title="editForm.id ? '编辑商品' : '添加商品'"
       width="640px"
     >
-      <div>
+      <div class="padding-left-40 padding-right-40">
         <Form
           ref="editFormRef"
           :model="editForm"
@@ -173,7 +169,7 @@
               v-model="editForm.productName"
               placeholder="输入商品名称"
               maxlength="100"
-              style="width: 360px"
+              style="width: 100%"
               clearable
             ></Input>
           </FormItem>
@@ -181,7 +177,7 @@
             <Select
               v-model="editForm.productType"
               placeholder="选择商品分类"
-              style="width: 360px"
+              style="width: 100%"
               clearable
             >
               <Option value="0">新鲜果蔬</Option>
@@ -198,7 +194,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width: 360px"
+              style="width: 100%"
             />
           </FormItem>
           <FormItem label="商品售价" prop="sellPrice">
@@ -207,7 +203,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width: 360px"
+              style="width: 100%"
             />
           </FormItem>
           <FormItem label="单位" prop="unit">
@@ -215,7 +211,7 @@
               v-model="editForm.unit"
               placeholder="输入单位（如：双，个，件，箱..）"
               maxlength="2"
-              style="width: 360px"
+              style="width: 100%"
               clearable
             />
           </FormItem>
@@ -224,7 +220,7 @@
               v-model="editForm.stock"
               :min="0"
               placeholder="输入库存"
-              style="width: 360px"
+              style="width: 100%"
             />
           </FormItem>
           <FormItem v-if="editForm.id" label="状态">
@@ -232,7 +228,7 @@
               v-model="editForm.status"
               placeholder="商品状态"
               clearable
-              style="width: 360px"
+              style="width: 100%"
             >
               <Option value="0">已下架</Option>
               <Option value="1">已上架</Option>

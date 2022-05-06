@@ -8,10 +8,10 @@
         <slot v-if="$slots.title" name="title" />
         <span v-else>{{ title }}</span>
       </div>
-      <!-- extra and slot -->
-      <div class="i-description-header-extra">
-        <slot v-if="$slots.extra" name="extra" />
-        <span v-else>{{ extra }}</span>
+      <!-- action and slot -->
+      <div class="i-description-header-action">
+        <slot v-if="$slots.action" name="action" />
+        <span v-else>{{ action }}</span>
       </div>
     </div>
     <!-- body -->
@@ -75,7 +75,7 @@ export default {
       font-weight: 500;
       font-size: 16px;
     }
-    &-extra {
+    &-action {
       // has ivu-btn styles
       .ivu-btn:not(:last-child) {
         margin-right: 8px;

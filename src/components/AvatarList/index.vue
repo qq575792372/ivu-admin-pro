@@ -35,7 +35,7 @@ export default {
       default: () => {
         return {
           color: "#f56a00",
-          backgroundColor: "#fde3cf",
+          "background-color": "#fde3cf",
         };
       },
     },

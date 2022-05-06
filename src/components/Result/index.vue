@@ -9,23 +9,30 @@
         type="ios-checkmark-circle"
       />
       <Icon
-        v-if="type == 'fail'"
-        class="i-result-icon-fail"
+        v-if="type == 'error'"
+        class="i-result-icon-error"
         type="ios-close-circle"
       />
     </div>
+
     <!-- title -->
-    <div v-if="title" class="i-result-title">{{ title }}</div>
-    <!-- desc slot -->
-    <div class="i-result-desc">
-      <slot v-if="$slots.desc" name="desc" />
-      <div v-else>{{ desc }}</div>
+    <div class="i-result-title">
+      <slot v-if="$slots.title" name="title" />
+      <div v-else>{{ title }}</div>
     </div>
+
+    <!-- description slot -->
+    <div class="i-result-description">
+      <slot v-if="$slots.description" name="description" />
+      <div v-else>{{ description }}</div>
+    </div>
+
     <!-- extra slot -->
     <div class="i-result-extra">
       <slot v-if="$slots.extra" name="extra" />
       <div v-else>{{ extra }}</div>
     </div>
+
     <!-- action slot -->
     <div class="i-result-action">
       <slot v-if="$slots.action" name="action" />
@@ -43,7 +50,7 @@ export default {
       type: String,
       default: "",
     },
-    desc: {
+    description: {
       type: String,
       default: "",
     },
@@ -66,7 +73,7 @@ export default {
       font-size: 76px;
       color: #19be6b;
     }
-    &-fail {
+    &-error {
       font-size: 76px;
       color: #ed4014;
     }
@@ -80,7 +87,7 @@ export default {
     line-height: 32px;
   }
 
-  &-desc {
+  &-description {
     margin-bottom: 24px;
     color: #808695;
     font-size: 14px;

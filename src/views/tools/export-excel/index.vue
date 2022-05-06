@@ -69,7 +69,7 @@
               <Button type="primary" @click="queryData">查询</Button>
               <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
-              <i-link
+              <Link
                 type="primary"
                 :underline="false"
                 @click="searchCollapse = !searchCollapse"
@@ -82,7 +82,7 @@
                   <Icon type="ios-arrow-up" />
                   收起
                 </template>
-              </i-link>
+              </Link>
             </Col>
           </Row>
         </div>
@@ -105,14 +105,14 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link
+            <Link
               class="margin-left-10"
               type="danger"
               :underline="false"
               @click="handleClearRows"
             >
               清空
-            </i-link>
+            </Link>
           </div>
         </Alert>
         <Table

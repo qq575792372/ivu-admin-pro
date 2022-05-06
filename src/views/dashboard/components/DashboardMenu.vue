@@ -3,73 +3,73 @@
     <!-- 用户 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-people" color="#69c0ff" />
           <p>用户</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 数据 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-podium" color="#95de64" />
           <p>数据</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 购物车 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-cart" color="#ff9c6e" />
           <p>购物车</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 订单 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-clipboard" color="#b37feb" />
           <p>订单</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 财务 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-card" color="#ffd666" />
           <p>财务</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 消息 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="ios-text" color="#5cdbd3" />
           <p>消息</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 日程 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-calendar" color="#fb8500" />
           <p>日程</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
     <!-- 设置 -->
     <Col v-bind="grid" class="margin-bottom-14">
       <Card :bordered="false">
-        <i-link :underline="false" href="javascript:void(0)">
+        <Link :underline="false" href="javascript:void(0)">
           <Icon type="md-settings" color="#2db7f5" />
           <p>设置</p>
-        </i-link>
+        </Link>
       </Card>
     </Col>
   </Row>

@@ -54,14 +54,23 @@
             <!-- eslint-disable -->
             <template v-if="!searchCollapse">
               <Col v-for="(item, index) in 14" :key="index">
-                <Input v-model="listQuery.name" placeholder="输入内容" clearable style="width: 180px" />
+                <Input
+                  v-model="listQuery.name"
+                  placeholder="输入内容"
+                  clearable
+                  style="width: 180px"
+                />
               </Col>
             </template>
             <Col>
               <Button type="primary" @click="queryData">查询</Button>
               <Button type="default" @click="handleReset">重置</Button>
               <!-- 查询条件展开和收起 -->
-              <i-link type="primary" :underline="false" @click="searchCollapse = !searchCollapse">
+              <Link
+                type="primary"
+                :underline="false"
+                @click="searchCollapse = !searchCollapse"
+              >
                 <template v-if="searchCollapse">
                   <Icon type="ios-arrow-down" />
                   展开
@@ -70,13 +79,15 @@
                   <Icon type="ios-arrow-up" />
                   收起
                 </template>
-              </i-link>
+              </Link>
             </Col>
           </Row>
         </div>
         <!-- 操作按钮 -->
         <div class="operate-box">
-          <Button icon="md-add" type="primary" @click="showAddModal">新增</Button>
+          <Button icon="md-add" type="primary" @click="showAddModal">
+            新增
+          </Button>
           <Button icon="md-done-all" type="primary">批量操作</Button>
         </div>
       </div>
@@ -87,7 +98,14 @@
             已选择
             <span class="text-bold text-primary">{{ selectRows.length }}</span>
             条数据
-            <i-link class="margin-left-10" type="danger" :underline="false" @click="handleClearRows">清空</i-link>
+            <Link
+              class="margin-left-10"
+              type="danger"
+              :underline="false"
+              @click="handleClearRows"
+            >
+              清空
+            </Link>
           </div>
         </Alert>
         <Table
@@ -113,14 +131,33 @@
           <!-- 操作 -->
           <template slot-scope="{ row, index }" slot="action">
             <span v-if="row.editable">
-              <Button type="success" @click="handleSubmitEditLine(row, index)" size="small" style="margin-right: 3px">
+              <Button
+                type="success"
+                @click="handleSubmitEditLine(row, index)"
+                size="small"
+                style="margin-right: 3px"
+              >
                 保存
               </Button>
-              <Button type="error" @click="handleCancelEditLine(row, index)" size="small">取消</Button>
+              <Button
+                type="error"
+                @click="handleCancelEditLine(row, index)"
+                size="small"
+              >
+                取消
+              </Button>
             </span>
             <span v-else>
-              <i-link type="primary" :underline="false" @click="handleEditLine(row, index)">编辑</i-link>
-              <i-link type="danger" :underline="false" @click="handleDelete(row)">删除</i-link>
+              <Link
+                type="primary"
+                :underline="false"
+                @click="handleEditLine(row, index)"
+              >
+                编辑
+              </Link>
+              <Link type="danger" :underline="false" @click="handleDelete(row)">
+                删除
+              </Link>
             </span>
           </template>
         </Table>
@@ -143,9 +180,18 @@
 
     <!-- 弹框 -->
     <!-- 编辑和新增 -->
-    <Modal v-model="editModal" :title="editForm.id ? '编辑商品' : '添加商品'" width="640px">
-      <div>
-        <Form ref="editFormRef" :model="editForm" :rules="editFormRules" :label-width="80">
+    <Modal
+      v-model="editModal"
+      :title="editForm.id ? '编辑商品' : '添加商品'"
+      width="640px"
+    >
+      <div class="padding-left-40 padding-right-40">
+        <Form
+          ref="editFormRef"
+          :model="editForm"
+          :rules="editFormRules"
+          :label-width="80"
+        >
           <FormItem v-if="editForm.id" label="商品编号">
             {{ editForm.productNo }}
           </FormItem>
@@ -154,12 +200,17 @@
               v-model="editForm.productName"
               placeholder="输入商品名称"
               maxlength="100"
-              style="width: 360px"
+              style="width: 100%"
               clearable
             ></Input>
           </FormItem>
           <FormItem label="商品分类" prop="productType">
-            <Select v-model="editForm.productType" placeholder="选择商品分类" style="width: 360px" clearable>
+            <Select
+              v-model="editForm.productType"
+              placeholder="选择商品分类"
+              style="width: 100%"
+              clearable
+            >
               <Option value="0">新鲜果蔬</Option>
               <Option value="1">饮料乳品</Option>
               <Option value="2">肉禽水产</Option>
@@ -174,7 +225,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width: 360px"
+              style="width: 100%"
             />
           </FormItem>
           <FormItem label="商品售价" prop="sellPrice">
@@ -183,7 +234,7 @@
               :min="0"
               :precision="2"
               placeholder="输入商品原价"
-              style="width: 360px"
+              style="width: 100%"
             />
           </FormItem>
           <FormItem label="单位" prop="unit">
@@ -191,15 +242,25 @@
               v-model="editForm.unit"
               placeholder="输入单位（如：双，个，件，箱..）"
               maxlength="2"
-              style="width: 360px"
+              style="width: 100%"
               clearable
             />
           </FormItem>
           <FormItem label="库存" prop="stock">
-            <InputNumber v-model="editForm.stock" :min="0" placeholder="输入库存" style="width: 360px" />
+            <InputNumber
+              v-model="editForm.stock"
+              :min="0"
+              placeholder="输入库存"
+              style="width: 100%"
+            />
           </FormItem>
           <FormItem v-if="editForm.id" label="状态">
-            <Select v-model="editForm.status" placeholder="商品状态" clearable style="width: 360px">
+            <Select
+              v-model="editForm.status"
+              placeholder="商品状态"
+              clearable
+              style="width: 100%"
+            >
               <Option value="0">已下架</Option>
               <Option value="1">已上架</Option>
             </Select>

@@ -16,6 +16,7 @@
           <ValidSlider style="width: 360px" />
         </div>
       </div>
+
       <!-- 更换图标和文案 -->
       <div class="demo-block">
         <div class="demo-title">更换图标和文案</div>
@@ -30,6 +31,7 @@
           />
         </div>
       </div>
+
       <!-- 滑块尺寸 -->
       <div class="demo-block">
         <div class="demo-title">滑块尺寸</div>
@@ -54,10 +56,13 @@
           />
         </div>
       </div>
-      <!-- 回调 -->
+
+      <!-- 滑块回调 -->
       <div class="demo-block">
-        <div class="demo-title">回调</div>
-        <div class="demo-desc">回调有on-success，on-error，on-reset</div>
+        <div class="demo-title">滑块回调</div>
+        <div class="demo-desc">
+          回调有on-success，on-error，on-reset三个方法
+        </div>
         <div class="demo-use">
           <ValidSlider
             ref="slider1"
@@ -76,7 +81,6 @@
 </template>
 <script>
 export default {
-  computed: {},
   methods: {
     onSuccess() {
       this.$Message.success("回调成功");
