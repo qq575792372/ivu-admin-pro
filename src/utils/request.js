@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from "@/store";
 import { Message } from "view-design";
-import { getToken } from "@/utils/auth";
+import { getToken } from "@/utils/token";
 
 // 设置axios跨域访问
 axios.defaults.withCredentials = true; // 设置cross跨域 并设置访问权限 允许跨域携带cookie信息

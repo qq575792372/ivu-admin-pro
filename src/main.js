@@ -20,6 +20,14 @@ import "@/styles/index.less";
 import "@/icons";
 import "./permission";
 
+// 使用指令
+import directives from "./directives";
+Vue.use(directives);
+
+// 使用过滤器
+import filters from "./filters";
+Vue.use(filters);
+
 // 引入 vue-meta-info
 import MetaInfo from "vue-meta-info";
 Vue.use(MetaInfo);
@@ -29,8 +37,16 @@ import VueClipboard2 from "vue-clipboard2";
 Vue.use(VueClipboard2);
 
 // 引入全局组件
-import components from "@/plugins/components";
+import components from "@/plugin/components";
 Vue.use(components);
+
+// 挂载全局权限校验方法
+import { hasPermission } from "@/utils/permission";
+Vue.prototype.hasPermission = hasPermission;
+
+// 挂载全局 baseUrl 变量
+Vue.prototype.baseUrl =
+  process.env.VUE_APP_BASE_SERVE + process.env.VUE_APP_BASE_API;
 
 // 组织vue在启动时生成生产提示
 Vue.config.productionTip = false;

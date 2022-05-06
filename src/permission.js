@@ -5,7 +5,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 NProgress.configure({ showSpinner: false });
 
-import { getToken } from "@/utils/auth";
+import { getToken } from "@/utils/token";
 
 // 引入异步路由菜单数据
 import { asyncRoutes } from "./router/async-routes";

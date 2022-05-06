@@ -13,7 +13,7 @@ const thousand = (val) => {
  * 安装所有过滤器
  */
 const install = function (Vue) {
-  Vue.filters("formatThousand", thousand);
+  Vue.filter("formatThousand", thousand);
 };
 
 // 导出

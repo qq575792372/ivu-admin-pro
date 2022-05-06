@@ -1,19 +1,21 @@
 const getters = {
-  // layout
-  // app
+  /* 布局 */
+  // 设备
   sidebar: (state) => state.layout.app.sidebar,
   device: (state) => state.layout.app.device,
-  // settings
+  // 系统设置
   showDynamicTitle: (state) => state.layout.settings.showDynamicTitle,
   dynamicTitle: (state) => state.layout.settings.dynamicTitle,
 
-  // permission
+  // 权限和路由
   routes: (state) => state.permission.routes,
   addRoutes: (state) => state.permission.addRoutes,
   sidebarRoutes: (state) => state.permission.sidebarRoutes,
+  permissions: (state) => state.permission.permissions,
 
-  // user
+  // 用户信息
   token: (state) => state.user.token,
   name: (state) => state.user.name,
 };
+
 export default getters;
