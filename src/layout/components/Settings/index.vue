@@ -8,19 +8,21 @@
     <Icon class="i-icon" type="md-more" />
 
     <!-- 布局设置 -->
-    <Drawer v-model="showSettings" title="布局设置预览" :width="280">
+    <Drawer v-model="showSettings" title="布局设置预览" :width="360">
       <!-- 侧边栏主题 -->
-      <Divider size="small">侧边栏主题</Divider>
+      <Divider size="small" style="color: var(--custom-primary-color)">
+        侧边栏主题
+      </Divider>
       <div class="i-layout-navbar-settings-item">
         <div
-          class="i-layout-navbar-settings-item-radio"
+          class="i-layout-navbar-settings-item-theme"
           :class="{ on: sideTheme === 'dark' }"
           @click="handleChangeSetting('sideTheme', 'dark')"
         >
           <SvgIcon type="dark" size="52" color="red" />
         </div>
         <div
-          class="i-layout-navbar-settings-item-radio"
+          class="i-layout-navbar-settings-item-theme"
           :class="{ on: sideTheme === 'light' }"
           @click="handleChangeSetting('sideTheme', 'light')"
         >
@@ -28,9 +30,32 @@
         </div>
       </div>
 
-      <!-- 主题颜色 -->
-      <Divider size="small">主题颜色</Divider>
-      <div class="i-layout-navbar-settings-item" />
+      <!-- 主题色 -->
+      <Divider size="small">主题色</Divider>
+      <div class="i-layout-navbar-settings-item">
+        <template v-for="(color, index) in colors">
+          <div
+            :key="index"
+            :style="{
+              'border-color': `${
+                currentColor == color ? color : 'transparent'
+              }`,
+              'box-shadow': `0px 0px 3px ${
+                currentColor == color ? color : 'transparent'
+              }`,
+            }"
+            class="i-layout-navbar-settings-item-color"
+            @click="handleChangeColor(color)"
+          >
+            <span
+              :style="{
+                border: `2px solid ${color}`,
+                background: `${color}`,
+              }"
+            ></span>
+          </div>
+        </template>
+      </div>
 
       <!-- 布局设置 -->
       <Divider size="small">布局设置</Divider>
@@ -183,7 +208,17 @@ export default {
   name: "Settings",
   data() {
     return {
-      showSettings: false,
+      showSettings: true,
+      colors: [
+        "#2d8cf0",
+        "#1890ff",
+        "#19be6b",
+        "#ff9900",
+        "#ed4014",
+        "#ed49b4",
+        "#834ec2",
+      ],
+      currentColor: "#2d8cf0",
     };
   },
   computed: {
@@ -202,6 +237,20 @@ export default {
     ]),
   },
   methods: {
+    handleChangeColor(color) {
+      this.currentColor = color;
+      document.documentElement.setAttribute("theme-color", color);
+      // const root = `:root[theme-color='${color}]`;
+      // const styleSheet = document.documentElement.style;
+      // styleSheet.innerText = `${root} {
+      //   --custom-primary-color: ${color};
+      // }`;
+      document.documentElement.style.setProperty(
+        "--custom-primary-color",
+        color
+      );
+    },
+
     /**
      * 改变设置
      */
@@ -229,10 +278,12 @@ export default {
   // 设置的样式
   &-item {
     display: flex;
-    align-items: center;
     padding: 12px 0;
-    // radio
-    &-radio {
+    align-items: center;
+    justify-content: center;
+
+    // 主题
+    &-theme {
       display: inline-block;
       position: relative;
       margin-right: 16px;
@@ -251,6 +302,28 @@ export default {
         background: #19be6b;
       }
     }
+
+    // 主题色
+    &-color {
+      margin: 0 4px;
+      border-radius: 50%;
+      height: 34px;
+      width: 34px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+      span {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        display: inline-block;
+        border-radius: 30px;
+      }
+    }
     &-desc {
       flex: 1 1;
       font-size: 14px;
@@ -260,4 +333,15 @@ export default {
     }
   }
 }
+</style>
+<style>
+/* :root[theme-color="#2d8cf0"] {
+  --custom-primary-color: #2d8cf0;
+}
+:root[theme-color="#1890ff"] {
+  --custom-primary-color: #1890ff;
+}
+:root[theme-color="#19be6b"] {
+  --custom-primary-color: #19be6b;
+} */
 </style>
