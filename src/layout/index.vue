@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     ...mapState("layout/settings", [
-      "sideTheme",
+      "themeMode",
       "fixedHeader",
       "fixedSidebar",
       "tabsView",
@@ -83,8 +83,6 @@ export default {
     },
     siderClasses() {
       return {
-        "i-layout-sider-dark": this.sideTheme === "dark",
-        "i-layout-sider-light": this.sideTheme === "light",
         "i-layout-sider-fix": this.fixedSidebar,
       };
     },
@@ -115,7 +113,6 @@ export default {
     },
     drawerClasses() {
       let className = "i-layout-drawer-sider-fix";
-      if (this.sideTheme === "dark") className += " i-layout-drawer-dark";
       return className;
     },
   },
@@ -136,13 +133,6 @@ export default {
   position: relative;
   z-index: 11;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.25);
-  // 侧边栏主题
-  &-dark {
-    background: @base-dark-bg;
-  }
-  &-light {
-    background: #fff;
-  }
   // 固定侧边栏
   &-fix {
     position: fixed !important;

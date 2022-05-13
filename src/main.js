@@ -10,6 +10,7 @@ import "normalize.css/normalize.css"; // A modern alternative to CSS resets
 
 // 引入 view-design
 import ViewUI from "view-design";
+// import "view-design/dist/styles/iview.css";
 import "view-design/src/styles/index.less";
 import "@/styles/theme/ivu-default.less";
 Vue.use(ViewUI);

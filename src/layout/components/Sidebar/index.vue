@@ -7,8 +7,8 @@
     <!-- menu -->
     <Menu
       ref="menu"
-      :theme="sideTheme"
-      class="i-layout-menu-side i-scrollbar-hide"
+      :theme="themeMode"
+      class="i-layout-menu-side i-layout-menu-side-scrollbar-hide"
       :class="{
         'i-layout-menu-side-collapse': isCollapsed,
         'i-layout-menu-side-has-logo': sidebarLogo,
@@ -21,12 +21,21 @@
       <!-- 菜单已展开 -->
       <!-- eslint-disable -->
       <template v-if="!isCollapsed" v-for="(route, index) in sidebarRoutes">
-        <side-menu-item :key="route.path + index" :item="route" :base-path="route.path" />
+        <side-menu-item
+          :key="route.path + index"
+          :item="route"
+          :base-path="route.path"
+        />
       </template>
 
       <!-- 菜单已折叠 -->
       <template v-else>
-        <side-menu-collapse :key="route.path + index" :item="route" top-level :base-path="route.path" />
+        <side-menu-collapse
+          :key="route.path + index"
+          :item="route"
+          top-level
+          :base-path="route.path"
+        />
       </template>
     </Menu>
   </div>
@@ -58,7 +67,7 @@ export default {
   computed: {
     ...mapState("layout/settings", [
       "sidebarLogo",
-      "sideTheme",
+      "themeMode",
       "menuAccordion",
     ]),
     ...mapGetters(["sidebar", "sidebarRoutes"]),

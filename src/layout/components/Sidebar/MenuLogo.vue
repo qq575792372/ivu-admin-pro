@@ -35,13 +35,11 @@ export default {
     };
   },
   computed: {
-    ...mapState("layout/settings", ["sideTheme"]),
+    ...mapState("layout/settings", ["themeMode"]),
     ...mapGetters(["sidebar"]),
     logoClasses() {
       return {
         "i-layout-sider-logo-collapse": this.isCollapsed,
-        "i-layout-sider-logo-dark": this.sideTheme === "dark",
-        "i-layout-sider-logo-light": this.sideTheme === "light",
       };
     },
     // 是否折叠菜单
@@ -60,52 +58,39 @@ export default {
   width: 100%;
   height: 60px;
   line-height: 60px;
-  text-align: center;
   overflow: hidden;
   white-space: nowrap;
-  display: block;
-  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  background: var(--side-bg);
 
   &-link {
-    height: 100%;
-    width: 100%;
-    display: inline-block;
+    flex: 1;
+    transition: width 0.28s;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 
     .sider-logo-img {
       max-width: 32px;
       max-height: 32px;
       vertical-align: middle;
-      margin-right: 12px;
     }
 
     .sider-logo-title {
       display: inline-block;
       margin: 0;
+      margin-left: 12px;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
+      font-size: 16px;
       vertical-align: middle;
+      color: var(--logo-text-color);
     }
   }
 
   &-collapse {
     .sider-logo-img {
-      margin-right: 0px;
-    }
-  }
-
-  // dark和light主题色
-  &-dark {
-    background: @base-dark-bg;
-    & .sider-logo-title {
-      color: #fff !important;
-    }
-  }
-  &-light {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
-    & .sider-log-title {
-      color: #515a6e !important;
     }
   }
 }

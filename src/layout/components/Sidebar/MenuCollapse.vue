@@ -3,8 +3,6 @@
     v-if="!item.hidden && item.meta"
     :class="{
       'i-layout-menu-side-collapse-top-level': topLevel,
-      'i-layout-menu-side-collapse-dark': sideTheme === 'dark' && topLevel,
-      'i-layout-menu-side-collapse-light': sideTheme === 'light' && topLevel,
     }"
   >
     <!-- children最多只包含一个元素，并且默认显示根路由 -->
@@ -127,7 +125,7 @@ export default {
     },
   },
   computed: {
-    ...mapState("layout/settings", ["sideTheme", "menuCollapseParentTitle"]),
+    ...mapState("layout/settings", ["themeMode", "menuCollapseParentTitle"]),
     // 激活的菜单
     activeMenu() {
       const { meta, path } = this.$route;

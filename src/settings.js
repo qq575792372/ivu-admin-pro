@@ -9,7 +9,7 @@ module.exports = {
   sideBarWidth: 230,
   layout: {
     // 侧边栏主题色：深色主题dark，浅色主题light，默认深色dark
-    sideTheme: "dark",
+    themeMode: "dark",
     // 是否固定顶栏
     fixedHeader: true,
 
@@ -20,7 +20,7 @@ module.exports = {
     // 侧边菜单栏是否开启手风琴模式，开启后每次打开菜单只能打开一个
     menuAccordion: true,
     // 菜单折叠时，是否在子菜单显示父级菜单名称
-    menuCollapseParentTitle: false,
+    menuCollapseParentTitle: true,
 
     // 是否开启 tabsView
     tabsView: true,

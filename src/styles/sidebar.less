@@ -1,59 +1,30 @@
 /**
  * sidebar
- * 左侧菜单的样式
+ * 左侧菜单的样式，有暗色和亮色两种主题
  */
 
 // 菜单样式
-.i-layout-menu {
-  &-side {
-    position: static; // 菜单开启后，Dropdown 会被 overflow-y:hidden 隐藏掉，加此不受影响
-    height: 100%;
-
-    &:after {
-      display: none !important;
-    }
-
-    // 菜单滚动条样式
-    &.i-scrollbar-hide::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-    &.i-scrollbar-hide::-webkit-scrollbar {
+.i-layout-menu-side {
+  // 菜单滚动条样式
+  &-scrollbar-hide {
+    &::-webkit-scrollbar {
       width: 0px;
     }
-    &.i-scrollbar-hide::-webkit-scrollbar-track {
-      border-radius: 3px;
-    }
-    &.i-scrollbar-hide::-webkit-scrollbar-thumb {
-      background: hsla(0, 0%, 100%, 0.2);
-      border-radius: 3px;
-    }
+  }
 
-    // 菜单样式
-    .i-layout-menu-side-submenu {
-      display: block;
-      overflow: hidden;
-      white-space: nowrap;
-      // 子菜单
-      .ivu-menu-item {
-        height: 49px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-      }
-      // 标题
-      .i-layout-menu-side-submenu-title {
-        &-with-subtitle {
-          position: relative;
-        }
-      }
-      // 副标题
-      .i-layout-menu-side-submenu-subtitle {
-        display: block;
-        font-style: normal;
-        font-size: 12px;
-        opacity: 0.5;
-      }
-    }
+  &:after {
+    display: none !important;
+  }
+
+  // 背景颜色
+  background: var(--side-bg);
+
+  // 菜单样式
+  &-submenu {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--side-bg);
 
     // 菜单的图标样式
     .svg-icon {
@@ -68,138 +39,132 @@
       right: 8px;
     }
 
-    // 菜单徽标样式
-    &-badge {
-      position: absolute;
-      top: 16px;
-      right: 40px;
-      .ivu-badge-count {
-        box-shadow: none;
+    // 一级菜单
+    .ivu-menu-item {
+      height: 49px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease-in-out;
+      background-color: var(--side-bg) !important;
+
+      &:hover {
+        background-color: none;
+        color: none;
+      }
+      &.ivu-menu-item-active.ivu-menu-item-selected {
+        color: var(--side-active-color);
       }
     }
 
-    // 非折叠-暗色主题
-    &.ivu-menu-dark {
-      background: @base-dark-bg;
-      // 只有一级菜单
+    // 多级菜单
+    .ivu-menu-submenu {
+      transition: color 0.2s ease-in-out;
+      &-title {
+        background-color: var(--side-bg) !important;
+      }
       & .ivu-menu-item {
-        transition: color 0.2s ease-in-out;
-        background-color: @base-dark-bg !important;
-
         &:hover {
-          background-color: none;
-          color: none;
+          color: var(--side-active-color) !important;
+          background-color: var(--side-bg) !important;
         }
         &.ivu-menu-item-active.ivu-menu-item-selected {
-          color: @base-dark-active-bg;
-          background-color: transparent;
-        }
-      }
-
-      // 多级菜单
-      & .ivu-menu-submenu {
-        transition: color 0.2s ease-in-out;
-        &-title {
-          background-color: @base-dark-bg !important;
-        }
-        & .ivu-menu-item {
-          &:hover {
-            background-color: @base-dark-bg !important;
-          }
-          &.ivu-menu-item-active.ivu-menu-item-selected {
-            background-color: @base-dark-active-bg !important;
-            color: #fff;
-          }
+          background-color: var(--side-active-bg) !important;
+          color: var(--side-active-color) !important;
         }
       }
     }
 
-    // 非折叠-亮色主题
-    &.ivu-menu-light {
-      // 只有一级菜单
-      & .ivu-menu-item {
-        &:hover {
-          color: @base-light-active-text;
-        }
-        &.ivu-menu-item-active.ivu-menu-item-selected {
-          color: @base-light-active-text;
-          background-color: transparent;
-          &::after {
-            background: @base-light-active-text;
-          }
-        }
-      }
-
-      // 多级菜单
-      & .ivu-menu-submenu {
-        .ivu-menu-submenu-title {
-          &:hover {
-            color: @base-light-active-text;
-          }
-        }
-        & .ivu-menu-item {
-          &.ivu-menu-item-active.ivu-menu-item-selected {
-            background-color: @base-light-active-bg !important;
-          }
-        }
-      }
-
-      .i-layout-menu-side-collapse-top-level-item-selected {
-        color: @base-light-active-text;
-        background: @base-light-active-bg;
-        z-index: 2;
+    // 标题
+    .i-layout-menu-side-submenu-title {
+      &-with-subtitle {
         position: relative;
-        &::after {
-          content: "";
-          display: block;
-          width: 2px;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          background: @base-light-active-text;
-        }
-      }
-      .ivu-dropdown-show-parent {
-        &:hover {
-          background-color: transparent;
-        }
-      }
-      .ivu-dropdown-item.ivu-menu-item-active::after {
-        width: 0px;
       }
     }
+    // 副标题
+    .i-layout-menu-side-submenu-subtitle {
+      display: block;
+      font-style: normal;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  }
 
-    // 菜单折叠
-    &-collapse {
-      position: static;
+  // light 主题下选中菜单右侧的边框
+  &.ivu-menu-light {
+    .ivu-menu-item.ivu-menu-item-selected {
+      color: var(--side-active-color);
+      &::after {
+        background: var(--side-active-color);
+      }
+    }
+  }
 
-      // 折叠模式下副标题样式
-      .i-layout-menu-side-submenu-subtitle {
-        margin-left: 12px;
-        font-style: normal;
-        font-size: 12px;
-        opacity: 0.5;
+  // 菜单徽标样式
+  &-badge {
+    position: absolute;
+    top: 16px;
+    right: 40px;
+    .ivu-badge-count {
+      box-shadow: none;
+    }
+  }
+
+  // 折叠样式
+  &-collapse {
+    position: static;
+    padding: 12px 0 8px 0;
+
+    &-top-level {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      text-align: center;
+
+      // 图标
+      .sub-ivu-icon {
+        margin: 0;
       }
 
-      // 左侧第一层图标外层样式
-      &-top-level {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-        text-align: center;
-        .ivu-menu-item {
-          width: 64px;
+      // 第一层菜单样式
+      &-item {
+        padding: 12px 0 !important;
+        border-radius: 4px;
+        width: 48px;
+        transition: all 0.2s;
+        margin-bottom: 4px;
+
+        // 菜单hover
+        &:hover {
+          background: #f2f2f3;
+        }
+        // 菜单hover
+        &-selected {
+          background: var(--side-active-bg);
+          // 菜单active后的hover
+          &:hover {
+            .svg-icon,
+            .sub-ivu-icon {
+              color: #fff;
+            }
+            background: var(--side-active-color);
+          }
         }
       }
 
       // 展开多级下拉菜单样式
+      // 第一层的下拉框定义
+      & > .ivu-dropdown > .ivu-select-dropdown {
+        left: 64px !important;
+      }
+      // 多级菜单
       .ivu-select-dropdown {
         margin: 5px 0 5px 3px;
         min-width: 140px;
         text-align: left;
-        // 多级菜单项的样式
+
+        // 更多级菜单项的样式
         .ivu-dropdown-item {
           display: flex;
           align-items: center;
@@ -216,58 +181,62 @@
             height: 14px;
             margin: auto;
           }
-          // 父级title的样式
+          // 开启父级名称样式
           &.ivu-dropdown-show-parent {
             cursor: default;
-            color: #808695;
+            background: none !important;
+            font-weight: 600;
+            border-bottom: solid 1px #eee;
             &:hover {
-              color: #808695;
+              background: none !important;
+            }
+            .svg-icon,
+            .sub-ivu-icon {
+              margin-right: 6px;
             }
           }
+          // 副标题样式
+          .i-layout-menu-side-submenu-subtitle {
+            margin-left: 12px;
+            font-style: normal;
+            font-size: 12px;
+            opacity: 0.5;
+          }
+        }
+        // 隐藏多级菜单最右侧的线
+        .ivu-menu-item-active::after {
+          width: 0px !important;
         }
       }
+    }
 
-      // 暗黑主题
-      &-dark {
-        // 第一层菜单
-        .i-layout-menu-side-collapse-top-level-item {
-          transition: background 0.2s, color 0.2s;
-          &:hover {
-            background-color: transparent !important;
+    // 折叠模式下dark菜单主题，展开的多级菜单背景
+    &.ivu-menu-dark {
+      .i-layout-menu-side-collapse-top-level-item-selected {
+        color: #fff;
+        &:hover {
+          background: var(--side-active-bg);
+        }
+      }
+      .ivu-select-dropdown {
+        background: var(--side-bg);
+        .ivu-dropdown-item {
+          color: rgba(255, 255, 255, 0.7);
+          transition: all 0.2s ease-in-out;
+          // 当前被选中的样式
+          &.ivu-menu-item-selected.ivu-menu-item-active {
+            background-color: var(--side-active-bg) !important;
             color: #fff;
           }
-          &-selected {
-            color: @base-dark-active-bg !important;
+          &:hover {
+            background-color: transparent;
+            color: #fff;
           }
         }
-        // 多层菜单
-        .ivu-select-dropdown {
-          background-color: @base-dark-bg !important;
-          // 暗色背景下多级菜单文字的样式
-          .ivu-dropdown-item {
+        .ivu-dropdown-item.ivu-dropdown-show-parent {
+          border-bottom: solid 1px #111;
+          &:hover {
             color: rgba(255, 255, 255, 0.7);
-            transition: all 0.2s ease-in-out;
-            // 当前被选中的样式
-            &.ivu-menu-item-selected.ivu-menu-item-active {
-              background-color: @base-dark-active-bg !important;
-              color: #fff;
-            }
-            &:hover {
-              background-color: transparent;
-              color: #fff;
-            }
-          }
-        }
-      }
-
-      // 亮色主题
-      &-light {
-        // 多级菜单样式
-        .ivu-select-dropdown {
-          .ivu-dropdown-item {
-            &.ivu-menu-item-selected.ivu-menu-item-active {
-              color: @base-light-active-text;
-            }
           }
         }
       }

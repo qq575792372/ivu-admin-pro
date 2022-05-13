@@ -11,6 +11,9 @@ const state = {
 
 // mutations
 const mutations = {
+  SET_THEME_MODE: (state, mode) => {
+    state.themeMode = mode;
+  },
   SET_LAYOUT_SETTING: (state, { key, value }) => {
     if (state.hasOwnProperty(key)) {
       state[key] = value;
@@ -23,6 +26,10 @@ const mutations = {
 
 // actions
 const actions = {
+  // 改变主题模式
+  changeThemeMode({ commit }, mode) {
+    commit("SET_THEME_MODE", mode);
+  },
   // 保存布局设置
   changeLayoutSetting({ commit }, data) {
     commit("SET_LAYOUT_SETTING", data);

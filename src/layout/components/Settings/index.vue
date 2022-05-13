@@ -10,21 +10,19 @@
     <!-- 布局设置 -->
     <Drawer v-model="showSettings" title="布局设置预览" :width="360">
       <!-- 侧边栏主题 -->
-      <Divider size="small" style="color: var(--custom-primary-color)">
-        侧边栏主题
-      </Divider>
+      <Divider size="small">侧边栏主题</Divider>
       <div class="i-layout-navbar-settings-item">
         <div
           class="i-layout-navbar-settings-item-theme"
-          :class="{ on: sideTheme === 'dark' }"
-          @click="handleChangeSetting('sideTheme', 'dark')"
+          :class="{ on: themeMode === 'dark' }"
+          @click="onChangeTheme('dark')"
         >
           <SvgIcon type="dark" size="52" color="red" />
         </div>
         <div
           class="i-layout-navbar-settings-item-theme"
-          :class="{ on: sideTheme === 'light' }"
-          @click="handleChangeSetting('sideTheme', 'light')"
+          :class="{ on: themeMode === 'light' }"
+          @click="onChangeTheme('light')"
         >
           <SvgIcon type="light" size="52" />
         </div>
@@ -33,28 +31,10 @@
       <!-- 主题色 -->
       <Divider size="small">主题色</Divider>
       <div class="i-layout-navbar-settings-item">
-        <template v-for="(color, index) in colors">
-          <div
-            :key="index"
-            :style="{
-              'border-color': `${
-                currentColor == color ? color : 'transparent'
-              }`,
-              'box-shadow': `0px 0px 3px ${
-                currentColor == color ? color : 'transparent'
-              }`,
-            }"
-            class="i-layout-navbar-settings-item-color"
-            @click="handleChangeColor(color)"
-          >
-            <span
-              :style="{
-                border: `2px solid ${color}`,
-                background: `${color}`,
-              }"
-            ></span>
-          </div>
-        </template>
+        <ThemeColor
+          class="i-layout-navbar-settings-item-color"
+          :on-change-color="onChangeColor"
+        />
       </div>
 
       <!-- 布局设置 -->
@@ -204,26 +184,20 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import ThemeColor from "./components/ThemeColor";
+import axios from "axios";
+
 export default {
   name: "Settings",
+  components: { ThemeColor },
   data() {
     return {
       showSettings: true,
-      colors: [
-        "#2d8cf0",
-        "#1890ff",
-        "#19be6b",
-        "#ff9900",
-        "#ed4014",
-        "#ed49b4",
-        "#834ec2",
-      ],
-      currentColor: "#2d8cf0",
     };
   },
   computed: {
     ...mapState("layout/settings", [
-      "sideTheme",
+      "themeMode",
       "fixedHeader",
       "fixedSidebar",
       "sidebarLogo",
@@ -236,19 +210,35 @@ export default {
       "showDynamicTitle",
     ]),
   },
+  created() {},
   methods: {
-    handleChangeColor(color) {
-      this.currentColor = color;
+    /**
+     * 改变主题
+     */
+    onChangeTheme(mode) {
+      this.$store.dispatch("layout/settings/changeThemeMode", mode);
+      document.documentElement.setAttribute("theme-mode", mode);
+    },
+
+    /**
+     * 改变主题颜色
+     */
+    onChangeColor(color) {
+      console.log(111, color);
       document.documentElement.setAttribute("theme-color", color);
-      // const root = `:root[theme-color='${color}]`;
-      // const styleSheet = document.documentElement.style;
-      // styleSheet.innerText = `${root} {
-      //   --custom-primary-color: ${color};
-      // }`;
       document.documentElement.style.setProperty(
         "--custom-primary-color",
         color
       );
+
+      // 获得iview css样式
+      this.getCssString();
+      // https://unpkg.com/view-design@4.7.0/dist/styles/iview.css
+    },
+
+    getCssString() {
+      const version = require("view-design/package.json").version;
+      console.log(111, version);
     },
 
     /**
@@ -305,24 +295,7 @@ export default {
 
     // 主题色
     &-color {
-      margin: 0 4px;
-      border-radius: 50%;
-      height: 34px;
-      width: 34px;
-      text-align: center;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.2s;
-      span {
-        width: 20px;
-        height: 20px;
-        position: relative;
-        display: inline-block;
-        border-radius: 30px;
-      }
     }
     &-desc {
       flex: 1 1;

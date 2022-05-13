@@ -3,7 +3,26 @@
  * 默认主题色
  */
 
-// @import "~view-design/src/styles/index.less";
+:root,
+:root[theme-mode="dark"] {
+  /* logo文字颜色 */
+  --logo-text-color: #fff;
+
+  /* 左侧菜单 */
+  --side-bg: #191b26; // 主题推荐颜色：#191b26 / #2a2b4a
+  --side-active-bg: #2d8cf0; // 当前项选中背景色
+  --side-active-color: #fff; // 当前项文字选中颜色
+}
+
+:root[theme-mode="light"] {
+  /* logo文字颜色 */
+  --logo-text-color: #191b26;
+
+  /* 左侧菜单 */
+  --side-bg: #fff; // 菜单背景色
+  --side-active-bg: #e0ebff; // 当前项选中背景色
+  --side-active-color: #2d8cf0; // 当前项文字选中颜色
+}
 
 // Here are the variables to cover, such as:
-@primary-color: var(--custom-primary-color);
+@primary-color: var(--side-active-bg);
