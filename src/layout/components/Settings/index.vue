@@ -183,9 +183,11 @@
   </div>
 </template>
 <script>
+import { hexToRgba } from "@lime-util/util";
 import { mapState } from "vuex";
 import ThemeColor from "./components/ThemeColor";
-import axios from "axios";
+
+const version = require("view-design/package.json").version;
 
 export default {
   name: "Settings",
@@ -193,6 +195,7 @@ export default {
   data() {
     return {
       showSettings: true,
+      cssText: "",
     };
   },
   computed: {
@@ -223,22 +226,96 @@ export default {
     /**
      * 改变主题颜色
      */
-    onChangeColor(color) {
-      console.log(111, color);
-      document.documentElement.setAttribute("theme-color", color);
-      document.documentElement.style.setProperty(
-        "--custom-primary-color",
-        color
-      );
+    async onChangeColor(color) {
+      color = hexToRgba(color);
+      // 没有获取过样式，则重新请求
+      if (!this.cssText) {
+        this.cssText = await this.getCssString();
+      }
 
-      // 获得iview css样式
-      this.getCssString();
-      // https://unpkg.com/view-design@4.7.0/dist/styles/iview.css
+      console.log("color: ", color);
+      // 生成颜色
+      const rgbaNumber = color.replace("rgba(", "").replace(")", "").split(",");
+      let themeObj = {
+        "primary-color": [...rgbaNumber].map(Number), //  主题原色
+        shade5: [...rgbaNumber].map(Number), // 与黑色混合 5%
+        tint20: [...rgbaNumber].map(Number), // 与白色混合 20%
+        tint80: [...rgbaNumber].map(Number), // 与白色混合 80%
+        tint90: [...rgbaNumber].map(Number), //  与白色混合 90%
+      };
+      // 转换rgb三个数值
+      for (let i = 0; i < 3; i++) {
+        themeObj.shade5[i] = Math.ceil(
+          themeObj.shade5[i] - themeObj.shade5[i] * 0.05
+        );
+        themeObj.tint20[i] = Math.ceil(
+          themeObj.tint20[i] + 255 * 0.2 - themeObj.tint20[i] * 0.2
+        );
+        themeObj.tint80[i] = Math.ceil(
+          themeObj.tint80[i] + 255 * 0.8 - themeObj.tint80[i] * 0.8
+        );
+        themeObj.tint90[i] = Math.ceil(
+          themeObj.tint90[i] + 255 * 0.9 - themeObj.tint90[i] * 0.9
+        );
+      }
+      for (let key in themeObj) {
+        document.body.style.setProperty(
+          "--" + key,
+          "rgba(" + themeObj[key].join() + ")"
+        );
+      }
+
+      this.transIviewCss();
+
+      console.log(8888, this.cssText);
+      // 写入到style
+      let styleTag = document.getElementById("iview-style");
+      if (!styleTag) {
+        styleTag = document.createElement("style");
+        styleTag.id = "iview-style";
+        styleTag.type = "text/css";
+        document.head.append(styleTag);
+      }
+      styleTag.innerText = this.cssText;
     },
 
     getCssString() {
-      const version = require("view-design/package.json").version;
-      console.log(111, version);
+      return new Promise((resolve) => {
+        const cssUrl = `https://unpkg.com/view-design@${version}/dist/styles/iview.css`;
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            resolve(xhr.responseText);
+          }
+        };
+        xhr.open("GET", cssUrl);
+        xhr.send();
+      });
+    },
+
+    /**
+     * 转换iview的css，并替换
+     */
+    transIviewCss() {
+      let cssText = this.cssText;
+
+      let themeObj = {
+        "primary-color": "#2d8cf0",
+        shade5: "#2b85e4",
+        tint20: "#57a3f3",
+        tint80: "#d5e8fc",
+        tint90: "#eaf4fe",
+      };
+      for (let key in themeObj) {
+        // rgba 颜色值的括号需要转义
+        themeObj[key] = themeObj[key].replace("(", "\\(").replace(")", "\\)");
+        let reg = new RegExp(themeObj[key], "g");
+        // css中的图标 '/fxxx' 字样需要转义
+        cssText = cssText
+          .replace(reg, "var(--" + key + ")")
+          .replace(/\f/g, "\\f");
+      }
+      this.cssText = cssText;
     },
 
     /**
