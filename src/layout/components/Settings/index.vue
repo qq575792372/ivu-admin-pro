@@ -33,6 +33,7 @@
       <div class="i-layout-navbar-settings-item">
         <ThemeColor
           class="i-layout-navbar-settings-item-color"
+          :color="primaryColor"
           :on-change-color="onChangeColor"
         />
       </div>
@@ -183,7 +184,12 @@
   </div>
 </template>
 <script>
-import { hexToRgba } from "@lime-util/util";
+import {
+  hexToRgb,
+  rgbToHex,
+  setSessionStorage,
+  getSessionStorage,
+} from "@lime-util/util";
 import { mapState } from "vuex";
 import ThemeColor from "./components/ThemeColor";
 
@@ -194,8 +200,10 @@ export default {
   components: { ThemeColor },
   data() {
     return {
-      showSettings: true,
-      cssText: "",
+      showSettings: false,
+      // 主色和转换后的样式，默认从缓存取
+      primaryColor: getSessionStorage("theme-color") || "#2d8cf0",
+      cssText: getSessionStorage("theme-css") || "",
     };
   },
   computed: {
@@ -213,7 +221,12 @@ export default {
       "showDynamicTitle",
     ]),
   },
-  created() {},
+  created() {
+    // 转换颜色
+    this.transThemeColor();
+    // 生成样式
+    this.renderIviewCss();
+  },
   methods: {
     /**
      * 改变主题
@@ -227,48 +240,94 @@ export default {
      * 改变主题颜色
      */
     async onChangeColor(color) {
-      color = hexToRgba(color);
-      // 没有获取过样式，则重新请求
+      // 设置新的主题色
+      this.primaryColor = color;
+      // 将选择的颜色保存到缓存中
+      setSessionStorage("theme-color", color);
+
+      // 没有获取过iview样式，从第三发拉取，并转换为支持var的
       if (!this.cssText) {
         this.cssText = await this.getCssString();
+        this.transIviewCss();
       }
 
-      console.log("color: ", color);
       // 生成颜色
-      const rgbaNumber = color.replace("rgba(", "").replace(")", "").split(",");
-      let themeObj = {
+      this.transThemeColor();
+      // 生成样式
+      this.renderIviewCss();
+    },
+
+    /**
+     * 转换iview主题色的css
+     */
+    transIviewCss() {
+      let cssText = this.cssText;
+      let oldThemeColors = {
+        "primary-color": "#2d8cf0",
+        shade5: "#2b85e4",
+        tint20: "#57a3f3",
+        tint80: "#d5e8fc",
+        tint90: "#eaf4fe",
+      };
+
+      for (let key in oldThemeColors) {
+        let reg = new RegExp(oldThemeColors[key], "g");
+        cssText = cssText
+          .replace(reg, "var(--" + key + ")")
+          .replace(/\f/g, "\\f");
+      }
+      // 将转换后的样式缓存
+      setSessionStorage("theme-css", cssText);
+      // 设置css文本样式
+      this.cssText = cssText;
+    },
+
+    /**
+     * 生成颜色
+     */
+    transThemeColor() {
+      // hex颜色转为rgba
+      let primaryColor = hexToRgb(this.primaryColor);
+      const rgbaNumber = primaryColor
+        .replace("rgb(", "")
+        .replace(")", "")
+        .split(",");
+
+      let transThemeInfo = {
         "primary-color": [...rgbaNumber].map(Number), //  主题原色
         shade5: [...rgbaNumber].map(Number), // 与黑色混合 5%
         tint20: [...rgbaNumber].map(Number), // 与白色混合 20%
         tint80: [...rgbaNumber].map(Number), // 与白色混合 80%
         tint90: [...rgbaNumber].map(Number), //  与白色混合 90%
       };
-      // 转换rgb三个数值
+      // 颜色饱和度
       for (let i = 0; i < 3; i++) {
-        themeObj.shade5[i] = Math.ceil(
-          themeObj.shade5[i] - themeObj.shade5[i] * 0.05
+        transThemeInfo.shade5[i] = Math.ceil(
+          transThemeInfo.shade5[i] - transThemeInfo.shade5[i] * 0.05
         );
-        themeObj.tint20[i] = Math.ceil(
-          themeObj.tint20[i] + 255 * 0.2 - themeObj.tint20[i] * 0.2
+        transThemeInfo.tint20[i] = Math.ceil(
+          transThemeInfo.tint20[i] + 255 * 0.2 - transThemeInfo.tint20[i] * 0.2
         );
-        themeObj.tint80[i] = Math.ceil(
-          themeObj.tint80[i] + 255 * 0.8 - themeObj.tint80[i] * 0.8
+        transThemeInfo.tint80[i] = Math.ceil(
+          transThemeInfo.tint80[i] + 255 * 0.8 - transThemeInfo.tint80[i] * 0.8
         );
-        themeObj.tint90[i] = Math.ceil(
-          themeObj.tint90[i] + 255 * 0.9 - themeObj.tint90[i] * 0.9
+        transThemeInfo.tint90[i] = Math.ceil(
+          transThemeInfo.tint90[i] + 255 * 0.9 - transThemeInfo.tint90[i] * 0.9
         );
       }
-      for (let key in themeObj) {
+      for (let key in transThemeInfo) {
         document.body.style.setProperty(
           "--" + key,
-          "rgba(" + themeObj[key].join() + ")"
+          rgbToHex("rgba(" + transThemeInfo[key].join() + ")")
         );
       }
+      return transThemeInfo;
+    },
 
-      this.transIviewCss();
-
-      console.log(8888, this.cssText);
-      // 写入到style
+    /**
+     * 生成样式
+     */
+    renderIviewCss() {
       let styleTag = document.getElementById("iview-style");
       if (!styleTag) {
         styleTag = document.createElement("style");
@@ -279,6 +338,9 @@ export default {
       styleTag.innerText = this.cssText;
     },
 
+    /**
+     * 从第三方获取Css样式
+     */
     getCssString() {
       return new Promise((resolve) => {
         const cssUrl = `https://unpkg.com/view-design@${version}/dist/styles/iview.css`;
@@ -291,31 +353,6 @@ export default {
         xhr.open("GET", cssUrl);
         xhr.send();
       });
-    },
-
-    /**
-     * 转换iview的css，并替换
-     */
-    transIviewCss() {
-      let cssText = this.cssText;
-
-      let themeObj = {
-        "primary-color": "#2d8cf0",
-        shade5: "#2b85e4",
-        tint20: "#57a3f3",
-        tint80: "#d5e8fc",
-        tint90: "#eaf4fe",
-      };
-      for (let key in themeObj) {
-        // rgba 颜色值的括号需要转义
-        themeObj[key] = themeObj[key].replace("(", "\\(").replace(")", "\\)");
-        let reg = new RegExp(themeObj[key], "g");
-        // css中的图标 '/fxxx' 字样需要转义
-        cssText = cssText
-          .replace(reg, "var(--" + key + ")")
-          .replace(/\f/g, "\\f");
-      }
-      this.cssText = cssText;
     },
 
     /**
@@ -383,15 +420,4 @@ export default {
     }
   }
 }
-</style>
-<style>
-/* :root[theme-color="#2d8cf0"] {
-  --custom-primary-color: #2d8cf0;
-}
-:root[theme-color="#1890ff"] {
-  --custom-primary-color: #1890ff;
-}
-:root[theme-color="#19be6b"] {
-  --custom-primary-color: #19be6b;
-} */
 </style>

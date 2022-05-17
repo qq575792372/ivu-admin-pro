@@ -1,20 +1,26 @@
 <template>
   <div class="theme-color-container">
-    <div v-for="(color, index) in colors" :key="index" class="theme-color-list">
+    <div
+      v-for="(curColor, index) in colors"
+      :key="index"
+      class="theme-color-list"
+    >
       <div
         class="theme-color-list-item"
         :style="{
-          'border-color': `${currentColor == color ? color : 'transparent'}`,
+          'border-color': `${
+            currentColor == curColor ? curColor : 'transparent'
+          }`,
           'box-shadow': `0px 0px 3px ${
-            currentColor == color ? color : 'transparent'
+            currentColor == curColor ? curColor : 'transparent'
           }`,
         }"
-        @click.stop="handleChange(color)"
+        @click.stop="handleChange(curColor)"
       >
         <span
           :style="{
-            border: `2px solid ${color}`,
-            background: `${color}`,
+            border: `2px solid ${curColor}`,
+            background: `${curColor}`,
           }"
         ></span>
       </div>
@@ -25,6 +31,10 @@
 export default {
   name: "ThemeColor",
   props: {
+    color: {
+      type: String,
+      default: "",
+    },
     onChangeColor: {
       type: Function,
       default: () => {},
@@ -44,6 +54,14 @@ export default {
       ],
       currentColor: "#2d8cf0",
     };
+  },
+  watch: {
+    color: {
+      immediate: true,
+      handler(val) {
+        this.currentColor = val;
+      },
+    },
   },
   methods: {
     handleChange(color) {
