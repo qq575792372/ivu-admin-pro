@@ -202,8 +202,8 @@ export default {
     return {
       showSettings: false,
       // 主色和转换后的样式，默认从缓存取
-      primaryColor: getSessionStorage("theme-color") || "#2d8cf0",
-      cssText: getSessionStorage("theme-css") || "",
+      primaryColor: getSessionStorage("ivu-theme-color") || "#2d8cf0",
+      cssText: getSessionStorage("ivu-theme-css") || "",
     };
   },
   computed: {
@@ -222,6 +222,9 @@ export default {
     ]),
   },
   created() {
+    // 切换主题
+    this.onChangeTheme();
+
     // 转换颜色
     this.transThemeColor();
     // 生成样式
@@ -232,7 +235,9 @@ export default {
      * 改变主题
      */
     onChangeTheme(mode) {
+      mode = mode || getSessionStorage("ivu-theme-mode") || this.themeMode;
       this.$store.dispatch("layout/settings/changeThemeMode", mode);
+      setSessionStorage("ivu-theme-mode", mode);
       document.documentElement.setAttribute("theme-mode", mode);
     },
 
@@ -243,7 +248,7 @@ export default {
       // 设置新的主题色
       this.primaryColor = color;
       // 将选择的颜色保存到缓存中
-      setSessionStorage("theme-color", color);
+      setSessionStorage("ivu-theme-color", color);
 
       // 没有获取过iview样式，从第三发拉取，并转换为支持var的
       if (!this.cssText) {
@@ -264,10 +269,11 @@ export default {
       let cssText = this.cssText;
       let oldThemeColors = {
         "primary-color": "#2d8cf0",
-        shade5: "#2b85e4",
-        tint20: "#57a3f3",
-        tint80: "#d5e8fc",
-        tint90: "#eaf4fe",
+        "primary-darken-color": "#2b85e4", // 加重颜色
+        "primary-lighten20": "#57a3f3", // 减轻20%
+        "primary-lighten80": "#d5e8fc", // 减轻80%
+        "primary-lighten90": "#eaf4fe", // 减轻90%
+        " primary-lighten95": "#f0faff", // 减轻95%
       };
 
       for (let key in oldThemeColors) {
@@ -277,13 +283,14 @@ export default {
           .replace(/\f/g, "\\f");
       }
       // 将转换后的样式缓存
-      setSessionStorage("theme-css", cssText);
+      setSessionStorage("ivu-theme-css", cssText);
       // 设置css文本样式
       this.cssText = cssText;
     },
 
     /**
      * 生成颜色
+     * @todo 生成主题色不同饱和度的颜色后续需要找第三方js来实现，暂时先手动计算
      */
     transThemeColor() {
       // hex颜色转为rgba
@@ -294,44 +301,81 @@ export default {
         .split(",");
 
       let transThemeInfo = {
-        "primary-color": [...rgbaNumber].map(Number), //  主题原色
-        shade5: [...rgbaNumber].map(Number), // 与黑色混合 5%
-        tint20: [...rgbaNumber].map(Number), // 与白色混合 20%
-        tint80: [...rgbaNumber].map(Number), // 与白色混合 80%
-        tint90: [...rgbaNumber].map(Number), //  与白色混合 90%
+        "primary-color": [...rgbaNumber].map(Number),
+        "primary-darken-color": [...rgbaNumber].map(Number),
+        "primary-lighten20": [...rgbaNumber].map(Number),
+        "primary-lighten80": [...rgbaNumber].map(Number),
+        "primary-lighten90": [...rgbaNumber].map(Number),
+        "primary-lighten95": [...rgbaNumber].map(Number),
       };
       // 颜色饱和度
       for (let i = 0; i < 3; i++) {
-        transThemeInfo.shade5[i] = Math.ceil(
-          transThemeInfo.shade5[i] - transThemeInfo.shade5[i] * 0.05
+        transThemeInfo["primary-darken-color"][i] = Math.ceil(
+          transThemeInfo["primary-darken-color"][i] -
+            transThemeInfo["primary-darken-color"][i] * 0.06
         );
-        transThemeInfo.tint20[i] = Math.ceil(
-          transThemeInfo.tint20[i] + 255 * 0.2 - transThemeInfo.tint20[i] * 0.2
+        transThemeInfo["primary-lighten20"][i] = Math.ceil(
+          transThemeInfo["primary-lighten20"][i] +
+            255 * 0.2 -
+            transThemeInfo["primary-lighten20"][i] * 0.2
         );
-        transThemeInfo.tint80[i] = Math.ceil(
-          transThemeInfo.tint80[i] + 255 * 0.8 - transThemeInfo.tint80[i] * 0.8
+        transThemeInfo["primary-lighten80"][i] = Math.ceil(
+          transThemeInfo["primary-lighten80"][i] +
+            255 * 0.8 -
+            transThemeInfo["primary-lighten80"][i] * 0.8
         );
-        transThemeInfo.tint90[i] = Math.ceil(
-          transThemeInfo.tint90[i] + 255 * 0.9 - transThemeInfo.tint90[i] * 0.9
+        transThemeInfo["primary-lighten90"][i] = Math.ceil(
+          transThemeInfo["primary-lighten90"][i] +
+            255 * 0.9 -
+            transThemeInfo["primary-lighten90"][i] * 0.9
+        );
+        transThemeInfo["primary-lighten95"][i] = Math.ceil(
+          transThemeInfo["primary-lighten95"][i] +
+            255 * 0.95 -
+            transThemeInfo["primary-lighten95"][i] * 0.95
         );
       }
-      for (let key in transThemeInfo) {
-        document.body.style.setProperty(
-          "--" + key,
-          rgbToHex("rgba(" + transThemeInfo[key].join() + ")")
-        );
+
+      // 将var变量添加到style中
+      document.documentElement.setAttribute("theme-color", this.primaryColor);
+      let styleSheet = document.getElementById("ivu-theme-root-style");
+      if (!styleSheet) {
+        styleSheet = document.createElement("style");
+        styleSheet.id = "ivu-theme-root-style";
+        styleSheet.type = "text/css";
+        document.head.appendChild(styleSheet);
       }
-      return transThemeInfo;
+      styleSheet.innerText = `:root {
+        --primary-color: ${rgbToHex(
+          "rgb(" + transThemeInfo["primary-color"].join() + ")"
+        )};
+        --primary-darken-color: ${rgbToHex(
+          "rgba(" + transThemeInfo["primary-darken-color"].join() + ")"
+        )};
+        --primary-lighten20: ${rgbToHex(
+          "rgba(" + transThemeInfo["primary-lighten20"].join() + ")"
+        )};
+        --primary-lighten80: ${rgbToHex(
+          "rgba(" + transThemeInfo["primary-lighten80"].join() + ")"
+        )};
+        --primary-lighten90: ${rgbToHex(
+          "rgba(" + transThemeInfo["primary-lighten90"].join() + ")"
+        )};
+        --primary-lighten95: ${rgbToHex(
+          "rgba(" + transThemeInfo["primary-lighten95"].join() + ")"
+        )};
+      }`;
     },
 
     /**
      * 生成样式
      */
     renderIviewCss() {
-      let styleTag = document.getElementById("iview-style");
+      if (!this.cssText) return;
+      let styleTag = document.getElementById("ivu-theme-chalk-style");
       if (!styleTag) {
         styleTag = document.createElement("style");
-        styleTag.id = "iview-style";
+        styleTag.id = "ivu-theme-chalk-style";
         styleTag.type = "text/css";
         document.head.append(styleTag);
       }
@@ -371,7 +415,6 @@ export default {
 .i-layout-navbar-settings {
   display: inline-block;
   cursor: pointer;
-  line-height: 60px;
   color: #515a6e;
   padding: 0px 10px;
 

@@ -147,7 +147,7 @@ export default {
   min-height: 100vh;
   transition: all 0.2s ease-in-out;
   &-with-sider-fix {
-    margin-left: @base-sider-width;
+    margin-left: @base-side-width;
     &-collapse {
       margin-left: 64px;
     }
@@ -169,11 +169,11 @@ export default {
       position: fixed;
       top: 0;
       right: 0;
-      left: @base-sider-width;
-      width: calc(~"100% - @{base-sider-width}");
+      left: @base-side-width;
+      width: calc(~"100% - @{base-side-width}");
       &-with-sider-fix {
-        left: @base-sider-width;
-        width: calc(~"100% - @{base-sider-width}");
+        left: @base-side-width;
+        width: calc(~"100% - @{base-side-width}");
       }
       &-with-sider-collapse {
         left: 64px;

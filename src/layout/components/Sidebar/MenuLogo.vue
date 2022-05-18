@@ -85,7 +85,7 @@ export default {
       line-height: 50px;
       font-size: 16px;
       vertical-align: middle;
-      color: var(--logo-text-color);
+      color: var(--side-logo-color);
     }
   }
 

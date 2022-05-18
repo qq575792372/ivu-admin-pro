@@ -55,6 +55,10 @@ export default {
       position: relative;
       margin-left: 10px;
     }
+    // 弹出框
+    ::v-deep.ivu-select-dropdown {
+      top: 56px !important;
+    }
   }
 }
 </style>

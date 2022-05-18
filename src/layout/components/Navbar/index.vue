@@ -7,6 +7,12 @@
     <!-- 面包屑导航 -->
     <Breadcrumb v-if="!isMobile" />
 
+    <!-- 
+      中间显示内容
+      可以是搜索框等等
+    -->
+    <div class="i-layout-navbar-content"></div>
+
     <!-- 右侧菜单 -->
     <div class="i-layout-navbar-right-menu">
       <!-- 页面全屏 -->
@@ -54,27 +60,37 @@ export default {
 <style lang="less" scoped>
 .i-layout-navbar {
   height: 60px;
-  line-height: 60px;
   box-sizing: border-box;
   position: relative;
   background: #fff;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
 
   // trigger鼠标滑过样式
   &-trigger {
-    transition: background 0.3s ease-in-out;
+    transition: background 0.2s ease-in-out;
     -webkit-tap-highlight-color: transparent;
+    padding: 8px 12px;
+    border-radius: 4px;
     &:hover {
-      background: rgba(0, 0, 0, 0.025);
+      background: #f2f2f3;
     }
+    &:active {
+      background: #e7e7e7;
+    }
+  }
+
+  // 中间内容
+  &-content {
+    flex: 1;
+    text-align: center;
   }
 
   // 右侧按钮菜单样式
   &-right-menu {
-    float: right;
-    height: 100%;
-    line-height: 60px;
   }
 }
 </style>

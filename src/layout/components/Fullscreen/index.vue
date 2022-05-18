@@ -51,7 +51,6 @@ export default {
 .i-layout-navbar-fullscreen {
   display: inline-block;
   cursor: pointer;
-  line-height: 60px;
   color: #515a6e;
   padding: 0px 12px;
 

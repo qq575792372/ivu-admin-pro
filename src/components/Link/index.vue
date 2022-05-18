@@ -65,7 +65,7 @@ export default {
 // active点击的样式混合
 .active-mixins(@color) {
   &:not(.is-disabled):active {
-    color: darken(@color, 8%);
+    color: darken(@color, 5%);
   }
 }
 // hover滑过有下划线的样式混合
@@ -124,12 +124,25 @@ export default {
       .hover-after-mixins(@colors[primary]);
     }
   }
+  // 主色特殊处理
   &-primary {
-    color: @colors[primary];
-    .hover-mixins(@colors[primary]);
-    .active-mixins(@colors[primary]);
+    color: var(--primary-color);
+    &:not(.is-disabled):hover {
+      color: var(--primary-lighten20);
+    }
+    &:not(.is-disabled):active {
+      color: var(--primary-darken-color);
+    }
     &.is-underline {
-      .hover-after-mixins(@colors[primary]);
+      &:hover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 0;
+        bottom: 0;
+        border-bottom: 1px solid var(--primary-color);
+      }
     }
   }
   &-success {

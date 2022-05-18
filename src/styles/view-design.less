@@ -3,16 +3,28 @@
  * 覆盖view-design一些组件的默认样式
  */
 
-// i-link如果有多个，默认右距离
+/* update: i-link如果有多个，默认右距离 */
 .i-link {
   &:not(:last-child) {
     margin-right: 5px;
   }
 }
 
-// 修复ivu alert的icon图标不垂直居中问题
-.ivu-alert-icon {
+/* fix: 修复ivu alert的icon图标不垂直居中问题 */
+.ivu-alert .ivu-alert-icon {
   top: auto;
   bottom: auto;
   margin: auto;
+}
+
+/* update: 所有的close关闭图标重新定义样式 */
+.ivu-icon.ivu-icon-ios-close {
+  transition: all 0.2s !important;
+  border-radius: 4px;
+  &:hover {
+    background: #f2f2f3;
+  }
+  &:active {
+    background: #e7e7e7;
+  }
 }

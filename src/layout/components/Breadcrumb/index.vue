@@ -95,7 +95,6 @@ export default {
 <style lang="less" scoped>
 .i-layout-navbar-breadcrumb {
   display: inline-block;
-  line-height: 60px;
   margin-left: 8px;
   .no-redirect {
     color: #97a8be;

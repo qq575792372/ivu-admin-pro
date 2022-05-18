@@ -380,7 +380,7 @@ export default {
       &-active {
         height: 32px;
         background: #fff;
-        color: #2d8cf0;
+        color: var(--primary-color);
       }
     }
   }

@@ -50,7 +50,6 @@ export default {
 .i-layout-navbar-hamburger {
   display: inline-block;
   cursor: pointer;
-  line-height: 60px;
   color: #515a6e;
   padding: 0px 10px;
 
