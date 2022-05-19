@@ -107,14 +107,11 @@ npm run lint -- --fix
     </tr>
 </table>
 
-> #### 未来开放功能
->
-> - 用户，角色和权限管理模块
-> - 框架中权限控制，预计提供权限指令和鉴权方法
-> - 框架中细节优化，以及设备兼容性优化
-> - 其他更多的慢慢思考...
+#### 新功能 New~
+
+新增动态主题色切换，寻找过目前流行的多种方案，不同场景下不是特别理想，最终决定用 vue-element-admin `动态获取 iview 样式` + 支持` :root 变量`结合的方式实现。
 
 > #### 重要说明
 >
-> - ivu-admin-pro 开源框架是个人业余兴趣开发之作，如有第三者作为商用等其他用途，本人概不承担任何责任。
-> - 框架中的一些 UI 效果和配置参数借鉴[iview-admin-pro（需付费授权）](https://pro.iviewui.com/admin-pro/introduce)和[vue-element-admin（开源免费）](https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/)，如感兴趣的可以跳转到对应的官方文档。
+> - 框架中的一些 UI 效果和配置参数借鉴[iview-admin-pro（需付费授权）](https://pro.iviewui.com/admin-pro/introduce)，[vue-element-admin（开源）](https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/)和 [腾讯的 tdesign-vue（开源）](https://tdesign.tencent.com/starter/)，如感兴趣的可以跳转到对应的官方文档。
+> - ivu-admin-pro 开源框架是个人业余兴趣开发之作，如有第三者作为商用或其它用途发生的版权纠纷，本人概不承担任何责任。
