@@ -9,8 +9,8 @@
 
     <!-- 布局设置 -->
     <Drawer v-model="showSettings" title="布局设置预览" :width="360">
-      <!-- 侧边栏主题 -->
-      <Divider size="small">侧边栏主题</Divider>
+      <!-- 主题模式 -->
+      <Divider size="small">主题模式</Divider>
       <div class="i-layout-navbar-settings-item">
         <div
           class="i-layout-navbar-settings-item-theme"
@@ -201,6 +201,7 @@ export default {
   data() {
     return {
       showSettings: false,
+      messageLoading: null, // 加载提示
       // 主色和转换后的样式，默认从缓存取
       primaryColor: getSessionStorage("ivu-theme-color") || "#2d8cf0",
       cssText: getSessionStorage("ivu-theme-css") || "",
@@ -235,22 +236,36 @@ export default {
      * 改变主题
      */
     onChangeTheme(mode) {
+      if (mode) {
+        this.messageLoading = this.$Message.loading({
+          content: "正在切换主题模式..",
+          duration: 0,
+        });
+      }
       mode = mode || getSessionStorage("ivu-theme-mode") || this.themeMode;
       this.$store.dispatch("layout/settings/changeThemeMode", mode);
       setSessionStorage("ivu-theme-mode", mode);
       document.documentElement.setAttribute("theme-mode", mode);
+      setTimeout(this.messageLoading, 1000);
     },
 
     /**
      * 改变主题颜色
      */
     async onChangeColor(color) {
+      if (color) {
+        this.messageLoading = this.$Message.loading({
+          content: "正在切换主题色..",
+          duration: 0,
+        });
+      }
+
       // 设置新的主题色
       this.primaryColor = color;
       // 将选择的颜色保存到缓存中
       setSessionStorage("ivu-theme-color", color);
 
-      // 没有获取过iview样式，从第三发拉取，并转换为支持var的
+      // 没有获取过iview样式，从第三发拉取，并转换样式数据
       if (!this.cssText) {
         this.cssText = await this.getCssString();
         this.transIviewCss();
@@ -273,7 +288,7 @@ export default {
         "primary-lighten20": "#57a3f3", // 减轻20%
         "primary-lighten80": "#d5e8fc", // 减轻80%
         "primary-lighten90": "#eaf4fe", // 减轻90%
-        " primary-lighten95": "#f0faff", // 减轻95%
+        "primary-lighten95": "#f0faff", // 减轻95%
       };
 
       for (let key in oldThemeColors) {
@@ -290,7 +305,7 @@ export default {
 
     /**
      * 生成颜色
-     * @todo 生成主题色不同饱和度的颜色后续需要找第三方js来实现，暂时先手动计算
+     * @todo 后续找个第三方的包，根据主色生成不同饱和度的颜色
      */
     transThemeColor() {
       // hex颜色转为rgba
@@ -380,6 +395,8 @@ export default {
         document.head.append(styleTag);
       }
       styleTag.innerText = this.cssText;
+      // 所有处理完，关闭loading
+      setTimeout(this.messageLoading, 1000);
     },
 
     /**
@@ -392,6 +409,9 @@ export default {
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
             resolve(xhr.responseText);
+          } else {
+            // 请求失败关闭loading
+            setTimeout(this.messageLoading, 1000);
           }
         };
         xhr.open("GET", cssUrl);

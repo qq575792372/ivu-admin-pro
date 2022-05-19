@@ -6,7 +6,7 @@
       class="i-layout-sider"
       :class="siderClasses"
       hide-trigger
-      :width="sideBarWidth"
+      :width="sideWidth"
       :collapsed-width="64"
       collapsible
     >
@@ -65,8 +65,8 @@ export default {
     showSiderDrawer() {
       return this.sidebar.opened;
     },
-    sideBarWidth() {
-      return defaultSettings.sideBarWidth;
+    sideWidth() {
+      return defaultSettings.sideWidth;
     },
     // 设备类型
     isMobile() {
@@ -140,6 +140,14 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    // 固定菜单时，菜单超长可以滚动
+    .i-layout-menu-side {
+      height: 100vh;
+      overflow-y: auto;
+      &-has-logo {
+        height: calc(100vh - 60px);
+      }
+    }
   }
 }
 // 右侧main布局
@@ -147,7 +155,7 @@ export default {
   min-height: 100vh;
   transition: all 0.2s ease-in-out;
   &-with-sider-fix {
-    margin-left: @base-side-width;
+    margin-left: var(--side-width);
     &-collapse {
       margin-left: 64px;
     }
@@ -169,11 +177,11 @@ export default {
       position: fixed;
       top: 0;
       right: 0;
-      left: @base-side-width;
-      width: calc(~"100% - @{base-side-width}");
+      left: var(--side-width);
+      width: calc(~"100% - var(--side-width)");
       &-with-sider-fix {
-        left: @base-side-width;
-        width: calc(~"100% - @{base-side-width}");
+        left: var(--side-width);
+        width: calc(~"100% - var(--side-width)");
       }
       &-with-sider-collapse {
         left: 64px;

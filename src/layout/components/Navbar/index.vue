@@ -76,7 +76,7 @@ export default {
     padding: 8px 12px;
     border-radius: 4px;
     &:hover {
-      background: #f2f2f3;
+      background: #f3f3f3;
     }
     &:active {
       background: #e7e7e7;

@@ -5,8 +5,8 @@ module.exports = {
   sidebarLogoTitle: "ivu后台管理",
 
   /* 布局设置 */
-  // 侧边栏的宽度，单位px，不可动态修改，需要和 styles/variables.less中 @base-side-width 保持一致
-  sideBarWidth: 240,
+  // 侧边栏的宽度，单位px，不可动态修改，需要和 styles/variables.less中 side-width 保持一致
+  sideWidth: 240,
   layout: {
     // 侧边栏主题色：深色主题dark，浅色主题light，默认深色dark
     themeMode: "dark",

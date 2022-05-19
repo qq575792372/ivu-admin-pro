@@ -10,7 +10,7 @@
   // 隐藏菜单滚动条
   &-scrollbar-hide {
     &::-webkit-scrollbar {
-      width: 0px;
+      width: 0;
     }
   }
 
@@ -26,32 +26,31 @@
 
   // 菜单样式
   &-submenu {
-    background: var(--side-bg);
-
+    background: var(--side-bg) !important;
     // svg图标和右侧箭头
-    .svg-icon {
+    .svg-icon,
+    .sub-ivu-icon {
       margin-right: 8px;
     }
     .ivu-menu-submenu-title-icon {
       margin-right: 0;
     }
 
-    // 多层菜单
+    // 第一层菜单
     .ivu-menu-submenu {
+      // .ivu-menu-item-active.ivu-menu-item-selected {
+      //   background: var(--primary-lighten90) !important;
+      // }
       .ivu-menu-submenu-title {
-        background-color: var(--side-bg) !important;
+        background: var(--side-bg) !important;
       }
     }
-
-    // 菜单的标题和副标题
+    // 第二层菜单
     .ivu-menu-item {
       height: 48px;
       overflow: hidden;
       display: flex;
       align-items: center;
-      .i-layout-menu-side-submenu-title-with-subtitle {
-        position: relative;
-      }
       .i-layout-menu-side-submenu-subtitle {
         display: block;
         font-style: normal;
@@ -61,7 +60,7 @@
     }
   }
 
-  // 一层菜单不显示选中背景
+  // 只有一层子菜单，提取到第一层后，选中无背景
   & > .i-layout-menu-side-submenu > .ivu-menu-item {
     background-color: transparent !important;
   }
@@ -70,108 +69,180 @@
   &-collapse {
     position: static !important;
     background: var(--side-bg) !important;
+
+    // 左侧菜单栏
     &-top-level {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       display: block;
       text-align: center;
+      margin-top: 6px;
 
-      &-item {
-        background-color: var(--side-bg) !important;
+      // 图标
+      .svg-icon,
+      .sub-ivu-icon {
+        margin-right: 0;
       }
-    }
+      &-item {
+        background: transparent !important;
+      }
 
-    // 下拉菜单样式
-    .ivu-select-dropdown {
-      margin: 5px 0 5px 3px;
-      min-width: 140px;
-      background: var(--side-bg);
-
-      // 更多级菜单项的样式
-      .ivu-dropdown-item {
+      // 左侧菜单-有子菜单
+      > .ivu-tooltip,
+      > .ivu-dropdown {
         display: flex;
         align-items: center;
-        overflow: hidden;
-        position: relative;
-        transition: all 0.2s ease-in-out;
-
-        // 隐藏多级菜单最右侧的线
-        &.ivu-menu-item-active::after {
-          width: 0px !important;
-        }
-
-        // 包含下级菜单的图标箭头样式
-        &-arrow {
-          position: absolute;
-          top: 0;
-          right: 16px;
-          bottom: 0;
-          left: auto;
-          width: 14px;
-          height: 14px;
-          margin: auto;
-        }
-        // 开启父级名称的样式
-        &.ivu-dropdown-show-parent {
-          cursor: default;
-          background: none !important;
-          font-weight: 600;
-          .svg-icon,
-          .sub-ivu-icon {
-            margin-right: 8px;
+        > .ivu-dropdown-rel,
+        > .ivu-tooltip-rel {
+          flex: 1;
+          .ivu-menu-item {
+            transition: all 0.28s;
+            padding: 10px 0px;
+            margin: 0px 8px;
+            border-radius: 4px;
           }
         }
+      }
 
-        // 开启副标题的样式
-        .i-layout-menu-side-submenu-subtitle {
-          margin-left: 12px;
-          font-style: normal;
-          font-size: 12px;
-          opacity: 0.5;
+      // 弹框菜单
+      .ivu-select-dropdown {
+        margin: 5px 0 5px 3px;
+        min-width: 140px;
+
+        // 多级菜单项
+        .ivu-dropdown-item {
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          position: relative;
+          transition: all 0.2s ease-in-out;
+          margin-top: 4px;
+
+          // 隐藏多级菜单最右侧的线
+          &.ivu-menu-item-active::after {
+            width: 0 !important;
+          }
+
+          // 包含下级菜单的图标箭头样式
+          &-arrow {
+            position: absolute;
+            top: 0;
+            right: 16px;
+            bottom: 0;
+            left: auto;
+            width: 14px;
+            height: 14px;
+            margin: auto;
+          }
+
+          // 开启父级标题
+          &.ivu-dropdown-show-parent {
+            cursor: default;
+            background: none !important;
+            font-weight: 600;
+            .svg-icon,
+            .sub-ivu-icon {
+              margin-right: 8px;
+            }
+          }
+
+          // 开启副标题
+          .i-layout-menu-side-submenu-subtitle {
+            margin-left: 12px;
+            font-style: normal;
+            font-size: 12px;
+            opacity: 0.5;
+          }
         }
       }
     }
 
-    // 折叠模式下dark菜单主题，展开的多级菜单背景
+    // 折叠模式-dark主题
     &.ivu-menu-dark {
-      // 第一层菜单选中样式
-      .i-layout-menu-side-collapse-top-level-item-selected {
-        color: #fff;
+      // 左侧菜单
+      .ivu-dropdown-rel,
+      .ivu-tooltip-rel {
+        // 菜单项
+        .ivu-menu-item:not(.i-layout-menu-side-collapse-top-level-item-selected) {
+          &:hover {
+            background: #373c54 !important;
+          }
+          &:active {
+            background: #2b2f42 !important;
+          }
+        }
+        // 选中
+        .i-layout-menu-side-collapse-top-level-item-selected {
+          color: #fff !important;
+          background: var(--primary-color) !important;
+          &:hover {
+            background: var(--primary-color);
+          }
+        }
       }
-      // 子菜单选中样式
+
+      // 弹框菜单
       .ivu-select-dropdown {
+        background: var(--side-bg) !important;
+
+        // 子菜单
         .ivu-dropdown-item {
           color: rgba(255, 255, 255, 0.7);
           // 当前被选中的样式
           &.ivu-menu-item-selected.ivu-menu-item-active {
-            background-color: var(--primary-color) !important;
+            background: var(--primary-color) !important;
             color: #fff;
           }
           &:hover {
-            background-color: transparent;
+            background: transparent;
             color: #fff;
           }
         }
-        .ivu-dropdown-item.ivu-dropdown-show-parent {
-          border-bottom: solid 1px transparent;
+        // 父级标题
+        .ivu-dropdown-show-parent {
           &:hover {
             color: rgba(255, 255, 255, 0.7);
           }
         }
       }
     }
-  }
-}
 
-// mobile，tablet和desktop端，左侧菜单在固定时-包含logo的样式
-.i-layout-sider-fix,
-.i-layout-drawer-sider-fix {
-  .i-layout-menu-side {
-    height: 100vh;
-    overflow-y: auto;
-    &-has-logo {
-      height: calc(100vh - 60px);
+    // 折叠模式-light主题
+    &.ivu-menu-light {
+      // 左侧菜单
+      .ivu-dropdown-rel,
+      .ivu-tooltip-rel {
+        // 菜单项
+        .ivu-menu-item:not(.i-layout-menu-side-collapse-top-level-item-selected) {
+          &:hover {
+            background: var(--primary-lighten90) !important;
+          }
+          &:active {
+            background: var(--primary-lighten80) !important;
+          }
+        }
+        // 选中
+        .i-layout-menu-side-collapse-top-level-item-selected {
+          color: #fff !important;
+          background: var(--primary-color) !important;
+          &:hover {
+            background: var(--primary-color);
+          }
+        }
+      }
+
+      // 弹框菜单
+      .ivu-select-dropdown {
+        // 子菜单
+        .ivu-dropdown-item {
+          // 当前被选中的样式
+          &.ivu-menu-item-selected.ivu-menu-item-active {
+            background: var(--primary-lighten90) !important;
+            color: var(--primary-color);
+          }
+        }
+      }
     }
   }
 }
