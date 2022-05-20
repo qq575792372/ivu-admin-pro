@@ -209,11 +209,20 @@ export default {
     }
   }
 }
-// drawer样式
+// 手机端模式-drawer样式
 .i-layout-drawer-sider-fix {
   .ivu-drawer-body {
     padding: 0;
     overflow: visible;
+    background: var(--side-bg);
+    // 固定菜单时，菜单超长可以滚动
+    .i-layout-menu-side {
+      height: 100vh;
+      overflow-y: auto;
+      &-has-logo {
+        height: calc(100vh - 60px);
+      }
+    }
   }
 }
 </style>

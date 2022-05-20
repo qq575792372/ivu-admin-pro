@@ -65,7 +65,7 @@ export default {
   background: #fff;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  padding-left: 12px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
 

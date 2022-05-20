@@ -102,6 +102,10 @@ npm run lint -- --fix
         <td><img alt="功能10" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/10.png"/></td>
     </tr>
      <tr>
+        <td><img alt="平板电脑1" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/pad-1.png"/></td>
+        <td><img alt="平板电脑2" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/pad-2.png"/></td>
+    </tr>
+     <tr>
         <td><img alt="手机端1" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/mobile-1.png"/></td>
         <td><img alt="手机端2" src="https://gitee.com/qq575792372/images/raw/master/ivu-admin-pro/mobile-2.png"/></td>
     </tr>
@@ -109,9 +113,10 @@ npm run lint -- --fix
 
 #### 新功能 New~
 
-新增动态主题色切换，寻找过目前流行的多种方案，不同场景下不是特别理想，最终决定用 vue-element-admin `动态获取 iview 样式` + 支持` :root 变量`结合的方式实现。
+新增动态主题色切换，研究过目前流行的多种方案，最终决定用 vue-element-admin 的思路 `动态获取 iview 样式` + 支持 ` :root 变量` 结合的方式实现。这样只需下载一次样式文件即可实现动态修改颜色主题的效果。
 
-> #### 重要说明
->
-> - 框架中的一些 UI 效果和配置参数借鉴[iview-admin-pro（需付费授权）](https://pro.iviewui.com/admin-pro/introduce)，[vue-element-admin（开源）](https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/)和 [腾讯的 tdesign-vue（开源）](https://tdesign.tencent.com/starter/)，如感兴趣的可以跳转到对应的官方文档。
-> - ivu-admin-pro 开源框架是个人业余兴趣开发之作，如有第三者作为商用或其它用途发生的版权纠纷，本人概不承担任何责任。
+#### 重要说明
+
+> - 框架中的一些 UI 展示效果有些参考 [iview-admin-pro（需付费授权）](https://pro.iviewui.com/admin-pro/introduce)，[vue-element-admin（开源免费）](https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/)和 [腾讯的 tdesign-vue（开源免费）](https://tdesign.tencent.com/starter/)。
+> - ivu-admin-pro 开源框架是个人业余兴趣之作，如有第三方作为商用或其它用途发生的版权纠纷，本人概不承担任何责任。
+> - 开源促进技术进步，为开源大法添砖添瓦。
