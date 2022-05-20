@@ -79,7 +79,14 @@ export default {
     color: {
       immediate: true,
       handler(val) {
-        this.currentColor = val;
+        console.log(333, val);
+        if (this.colors.includes(val)) {
+          this.dynamicColor = "";
+          this.currentColor = val;
+        } else {
+          this.currentColor = "";
+          this.dynamicColor = val;
+        }
       },
     },
   },

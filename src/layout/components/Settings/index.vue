@@ -200,8 +200,12 @@ export default {
   components: { ThemeColor },
   data() {
     return {
-      showSettings: true,
-      messageLoading: null, // 加载提示
+      // 设置弹框
+      showSettings: false,
+
+      // 加载提示
+      messageLoading: null,
+
       // 主色和转换后的样式，默认从缓存取
       primaryColor: getSessionStorage("ivu-theme-color") || "#2d8cf0",
       cssText: getSessionStorage("ivu-theme-css") || "",
