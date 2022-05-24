@@ -24,7 +24,7 @@
           <!-- 同比增长 红色 -->
           <span>
             周同比 16%
-            <Icon type="md-arrow-dropup" size="14" class="text-danger" />
+            <Icon type="md-arrow-dropup" size="14" class="text-error" />
           </span>
           <!-- 同比下降 绿色-->
           <span class="margin-left-20">
@@ -66,7 +66,7 @@
           <!-- 同比增长 红色 -->
           <span>
             周同比 16%
-            <Icon type="md-arrow-dropup" size="14" class="text-danger" />
+            <Icon type="md-arrow-dropup" size="14" class="text-error" />
           </span>
           <!-- 同比下降 绿色-->
           <span class="margin-left-20">
@@ -107,7 +107,7 @@
           <!-- 同比增长 红色 -->
           <span>
             周同比 16%
-            <Icon type="md-arrow-dropup" size="14" class="text-danger" />
+            <Icon type="md-arrow-dropup" size="14" class="text-error" />
           </span>
           <!-- 同比下降 绿色-->
           <span class="margin-left-20">
@@ -149,7 +149,7 @@
           <!-- 同比增长 红色 -->
           <span>
             周同比 16%
-            <Icon type="md-arrow-dropup" size="14" class="text-danger" />
+            <Icon type="md-arrow-dropup" size="14" class="text-error" />
           </span>
           <!-- 同比下降 绿色-->
           <span class="margin-left-20">

@@ -17,7 +17,7 @@
             {{ formData.collectName }}
           </FormItem>
           <FormItem label="转账金额">
-            <span class="text-bold text-danger">
+            <span class="text-bold text-error">
               ￥{{ Number(formData.transferAmount).toFixed(2) }}
             </span>
           </FormItem>

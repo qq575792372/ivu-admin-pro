@@ -132,7 +132,9 @@ export default {
 .i-layout-sider {
   position: relative;
   z-index: 11;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.25);
+  border-right: 1px solid #f3f3f3;
+
+  background: var(--side-bg) !important;
   // 固定侧边栏
   &-fix {
     position: fixed !important;
@@ -140,6 +142,9 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    border: none;
+    box-shadow: 1px 0 6px rgba(0, 21, 41, 0.2);
+
     // 固定菜单时，菜单超长可以滚动
     .i-layout-menu-side {
       height: 100vh;

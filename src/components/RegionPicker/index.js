@@ -1,7 +1,7 @@
 /**
  * 省市区级联数据
  * 使用中国行政区域数据V5最新版本，筛选区域数据后以供 Cascader 组件使用。
- * 必须要npm安装china-area-data的区域数据源包
+ * 必须要npm安装 china-area-data 的区域数据源包
  */
 
 import REGION_DATA from "china-area-data";
@@ -99,6 +99,7 @@ for (let i = 0, len = regionData.length; i < len; i++) {
 /**
  * 添加“全部”选项
  */
+console.log(333, typeof provinceAndCityData, provinceAndCityData);
 provinceAndCityDataPlus = deepClone(provinceAndCityData);
 provinceAndCityDataPlus.unshift({
   value: "",

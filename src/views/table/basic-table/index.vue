@@ -118,7 +118,7 @@
           <!-- 状态 -->
           <template slot-scope="{ row, index }" slot="status">
             <span class="text-success" v-if="row.status == 1">已上架</span>
-            <span class="text-danger" v-if="row.status == 0">已下架</span>
+            <span class="text-error" v-if="row.status == 0">已下架</span>
           </template>
           <!-- 操作 -->
           <template slot-scope="{ row, index }" slot="action" :width="100">

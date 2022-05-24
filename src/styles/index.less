@@ -76,33 +76,37 @@ div:focus {
   }
 }
 
-/* set global text color */
-.text-default {
-  color: #303133;
-}
-
-.text-info {
-  color: #606266;
-}
-
-.text-desc {
-  color: #909399;
-}
+/* 文字颜色样式 */
 
 .text-primary {
-  color: var(--primary-color);
+  color: @text-primary-color;
 }
 
 .text-success {
-  color: #19be6b;
+  color: @text-success-color;
 }
 
 .text-warning {
-  color: #ff9900;
+  color: @text-warning-color;
 }
 
-.text-danger {
-  color: #ed4014;
+.text-error {
+  color: @text-error-color;
+}
+
+.text-title {
+  color: @text-title-color;
+}
+
+.text-normal {
+  color: @text-normal-color;
+}
+
+.text-desc {
+  color: @text-desc-color;
+}
+.text-disabled {
+  color: @text-disabled-color;
 }
 
 /* 错误异常页面样式 */
@@ -120,14 +124,14 @@ div:focus {
   .error-content {
     padding-left: 80px;
     h1 {
-      color: #515a6e;
+      color: @text-normal-color;
       font-size: 72px;
       font-weight: 600;
       line-height: 72px;
       margin-bottom: 16px;
     }
     .desc {
-      color: #808695;
+      color: @text-desc-color;
       font-size: 20px;
       line-height: 20px;
       margin-bottom: 24px;

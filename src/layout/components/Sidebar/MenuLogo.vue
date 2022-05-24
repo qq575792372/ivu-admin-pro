@@ -4,22 +4,11 @@
     class="i-layout-sider-logo"
     :class="logoClasses"
   >
-    <router-link
-      v-if="isCollapsed"
-      key="collapse"
-      class="i-layout-sider-logo-link"
-      to="/"
-    >
-      <img v-if="logo" :src="logo" class="sider-logo-img" />
-      <h1 v-else class="sider-logo-title">
+    <router-link class="i-layout-sider-logo-link" to="/">
+      <img :src="logo" class="sider-logo-img" />
+      <div v-show="!isCollapsed" class="sider-logo-title">
         {{ title }}
-      </h1>
-    </router-link>
-    <router-link v-else key="expand" class="i-layout-sider-logo-link" to="/">
-      <img v-if="logo" :src="logo" class="sider-logo-img" />
-      <h1 class="sider-logo-title">
-        {{ title }}
-      </h1>
+      </div>
     </router-link>
   </div>
 </template>
@@ -55,25 +44,20 @@ export default {
 
 .i-layout-sider-logo {
   position: relative;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  overflow: hidden;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
   background: var(--side-bg);
 
   &-link {
-    flex: 1;
-    transition: width 0.28s;
-    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    transition: all 0.2s;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
 
     .sider-logo-img {
-      max-width: 32px;
-      max-height: 32px;
+      width: 32px;
+      height: 32px;
       vertical-align: middle;
     }
 
@@ -91,6 +75,9 @@ export default {
 
   &-collapse {
     .sider-logo-img {
+    }
+    .sider-logo-title {
+      // display: none;
     }
   }
 }

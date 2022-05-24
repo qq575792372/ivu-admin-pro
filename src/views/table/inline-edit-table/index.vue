@@ -125,7 +125,7 @@
             </template>
             <template v-else>
               <span class="text-success" v-if="row.status == 1">已上架</span>
-              <span class="text-danger" v-if="row.status == 0">已下架</span>
+              <span class="text-error" v-if="row.status == 0">已下架</span>
             </template>
           </template>
           <!-- 操作 -->

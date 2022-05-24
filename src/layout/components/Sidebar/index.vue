@@ -1,9 +1,8 @@
 <template>
   <div>
     <!-- logo -->
-    <transition name="fade">
-      <side-menu-logo v-show="hasLogo" />
-    </transition>
+    <side-menu-logo v-show="hasLogo" />
+
     <!-- menu -->
     <Menu
       ref="menu"
