@@ -92,13 +92,17 @@ export default {
 // 示例中page-header组件结构背景
 .demo-page-header {
   .demo-title {
-    background: #40a9ff;
+    background: #2d8cf0;
+    color: #fff;
+    padding: 2px 4px;
   }
   .demo-logo,
   .demo-action,
   .demo-content,
   .demo-extra {
-    background: #69c0ff;
+    background: #5cadff;
+    color: #fff;
+    padding: 2px 4px;
   }
 }
 </style>

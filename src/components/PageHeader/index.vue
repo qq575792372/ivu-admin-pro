@@ -78,6 +78,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+@import "~@/styles/variables.less";
+
 .i-page-header {
   background: #fff;
   padding: 16px 30px;
@@ -100,7 +102,7 @@ export default {
     transition: all 0.2s;
     cursor: pointer;
     &:hover {
-      color: #2d8cf0;
+      color: var(--primary-color);
     }
     &-icon {
       font-size: 18px;
@@ -122,7 +124,7 @@ export default {
       width: 100%;
       // title
       .i-page-header-title {
-        color: #303133;
+        color: @text-title-color;
         font-weight: 500;
         font-size: 20px;
         flex: auto;
@@ -131,6 +133,7 @@ export default {
       // content
       .i-page-header-content {
         flex: auto;
+        color: @text-normal-color;
       }
       .i-page-header-action {
         margin-bottom: 14px;
@@ -142,6 +145,7 @@ export default {
         flex: 0 1 auto;
         text-align: right;
         margin-left: 50px;
+        color: @text-normal-color;
         // has ivu-btn styles
         .ivu-btn:not(:last-child) {
           margin-right: 8px;

@@ -35,6 +35,6 @@ module.exports = {
 
   // 是否显示动态标题
   showDynamicTitle: true,
-  // 背景图片高斯模糊程度，（0
-  loginBgBlur: "20",
+  // 背景图片高斯模糊数值 0-100
+  loginBgBlur: 40,
 };

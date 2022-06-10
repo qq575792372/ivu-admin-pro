@@ -27,14 +27,14 @@ function param2Obj(url) {
  * @param {Object} source
  * @returns {Object}
  */
-function deepClone(source) {
+function cloneDeep(source) {
   if (!source && typeof source !== "object") {
-    throw new Error("error arguments", "deepClone");
+    throw new Error("error arguments", "cloneDeep");
   }
   const targetObj = source.constructor === Array ? [] : {};
   Object.keys(source).forEach((keys) => {
     if (source[keys] && typeof source[keys] === "object") {
-      targetObj[keys] = deepClone(source[keys]);
+      targetObj[keys] = cloneDeep(source[keys]);
     } else {
       targetObj[keys] = source[keys];
     }
@@ -44,5 +44,5 @@ function deepClone(source) {
 
 module.exports = {
   param2Obj,
-  deepClone,
+  cloneDeep,
 };

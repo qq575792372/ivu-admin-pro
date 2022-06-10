@@ -1,7 +1,13 @@
 <template>
   <div class="login-container">
     <!-- 登录背景 -->
-    <div class="login-bg" :style="{ filter: `blur(${loginBgBlur}px)` }"></div>
+    <div
+      class="login-bg"
+      :style="{
+        filter: `blur(${bgBlurNum}px)`,
+        transform: `scale(${bgScaleNum})`,
+      }"
+    ></div>
     <!-- 登录窗口 -->
     <div class="login-main">
       <!-- 标题 -->
@@ -180,9 +186,43 @@ export default {
     };
   },
   computed: {
-    // 背景图片高斯模糊像素，通过settings配置中获取，值0-100，默认20
-    loginBgBlur() {
-      return loginBgBlur;
+    /* 
+      背景模糊值
+      本框架中通过简单放大图片来去除filter的白边。
+      也可以通过StackBlur.js来更完美的实现高斯模糊，但是需要多一个依赖包
+    */
+    bgBlurNum() {
+      let num = Number(loginBgBlur);
+      if (num < 0) {
+        return 0;
+      }
+      if (num > 100) {
+        return 100;
+      }
+      return num;
+    },
+    // 背景放大的倍数，主要是配合模糊系数变大有白边的问题
+    bgScaleNum() {
+      // 模糊值 20-40
+      if (this.bgBlurNum >= 20 && this.bgBlurNum < 40) {
+        return 1.04;
+      }
+      // 模糊值 40-60
+      else if (this.bgBlurNum >= 40 && this.bgBlurNum < 60) {
+        return 1.06;
+      }
+      // 模糊值 60-80
+      else if (this.bgBlurNum >= 60 && this.bgBlurNum < 80) {
+        return 1.08;
+      }
+      // 模糊值 80-100
+      else if (this.bgBlurNum >= 80) {
+        return 1.1;
+      }
+      // 模糊值 0-20
+      else {
+        return 1.02;
+      }
     },
   },
   watch: {
@@ -285,12 +325,11 @@ export default {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -18px;
+    left: -18px;
+    right: -18px;
+    bottom: -18px;
     z-index: 1;
-    transform: scale(1.06); // 放大图片，可以解决模糊后四周有白边的问题
   }
 
   // 登录主窗口

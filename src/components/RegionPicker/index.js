@@ -5,7 +5,7 @@
  */
 
 import REGION_DATA from "china-area-data";
-import { deepClone } from "@lime-util/util";
+import { cloneDeep } from "@lime-util/util";
 
 // 省市二级联动
 let provinceAndCityData = []; // 不带”全部”选项
@@ -66,7 +66,7 @@ for (let i = 0, len = regionData.length; i < len; i++) {
     regionData[i].children = provinceChildren;
   }
 }
-provinceAndCityData = deepClone(regionData);
+provinceAndCityData = cloneDeep(regionData);
 
 /**
  * 计算区
@@ -100,7 +100,7 @@ for (let i = 0, len = regionData.length; i < len; i++) {
  * 添加“全部”选项
  */
 console.log(333, typeof provinceAndCityData, provinceAndCityData);
-provinceAndCityDataPlus = deepClone(provinceAndCityData);
+provinceAndCityDataPlus = cloneDeep(provinceAndCityData);
 provinceAndCityDataPlus.unshift({
   value: "",
   label: "全部",
@@ -128,7 +128,7 @@ for (let i = 0, len = provinceAndCityDataPlus.length; i < len; i++) {
 /**
  * 省市区三级联动数据（带“全部”选项）
  */
-regionDataPlus = deepClone(regionData);
+regionDataPlus = cloneDeep(regionData);
 regionDataPlus.unshift({
   value: "",
   label: "全部",
