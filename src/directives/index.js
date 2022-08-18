@@ -6,7 +6,7 @@ import inputTrim from "./input-trim";
 import inputNumber from "./input-number";
 
 /**
- * 按照所有指令
+ * 安装所有指令
  */
 const install = function (Vue) {
   Vue.directive("permission", permission);

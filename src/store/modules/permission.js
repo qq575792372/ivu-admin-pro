@@ -81,11 +81,11 @@ export function filterAsyncRoutes(asyncRoutes) {
   const res = [];
 
   asyncRoutes.forEach((route) => {
-    const tmp = { ...route };
-    if (tmp.children) {
-      tmp.children = filterAsyncRoutes(tmp.children);
+    const temp = { ...route };
+    if (route.children) {
+      temp.children = filterAsyncRoutes(route.children);
     }
-    res.push(tmp);
+    res.push(temp);
   });
 
   return res;

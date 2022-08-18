@@ -52,6 +52,52 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* 文字超出指定行数省略号，支持1-5行 */
+.text-overflow-line-1 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.text-overflow-line-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.text-overflow-line-3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.text-overflow-line-4 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.text-overflow-line-5 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
 // 文字全部转大写
 .text-uppercase {
   text-transform: uppercase;
@@ -89,77 +135,43 @@
 }
 
 /* 字体大小，12-36px */
-.font-9 {
+.font-8 {
   font-size: 12px;
-  transform: scale(0.75);
+  transform: scale(0.7);
 }
 .font-10 {
   font-size: 12px;
   transform: scale(0.83);
 }
-.font-11 {
-  font-size: 12px;
-  transform: scale(0.9);
-}
 .font-12 {
   font-size: 12px;
-}
-.font-13 {
-  font-size: 13px;
 }
 .font-14 {
   font-size: 14px;
 }
-.font-15 {
-  font-size: 15px;
-}
 .font-16 {
   font-size: 16px;
-}
-.font-17 {
-  font-size: 17px;
 }
 .font-18 {
   font-size: 18px;
 }
-.font-19 {
-  font-size: 19px;
-}
 .font-20 {
   font-size: 20px;
-}
-.font-21 {
-  font-size: 21px;
 }
 .font-22 {
   font-size: 22px;
 }
-.font-23 {
-  font-size: 23px;
-}
 .font-24 {
   font-size: 24px;
-}
-.font-25 {
-  font-size: 25px;
 }
 .font-26 {
   font-size: 26px;
 }
-.font-27 {
-  font-size: 27px;
-}
 .font-28 {
   font-size: 28px;
 }
-.font-29 {
-  font-size: 29px;
-}
 .font-30 {
   font-size: 30px;
-}
-.font-31 {
-  font-size: 31px;
 }
 .font-32 {
   font-size: 32px;
@@ -169,6 +181,12 @@
 }
 .font-36 {
   font-size: 36px;
+}
+.font-38 {
+  font-size: 38px;
+}
+.font-40 {
+  font-size: 40px;
 }
 
 /* 文本对齐方式 */
@@ -779,6 +797,7 @@
 // 子元素flex
 .display-flex .flex {
   flex: 1;
+  flex-shrink: 0;
 }
 // 元素垂直居中
 .display-flex.align-items-center {
