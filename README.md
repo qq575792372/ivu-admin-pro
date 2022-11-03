@@ -42,10 +42,10 @@ npm run stage
 在 .env.[development/staging/production] 中修改 VUE_APP_BASE_API='http://接口地址'
 
 # 运行环境
-在使用npm run dev 和 build dev/stage/prod 会根据.env.XXX.js里的配置来连接不同环境的接口地址
+在使用npm run dev 和 build dev/stage/prod 会根据.env.XXX里的配置来连接不同环境的接口地址
 ```
 
-环境配置可以参考 Vue CLI 官网的 [模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)，使用 **.env[model]** 文件来指定环境变量
+环境配置可以参考 Vue CLI 官网的 [模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)，使用 **.env[model]** 文件来指定环境变量，变量名建议用`VUE_APP_`开头，获取当前环境的变量用 `process.env.xxx`。
 
 ## 发布
 
