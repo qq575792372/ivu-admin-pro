@@ -133,7 +133,7 @@ export default {
       // content
       .i-page-header-content {
         flex: auto;
-        color: @text-normal-color;
+        color: @text-content-color;
       }
       .i-page-header-action {
         margin-bottom: 14px;
@@ -145,7 +145,7 @@ export default {
         flex: 0 1 auto;
         text-align: right;
         margin-left: 50px;
-        color: @text-normal-color;
+        color: @text-content-color;
         // has ivu-btn styles
         .ivu-btn:not(:last-child) {
           margin-right: 8px;
